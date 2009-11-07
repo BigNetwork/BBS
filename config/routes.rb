@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :product_type_relations
+
+  map.resources :product_types
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
