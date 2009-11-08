@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :products
+
   map.resources :product_type_relations
 
   map.resources :product_types

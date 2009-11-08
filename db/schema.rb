@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091107215546) do
+ActiveRecord::Schema.define(:version => 20091108221216) do
 
   create_table "product_type_relations", :force => true do |t|
     t.integer  "parent_id"
@@ -23,6 +23,12 @@ ActiveRecord::Schema.define(:version => 20091107215546) do
     t.text     "description"
     t.decimal  "standard_price"
     t.decimal  "crew_price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "products", :force => true do |t|
+    t.integer  "product_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
