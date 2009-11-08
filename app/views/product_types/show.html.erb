@@ -52,5 +52,15 @@
 
 <% end %>
 
+<h3>In stock</h3>
+
+<p>
+  <% if @product_type.products.count > 0 %>
+  <%= @product_type.products.count %> in stock.  
+  <% else %>
+  None in stock.
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_product_type_path(@product_type) %> |
 <%= link_to 'Back', product_types_path %>
