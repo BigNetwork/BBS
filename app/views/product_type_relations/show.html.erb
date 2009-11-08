@@ -1,11 +1,13 @@
+<h2><em><%=h @product_type_relation.child.name %></em> belongs to <em><%=h @product_type_relation.parent.name %></em></h2>
+
 <p>
   <b>Parent:</b>
-  <%=h @product_type_relation.parent_id %>
+  <%=h @product_type_relation.parent.name %>
 </p>
 
 <p>
   <b>Child:</b>
-  <%=h @product_type_relation.child_id %>
+  <%=h @product_type_relation.child.name %>
 </p>
 
 

@@ -1,15 +1,15 @@
-<h1>New product_type_relation</h1>
+<h1>New product type relation</h1>
 
 <% form_for(@product_type_relation) do |f| %>
   <%= f.error_messages %>
 
   <p>
     <%= f.label :parent_id %><br />
-    <%= f.text_field :parent_id %>
+    <%= f.collection_select :parent_id, ProductType.find(:all), :id, :name %>
   </p>
   <p>
     <%= f.label :child_id %><br />
-    <%= f.text_field :child_id %>
+    <%= f.collection_select :child_id, ProductType.find(:all), :id, :name %>
   </p>
   <p>
     <%= f.submit 'Create' %>

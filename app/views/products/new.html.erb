@@ -1,0 +1,15 @@
+<h1>New product</h1>
+
+<% form_for(@product) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :product_type_id %><br />
+    <%= f.collection_select :product_type_id, ProductType.find(:all), :id, :name %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', products_path %>
