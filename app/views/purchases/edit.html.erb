@@ -1,0 +1,12 @@
+<h1>Editing purchase</h1>
+
+<% form_for(@purchase) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @purchase %> |
+<%= link_to 'Back', purchases_path %>

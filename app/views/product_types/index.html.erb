@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Kombinationsprodukt?</th>
     <th>Description</th>
     <th>Standard price</th>
     <th>Crew price</th>
@@ -11,6 +12,7 @@
 <% @product_types.each do |product_type| %>
   <tr>
     <td><%=h product_type.name %></td>
+    <td><%= "Ja" unless product_type.children.empty? %></td>
     <td><%=h product_type.description %></td>
     <td><%=h product_type.standard_price %></td>
     <td><%=h product_type.crew_price %></td>

@@ -6,18 +6,33 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title><%= controller.controller_name.titleize %> - <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'scaffold' %>
+  <%= stylesheet_link_tag 'master' %>
 </head>
 <body>
 
-<ul>
+<div id="container">
+
+<h2 id="logo"><%= link_to 'BBS', root_url %></h2>
+
+<ul id="menu">
   <li><%= link_to 'Product Types', product_types_url %></li>
   <li><%= link_to 'Product Type Relations', product_type_relations_url %></li>
   <li><%= link_to 'Products', products_url %></li>
+  <li><%= link_to 'Carts', carts_url %></li>
+  <li><%= link_to 'Cart Rows', cart_rows_url %></li>
+  <li><%= link_to 'Deliveries', deliveries_url %></li>
+  <li><%= link_to 'Purchases', purchases_url %></li>
 </ul>
+
+<div id="page">
 
 <p style="color: green"><%= flash[:notice] %></p>
 
 <%= yield %>
+
+</div>
+
+</div>
 
 </body>
 </html>

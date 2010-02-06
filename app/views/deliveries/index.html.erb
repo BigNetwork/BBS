@@ -1,0 +1,18 @@
+<h1>Listing deliveries</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @deliveries.each do |delivery| %>
+  <tr>
+    <td><%= link_to 'Show', delivery %></td>
+    <td><%= link_to 'Edit', edit_delivery_path(delivery) %></td>
+    <td><%= link_to 'Destroy', delivery, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New delivery', new_delivery_path %>

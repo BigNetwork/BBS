@@ -9,7 +9,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091108221216) do
+ActiveRecord::Schema.define(:version => 20100206134011) do
+
+  create_table "cart_rows", :force => true do |t|
+    t.integer  "cart_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "product_type_id"
+    t.integer  "quantity"
+  end
+
+  create_table "carts", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "deliveries", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "product_type_relations", :force => true do |t|
     t.integer  "parent_id"
@@ -29,6 +47,13 @@ ActiveRecord::Schema.define(:version => 20091108221216) do
 
   create_table "products", :force => true do |t|
     t.integer  "product_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "purchase_id"
+    t.integer  "delivery_id"
+  end
+
+  create_table "purchases", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,6 @@
+<h1>Cart <%= h @cart.id %></h1>
+
+<%= link_to 'Add products to cart', { :controller => 'cart_rows', :action => :new, :cart_id => @cart.id } %>
+
+<%= link_to 'Edit', edit_cart_path(@cart) %> |
+<%= link_to 'Back', carts_path %>
