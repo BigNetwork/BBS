@@ -3,10 +3,7 @@
 <% form_for(@product) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :product_type_id %><br />
-    <%= f.text_field :product_type_id %>
-  </p>
+  <%= render :partial => 'form', :locals => { :f => f } %> 
   <p>
     <%= f.submit 'Update' %>
   </p>

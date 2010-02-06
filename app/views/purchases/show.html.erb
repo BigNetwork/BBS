@@ -1,3 +1,18 @@
+<h1>Purchase <%= @purchase.id %></h1>
+
+<% if @purchase.products.empty? %>
+  
+<% else %>
+  
+  <h3>Sold in this purchase:</h3>
+  
+  <ul>
+    <% for product in @purchase.products %>
+      <li><%= link_to product.product_type.name, product %></li>
+    <% end %>
+  </ul>
+  
+<% end %>
 
 <%= link_to 'Edit', edit_purchase_path(@purchase) %> |
 <%= link_to 'Back', purchases_path %>

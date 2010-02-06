@@ -25,6 +25,10 @@ class CartRowsController < ApplicationController
   # GET /cart_rows/new.xml
   def new
     @cart_row = CartRow.new
+    
+    unless params[:cart_id].nil?
+      @cart_row.cart_id = params[:cart_id]
+    end
 
     respond_to do |format|
       format.html # new.html.erb

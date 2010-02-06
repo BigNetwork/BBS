@@ -14,6 +14,9 @@ class CartsController < ApplicationController
   # GET /carts/1.xml
   def show
     @cart = Cart.find(params[:id])
+    @cart_row = CartRow.new
+    @cart_row.cart_id = @cart.id
+    @purchase = Purchase.new
 
     respond_to do |format|
       format.html # show.html.erb

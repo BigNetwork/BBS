@@ -1,6 +1,33 @@
 <h1>Cart <%= h @cart.id %></h1>
 
-<%= link_to 'Add products to cart', { :controller => 'cart_rows', :action => :new, :cart_id => @cart.id } %>
+<h3>Products in cart:</h3>
+<% if @cart.cart_rows.empty? %>
+  <p>None.</p>
+<% else %>
+<ul class="cart_rows">
+  <% for @cart_row in @cart.cart_rows %>
+    <li><%= link_to h(@cart_row.product_type.name), @cart_row.product_type %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<% form_for(@cart_row) do |f| %>
+  <h3>Add products to cart:</h3>
+  <%= f.error_messages %>
+  <%= render :partial => 'cart_rows/form', :locals => { :f => f } %>
+  <p>
+    <%= f.submit 'Add' %>
+  </p>
+<% end %>
+
+<% form_for(@purchase) do |f| %>
+  <h3>Purchase here when done:</h3>
+  <%= f.hidden_field :cart_id, { :value => @cart.id } %>
+  <p>
+    <%= f.submit 'Purchase!' %>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_cart_path(@cart) %> |
 <%= link_to 'Back', carts_path %>
+

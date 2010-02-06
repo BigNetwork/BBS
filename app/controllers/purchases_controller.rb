@@ -41,9 +41,15 @@ class PurchasesController < ApplicationController
   # POST /purchases.xml
   def create
     @purchase = Purchase.new(params[:purchase])
+    
+    save_status = @purchase.save
+    
+    if save_status
+      bind_products
+    end
 
     respond_to do |format|
-      if @purchase.save
+      if save_status
         flash[:notice] = 'Purchase was successfully created.'
         format.html { redirect_to(@purchase) }
         format.xml  { render :xml => @purchase, :status => :created, :location => @purchase }
@@ -52,6 +58,27 @@ class PurchasesController < ApplicationController
         format.xml  { render :xml => @purchase.errors, :status => :unprocessable_entity }
       end
     end
+  end
+  
+  def bind_products
+    
+    # If we know the cart, snatch products that match that cart:
+    unless @purchase.cart_id.nil?
+      @cart = Cart.find_by_id(@purchase.cart_id)  
+      for cart_row in @cart.cart_rows
+        # Find some products to snatch:
+        products = Product.find_by_product_type(cart_row.product_type)
+        if products.length >= cart_row.quantity
+          for i in 0..(cart_row.quantity-1)
+            products[i].purchase_id = @purchase.id
+          end
+        else
+          # Problem, not enough products of that type available!
+          flash[:error] = "Problem! Not enough #{cart_row.product_type.name} available in stock!"
+        end
+      end
+    end
+    
   end
 
   # PUT /purchases/1
