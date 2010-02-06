@@ -5,8 +5,8 @@
   <p>None.</p>
 <% else %>
 <ul class="cart_rows">
-  <% for @cart_row in @cart.cart_rows %>
-    <li><%= link_to h(@cart_row.product_type.name), @cart_row.product_type %></li>
+  <% for cart_row in @cart.cart_rows %>
+    <li><%= cart_row.quantity %> x <%= link_to h(cart_row.product_type.name), cart_row.product_type %></li>
   <% end %>
 </ul>
 <% end %>

@@ -41,16 +41,13 @@ class PurchasesController < ApplicationController
   # POST /purchases.xml
   def create
     @purchase = Purchase.new(params[:purchase])
-    
-    save_status = @purchase.save
-    
-    if save_status
-      bind_products
-    end
 
     respond_to do |format|
-      if save_status
+      if @purchase.save
         flash[:notice] = 'Purchase was successfully created.'
+        
+        bind_products
+        
         format.html { redirect_to(@purchase) }
         format.xml  { render :xml => @purchase, :status => :created, :location => @purchase }
       else
@@ -67,8 +64,8 @@ class PurchasesController < ApplicationController
       @cart = Cart.find_by_id(@purchase.cart_id)  
       for cart_row in @cart.cart_rows
         # Find some products to snatch:
-        products = Product.find_by_product_type(cart_row.product_type)
-        if products.length >= cart_row.quantity
+        products = Product.find_by_product_type_id(cart_row.product_type)
+        unless products.nil?
           for i in 0..(cart_row.quantity-1)
             products[i].purchase_id = @purchase.id
           end

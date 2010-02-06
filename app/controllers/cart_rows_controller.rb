@@ -49,7 +49,7 @@ class CartRowsController < ApplicationController
     respond_to do |format|
       if @cart_row.save
         flash[:notice] = 'CartRow was successfully created.'
-        format.html { redirect_to(@cart_row) }
+        format.html { redirect_to(:back) }
         format.xml  { render :xml => @cart_row, :status => :created, :location => @cart_row }
       else
         format.html { render :action => "new" }
