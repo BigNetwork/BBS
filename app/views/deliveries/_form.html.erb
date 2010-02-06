@@ -1,0 +1,8 @@
+<p>
+  <%= f.label :product_type_id %><br/>
+  <%= f.collection_select :product_type_id, ProductType.all, :id, :name %>
+</p>
+<p>
+  <%= f.label :quantity %><br/>
+  <%= f.text_field :quantity %>
+</p>

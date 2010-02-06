@@ -45,6 +45,15 @@ class DeliveriesController < ApplicationController
     respond_to do |format|
       if @delivery.save
         flash[:notice] = 'Delivery was successfully created.'
+        
+        # Create the delivered products:
+        for i in 1..(@delivery.quantity)
+          @product = Product.new
+          @product.product_type_id = @delivery.product_type_id
+          @product.delivery_id = @delivery.id
+          @product.save(false)
+        end
+        
         format.html { redirect_to(@delivery) }
         format.xml  { render :xml => @delivery, :status => :created, :location => @delivery }
       else
