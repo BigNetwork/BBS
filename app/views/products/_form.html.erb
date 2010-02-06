@@ -1,0 +1,14 @@
+<p>
+  <%= f.label :product_type_id %><br />
+  <%= f.collection_select :product_type_id, ProductType.find(:all), :id, :name %>
+</p>
+
+<p>
+  <%= f.label :delivery_id, 'Came in with delivery:' %><br />
+  <%= f.collection_select :delivery_id, Delivery.find(:all), :id, :id, { :include_blank => 'Not delivered? Weird.' }  %>
+</p>
+
+<p>
+  <%= f.label :purchase_id, 'Was sold at purchase:' %><br />
+  <%= f.collection_select :purchase_id, Purchase.find(:all), :id, :id, { :include_blank => 'Not sold yet' } %>
+</p>
