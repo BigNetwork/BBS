@@ -2,18 +2,18 @@
 
 <table class="index_table">
   <tr>
-    <th>Cart:</th>
+    <th><%= t('cart') %>:</th>
   </tr>
 
 <% @carts.each do |cart| %>
   <tr class="<%= cycle :odd, :even %>">
-    <td><%= link_to "Cart #{cart.id}", cart %></td>
-    <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
-    <td><%= link_to 'Destroy', cart, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to "#{t('cart')} #{cart.id}", cart %></td>
+    <td><%= link_to t('Edit'), edit_cart_path(cart) %></td>
+    <td><%= link_to t('Destroy'), cart, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New cart', new_cart_path %>
+<%= link_to "#{t('New')} #{t('cart')}", new_cart_path %>

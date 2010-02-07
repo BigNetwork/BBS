@@ -1,16 +1,34 @@
-<h1>Sales#index</h1>
+<h1>BBS</h1>
 
-<h2>Products:</h2>
+<h2><%= t('products') %>:</h2>
 
-<div id="product_types">
+<div id="sales_products_box">
   <ul id="product_types">
   <% for product_type in ProductType.all %>
-    <li><%= product_type.name %></li>
+    <li class="<%= "not_in_stock"  unless product_type.in_stock? %>">
+        <% link_to product_type do %>
+            <span class="name">
+                <%= product_type.name %>
+            </span>
+            <span class="quantity_in_stock">
+                <% if product_type.in_stock? %>
+                    <%= product_type.quantity_in_stock %>st
+                <% elsif product_type.quantity_in_stock == 0 %>
+                    Slut
+                <% else %>
+                    <%= product_type.quantity_in_stock %>
+                <% end %>
+            </span>
+            <span class="standard_price">
+                <%= number_to_currency product_type.standard_price %>
+            </span>
+        <% end %>
+    </li>
   <% end %>
   </ul>
 </div>
 
-<h2>Order:</h2>
+<h2><%= t('cart') %>:</h2>
 
 <% form_for(Cart.new) do |f| %>
   <%= f.error_messages %>
@@ -18,6 +36,6 @@
   <%= render :partial => '/carts/form', :locals => { :f => f } %>
 
   <p>
-    <%= f.submit 'Create' %>
+    <%= f.submit t('Create') %>
   </p>
 <% end %>

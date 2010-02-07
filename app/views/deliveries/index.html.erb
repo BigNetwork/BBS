@@ -1,21 +1,21 @@
-<h1>Listing deliveries</h1>
+<h1><%= t('deliveries_title.index') %></h1>
 
 <table class="index_table">
   <tr>
-    <th>Delivery</th>
-    <th>What was delivered:</th>
+    <th><%= t('delivery') %></th>
+    <th><%= t('delivery_attributes.delivered') %>:</th>
   </tr>
 
 <% @deliveries.each do |delivery| %>
   <tr class="<%= cycle :odd, :even %>">
-    <td><%= link_to "Delivery #{delivery.id}", delivery %></td>
+    <td><%= link_to "#{t('delivery')} #{delivery.id}", delivery %></td>
     <td><%= delivery.quantity %> x <%= link_to delivery.product_type.name, delivery.product_type %></td>
-    <td><%= link_to 'Edit', edit_delivery_path(delivery) %></td>
-    <td><%= link_to 'Destroy', delivery, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to t('Edit'), edit_delivery_path(delivery) %></td>
+    <td><%= link_to t('Destroy'), delivery, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New delivery', new_delivery_path %>
+<%= link_to "#{t('New')} #{t('delivery')}", new_delivery_path %>

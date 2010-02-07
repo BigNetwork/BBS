@@ -4,17 +4,32 @@ html, body{
 }
 
 body{
-    background: #f1f1f1;
+    background: #000;
+    color: #eee;
     font-family: sans-serif;
+}
+
+a:link{
+    color: lightblue;
+}
+
+a:visited{
+    color: #fcf;
+}
+
+input, textarea{
+    background: #111;
+    color: #fff;
+    font-size: 1em;
 }
 
 #container{
     margin: 0 auto;
-    width: 780px;
+    width: 960px;
 }
 
 #logo{
-    float: left;
+    float: right;
     margin-top: -0.2em;
     margin-right: 0.5em;
     margin-left: 0.5em;
@@ -31,9 +46,23 @@ body{
     margin-right: 1em;
 }
 
+#sub_menu{
+    margin: 0;
+    margin-bottom: 1em;
+    list-style-type: none;
+    padding: 0;
+}
+#sub_menu li{
+    display: inline;
+    margin-right: 1em;
+}
+#sub_menu li a{
+}
+
 #page{
-    background: #fff;
-    border: 1px solid #ccc;
+    background: #222;
+    border: 1px solid #333;
+    overflow: auto;
     padding: 3%;
     padding-top: 1%;
 }
@@ -59,10 +88,67 @@ table.index_table td.quantity, table.index_table th.quantity{
     text-align: right;
 }
 table.index_table tr.odd{
-    background: #f1f1f1;
+    background: #292929;
 }
 table.index_table tr.even{
-    background: #fff;
+    background: #333;
+}
+
+#sales_products_box{
+    overflow: auto;
+}
+
+#sales_products_box #product_types{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#sales_products_box #product_types li{
+    float: left;
+}
+
+#sales_products_box #product_types li a{
+    -moz-border-radius: 0.5em;
+    -webkit-border-radius: 0.5em;
+    background: green;
+    border: 1px solid #222;
+    color: #fff;
+    display: block;
+    height: 7em;
+    margin-bottom: 1em;
+    margin-right: 1em;
+    text-align: center;
+    text-decoration: none;
+    width: 9em;
+}
+
+#sales_products_box #product_types li.not_in_stock a{
+    background: #600;
+}
+
+#sales_products_box #product_types li a:hover{
+    border-color: #fff;
+}
+
+#sales_products_box #product_types li a span.name{
+    display: block;
+    font-weight: bold;
+    margin-top: 1em;
+}
+#sales_products_box #product_types li a span.quantity_in_stock{
+    color: #fff;
+    display: block;
+    font-size: 90%;
+    margin-top: 0.5em;
+}
+#sales_products_box #product_types li.not_in_stock a span.quantity_in_stock{
+    color: red;
+}
+#sales_products_box #product_types li a span.standard_price{
+    display: block;
+    font-size: 90%;
+    margin-top: 0.5em;
 }
 
 #footer{
@@ -80,5 +166,5 @@ table.index_table tr.even{
     margin-right: 1em;
 }
 #footer_menu li a{
-    color: #aaa;
+    color: #333;
 }

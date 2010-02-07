@@ -4,9 +4,12 @@
 
 "sv-SE":
   
-  show: "Visa"
-  edit: "Ändra"
-  destroy: "Ta bort"
+  # Common words:
+  Show: "Visa"
+  Edit: "Ändra"
+  Destroy: "X"
+  New: "Ny"
+  Create: "Skapa"
   
   product_type:
     name: "Namn"
@@ -22,7 +25,34 @@
       show: "Produkttyp"
     new: "Ny produkttyp"
 
-  ######### The borrowed:
+  # or we could use this structure:
+  
+  sales: "Försäljning"
+  
+  product: "Produkt"
+  products: "Produkter"
+  
+  cart: "Kundvagn"
+  carts: "Kundvagnar"
+  cart_attributes:
+    #...
+    
+  purchase: "Köp"
+  purchases: "Köp"
+  purchase_attributes:
+    sum: "Summa"
+
+  delivery: "Leverans"
+  deliveries: "Leveranser"
+  delivery_attributes:
+    delivered: "Vad som levererades"
+
+  # or like this:
+    
+  deliveries_title:
+    index: "Alla leveranser"
+
+  ##################################### The borrowed:
     
   number:
     # Used in number_with_delimiter()
