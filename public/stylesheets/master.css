@@ -4,7 +4,7 @@ html, body{
 }
 
 body{
-    background: #000;
+    background: #0B0B0B url('/images/bg_body.jpg') repeat-x;
     color: #eee;
     font-family: sans-serif;
 }
