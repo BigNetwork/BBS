@@ -9,7 +9,7 @@
 <table>
   <tr>
     <th>Purchased:</th>
-    <td class="quantity"><%= @product_type.products.count %></td>
+    <td class="quantity"><%= @product_type.products.length %></td>
   </tr>
   <tr>
     <th>In stock:</th>
@@ -43,7 +43,7 @@
 </table>
 
 <p>
-  It costed <strong><%= number_to_currency(@product_type.products.count * @product_type.purchase_price) %></strong> to buy the <%= @product_type.products.count %> <%=h @product_type.name %>s. 
+  It costed <strong><%= number_to_currency(@product_type.products.length * @product_type.purchase_price) %></strong> to buy the <%= @product_type.products.length %> <%=h @product_type.name %>s. 
 </p>
 
 <p>
@@ -52,19 +52,19 @@
 </p>
 
 <p>
-  We need to sell for at least <%= number_to_currency((@product_type.products.count * @product_type.purchase_price) - (@product_type.quantity_sold * @product_type.profit)) %> to reach break-even for the <%=h @product_type.name %>s.
+  We need to sell for at least <%= number_to_currency((@product_type.products.length * @product_type.purchase_price) - (@product_type.quantity_sold * @product_type.profit)) %> to reach break-even for the <%=h @product_type.name %>s.
 </p>
 
 <p>
-  If we sell all remaining <%= @product_type.quantity_in_stock %> <%=h @product_type.name %>s we can get a total of <%= number_to_currency(@product_type.products.count * @product_type.standard_price) %>, which makes a total profit of <%= number_to_currency(@product_type.products.count * @product_type.profit) %>
+  If we sell all remaining <%= @product_type.quantity_in_stock %> <%=h @product_type.name %>s we can get a total of <%= number_to_currency(@product_type.products.length * @product_type.standard_price) %>, which makes a total profit of <%= number_to_currency(@product_type.products.length * @product_type.profit) %>
 </p>
 
 <h3>Special offers:</h3>
 
-<% if @product_type.children.count > 0 %>
+<% if @product_type.children.length > 0 %>
   Detta specialerbjudande består av följande 
-  <% if @product_type.children.count > 1 %>
-    <%= @product_type.children.count %> produkter:
+  <% if @product_type.children.length > 1 %>
+    <%= @product_type.children.length %> produkter:
   <% else %>
     produkt:
   <% end %>
@@ -74,10 +74,10 @@
   <% end %>
   </ul>
 <% end %>
-<% if @product_type.parents.uniq.count > 0 %>
+<% if @product_type.parents.uniq.length > 0 %>
   Denna produkt är en del i följande 
-  <% if @product_type.parents.uniq.count > 1 %>
-    <%= @product_type.parents.uniq.count %> specialerbjudanden:
+  <% if @product_type.parents.uniq.length > 1 %>
+    <%= @product_type.parents.uniq.length %> specialerbjudanden:
   <% else %>
     specialerbjudande:
   <% end %>

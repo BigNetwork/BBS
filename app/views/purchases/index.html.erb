@@ -11,7 +11,7 @@
 <% @purchases.each do |purchase| %>
   <tr class="<%= cycle :odd, :even %>">
     <td><%= link_to "#{t('purchase')} #{purchase.id}", purchase %></td>
-    <td class="quantity"><%= purchase.products.count %></td>
+    <td class="quantity"><%= purchase.products.length %></td>
     <td class="money"><%= in_SEK purchase.sum %></td>
     <td><%#= link_to "Cart #{purchase.cart.id}", purchase.cart %></td>
     <td><%= link_to t('Edit'), edit_purchase_path(purchase) %></td>

@@ -20,7 +20,7 @@ class ProductType < ActiveRecord::Base
   
   def quantity_in_stock
     if children.empty?  # This standard counting method only works for non-combination products: 
-      not_sold_products.count
+      not_sold_products.length
     else
       "?"
       # TODO: Better magic for finding out stock quantity for combination products.
@@ -29,7 +29,7 @@ class ProductType < ActiveRecord::Base
   
   def quantity_sold
     if children.empty?  # This standard counting method only works for non-combination products:
-      sold_products.count
+      sold_products.length
     else
       "?"
       # TODO: Better magic for finding out stock quantity for combination products.
