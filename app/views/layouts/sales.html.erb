@@ -18,7 +18,9 @@
 
 <div id="page">
 
-<p style="color: green"><%= flash[:notice] %></p>
+<%- [:error, :warning, :notice, :message].each do |key| -%>
+  <%= content_tag :div, flash[key], :class => 'flash', :id => key if flash[key] %>
+<%- end -%>
 
 <%= yield %>
 

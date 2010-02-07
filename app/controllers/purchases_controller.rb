@@ -64,14 +64,15 @@ class PurchasesController < ApplicationController
       @cart = Cart.find_by_id(@purchase.cart_id)  
       for cart_row in @cart.cart_rows
         # Find some products to snatch:
-        products = Product.find_by_product_type_id(cart_row.product_type)
-        unless products.nil?
-          for i in 0..(cart_row.quantity-1)
-            products[i].purchase_id = @purchase.id
-          end
-        else
-          # Problem, not enough products of that type available!
-          flash[:error] = "Problem! Not enough #{cart_row.product_type.name} available in stock!"
+        for i in 1..cart_row.quantity
+            product = Product.find_by_product_type_id(cart_row.product_type, :conditions => { :purchase_id => nil} )
+            unless product.nil?
+                product.purchase_id = @purchase.id
+                product.save(false)
+            else
+                # Problem, not enough products of that type available!
+                flash[:error] = "Problem! Not enough #{cart_row.product_type.name} available in stock!"
+            end
         end
       end
     end

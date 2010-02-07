@@ -5,6 +5,7 @@
     <th><%= t('product_type.name') %></th>
     <th><%= t('product_type.combination') %>?</th>
     <th class="quantity"><%= t('product_type.in_stock') %></th>
+    <th class="quantity"><%= t('product_type.sold') %></th>
     <th class="money"><%= t('product_type.standard_price') %></th>
     <th class="money"><%= t('product_type.crew_price') %></th>
   </tr>
@@ -14,6 +15,7 @@
     <td><%= link_to h(product_type.name), product_type %></td>
     <td><%= "Ja" unless product_type.children.empty? %></td>
     <td class="quantity"><%= product_type.quantity_in_stock %></td>
+    <td class="quantity"><%= product_type.quantity_sold %></td>
     <td class="money"><%= number_to_currency(product_type.standard_price) %></td>
     <td class="money"><%= in_SEK product_type.crew_price %></td>
     <td><%= link_to t('Edit'), edit_product_type_path(product_type) %></td>

@@ -2,13 +2,16 @@
 
 <table class="index_table">
   <tr>
+    <th>Product</th>
     <th>Product type</th>
     <th>Sold?</th>
+    <th>Delivered in:</th>
   </tr>
 
 <% @products.each do |product| %>
-  <tr>
-    <td><%=h product.product_type.name %></td>
+  <tr class="<%= cycle :odd, :even %>">
+    <td><%= link_to "##{product.id}", product %></td>
+    <td><%= link_to h(product.product_type.name), product.product_type %></td>
     <td>
       <% if product.sold? %>
         Yes (<%= link_to "Purchase #{product.purchase.id}", product.purchase %>)
@@ -16,9 +19,10 @@
         No
       <% end %>
     </td>
-    <td><%= link_to 'Show', product %></td>
-    <td><%= link_to 'Edit', edit_product_path(product) %></td>
-    <td><%= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to "#{t('delivery')} #{product.delivery.id}", product.delivery %></td>
+    <td><%= link_to t('Show'), product %></td>
+    <td><%= link_to t('Edit'), edit_product_path(product) %></td>
+    <td><%= link_to t('Destroy'), product, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

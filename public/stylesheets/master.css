@@ -23,6 +23,18 @@ input, textarea{
     font-size: 1em;
 }
 
+.flash{
+    display: block;
+    line-height: 2em;
+}
+
+.flash#notice{
+    color: green;
+}
+.flash#error{
+    color: red;
+}
+
 #container{
     margin: 0 auto;
     width: 960px;
@@ -88,10 +100,10 @@ table.index_table td.quantity, table.index_table th.quantity{
     text-align: right;
 }
 table.index_table tr.odd{
-    background: #292929;
+    background: #272727;
 }
 table.index_table tr.even{
-    background: #333;
+    background: #222;
 }
 
 #sales_products_box{

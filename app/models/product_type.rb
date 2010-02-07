@@ -10,9 +10,26 @@ class ProductType < ActiveRecord::Base
   
   has_many :cart_rows
   
+  def not_sold_products
+    Product.find(:all, :conditions => { :product_type_id => id, :purchase_id => nil} )
+  end
+  
+  def sold_products
+    Product.find(:all, :conditions => ["product_type_id = ? AND purchase_id NOT NULL", id] )
+  end
+  
   def quantity_in_stock
-    if children.empty?
-      products.count
+    if children.empty?  # This standard counting method only works for non-combination products: 
+      not_sold_products.count
+    else
+      "?"
+      # TODO: Better magic for finding out stock quantity for combination products.
+    end
+  end
+  
+  def quantity_sold
+    if children.empty?  # This standard counting method only works for non-combination products:
+      sold_products.count
     else
       "?"
       # TODO: Better magic for finding out stock quantity for combination products.

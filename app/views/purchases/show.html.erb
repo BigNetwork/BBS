@@ -1,5 +1,7 @@
 <h1>Purchase <%= @purchase.id %></h1>
 
+Originated from <%= link_to "#{t('cart')} #{@purchase.cart.id}", @purchase.cart %>
+
 <% if @purchase.products.empty? %>
   
 <% else %>

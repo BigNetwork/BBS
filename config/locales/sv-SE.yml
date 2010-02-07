@@ -15,6 +15,7 @@
     name: "Namn"
     combination: "Kombinationsprodukt"
     in_stock: "I lager"
+    sold: "Sålda"
     standard_price: "Standardpris"
     crew_price: "Crewpris"
   product_types:
