@@ -9,5 +9,22 @@ class ProductType < ActiveRecord::Base
   has_many :products
   
   has_many :cart_rows
+  
+  def quantity_in_stock
+    if children.empty?
+      products.count
+    else
+      "?"
+      # TODO: Better magic for finding out stock quantity for combination products.
+    end
+  end
+  
+  def in_stock?
+    if quantity_in_stock.to_i && quantity_in_stock.to_i > 0
+      true
+    else
+      false
+    end
+  end
 
 end

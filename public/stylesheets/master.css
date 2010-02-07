@@ -39,3 +39,6 @@ body{
 table.index_table{
 /*    width: 100%;*/
 }
+table.index_table th{
+    text-align: left;
+}
