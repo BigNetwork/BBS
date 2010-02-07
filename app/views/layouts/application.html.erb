@@ -12,11 +12,16 @@
 
 <div id="container">
 
-<h2 id="logo"><%= link_to 'BBS', root_url %></h2>
+<h2 id="logo"><%= link_to 'Bignetwork Bong System', root_url %></h2>
 
 <%= render :partial => 'layouts/menu' %>
-
-<%= render :partial => 'layouts/sub_menu' %>
+<% if controller.controller_name == 'sales' %>
+<% elsif controller.controller_name == 'product_types' || controller.controller_name == 'deliveries' %>
+<%= render :partial => 'layouts/warehouse_menu' %>
+<% elsif controller.controller_name == 'statistics' %>
+<% else %>
+<%= render :partial => 'layouts/administration_menu' %>
+<% end %>
 
 <div id="page">
 

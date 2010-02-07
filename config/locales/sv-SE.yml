@@ -34,6 +34,9 @@
   # or we could use this structure:
   
   sales: "Försäljning"
+  warehouse: "Lager"
+  administration: "Administration"
+  statistics: "Statistik"
   
   product: "Produkt"
   products: "Produkter"

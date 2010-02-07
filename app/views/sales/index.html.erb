@@ -1,8 +1,5 @@
-<h1>BBS</h1>
-
-<h2><%= t('products') %>:</h2>
-
-<div id="sales_products_box">
+<div id="sales_products">
+  <h2><%= t('products') %>:</h2>
   <ul id="product_types">
   <% for product_type in ProductType.all %>
     <li class="<%= "not_in_stock"  unless product_type.in_stock? %>">
@@ -28,6 +25,8 @@
   </ul>
 </div>
 
+<div id="sales_cart">
+
 <h2><%= t('cart') %>:</h2>
 
 <% form_for(Cart.new) do |f| %>
@@ -39,3 +38,5 @@
     <%= f.submit t('Create') %>
   </p>
 <% end %>
+
+</div>
