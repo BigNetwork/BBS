@@ -14,8 +14,10 @@ body{
 }
 
 #logo{
-    float: right;
-    margin-top: 0em;
+    float: left;
+    margin-top: -0.2em;
+    margin-right: 0.5em;
+    margin-left: 0.5em;
 }
 
 #menu{
@@ -37,8 +39,46 @@ body{
 }
 
 table.index_table{
-/*    width: 100%;*/
+    border-spacing: 0;
+    width: 100%;
+}
+table.index_table td, table.index_table th{
+    padding: 0.4em;
 }
 table.index_table th{
+    border-bottom: 1px solid #ccc;
     text-align: left;
+    vertical-align: bottom;
+}
+table.index_table td{
+}
+table.index_table td.money, table.index_table th.money{
+    text-align: right;
+}
+table.index_table td.quantity, table.index_table th.quantity{
+    text-align: right;
+}
+table.index_table tr.odd{
+    background: #f1f1f1;
+}
+table.index_table tr.even{
+    background: #fff;
+}
+
+#footer{
+    font-size: 80%;
+    text-align: center;
+}
+
+#footer_menu{
+    list-style-type: none;
+    margin: 1em 0;
+    padding: 0;
+}
+#footer_menu li{
+    display: inline;
+    margin-right: 1em;
+}
+#footer_menu li a{
+    color: #aaa;
 }

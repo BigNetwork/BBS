@@ -7,4 +7,10 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+  
+  before_filter :set_user_language
+  
+  def set_user_language
+    I18n.locale = 'sv-SE'
+  end
 end

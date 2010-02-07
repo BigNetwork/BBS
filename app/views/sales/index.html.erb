@@ -1,0 +1,23 @@
+<h1>Sales#index</h1>
+
+<h2>Products:</h2>
+
+<div id="product_types">
+  <ul id="product_types">
+  <% for product_type in ProductType.all %>
+    <li><%= product_type.name %></li>
+  <% end %>
+  </ul>
+</div>
+
+<h2>Order:</h2>
+
+<% form_for(Cart.new) do |f| %>
+  <%= f.error_messages %>
+  
+  <%= render :partial => '/carts/form', :locals => { :f => f } %>
+
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>

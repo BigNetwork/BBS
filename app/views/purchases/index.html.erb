@@ -2,11 +2,16 @@
 
 <table class="index_table">
   <tr>
+    <th>Purchase:</th>
+    <th class="quantity">Items sold:</th>
+    <th class="money">Sum:</th>
   </tr>
 
 <% @purchases.each do |purchase| %>
-  <tr>
-    <td><%= link_to 'Show', purchase %></td>
+  <tr class="<%= cycle :odd, :even %>">
+    <td><%= link_to "Purchase #{purchase.id}", purchase %></td>
+    <td class="quantity"><%= purchase.products.count %></td>
+    <td class="money"><%= in_SEK purchase.sum %></td>
     <td><%= link_to 'Edit', edit_purchase_path(purchase) %></td>
     <td><%= link_to 'Destroy', purchase, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

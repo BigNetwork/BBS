@@ -2,10 +2,11 @@
 
 <table class="index_table">
   <tr>
+    <th>Cart:</th>
   </tr>
 
 <% @carts.each do |cart| %>
-  <tr>
+  <tr class="<%= cycle :odd, :even %>">
     <td><%= link_to "Cart #{cart.id}", cart %></td>
     <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
     <td><%= link_to 'Destroy', cart, :confirm => 'Are you sure?', :method => :delete %></td>

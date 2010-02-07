@@ -6,7 +6,7 @@
   </tr>
 
 <% @cart_rows.each do |cart_row| %>
-  <tr>
+  <tr class="<%= cycle :odd, :even %>">
     <td><%=h cart_row.cart_id %></td>
     <td><%= link_to 'Show', cart_row %></td>
     <td><%= link_to 'Edit', edit_cart_row_path(cart_row) %></td>
