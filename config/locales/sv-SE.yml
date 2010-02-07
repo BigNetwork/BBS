@@ -10,14 +10,19 @@
   Destroy: "X"
   New: "Ny"
   Create: "Skapa"
+  Back: "Tillbaka"
+  or: "eller"
   
   product_type:
     name: "Namn"
-    combination: "Kombinationsprodukt"
+    description: "Beskrivning"
+    combination: "Kombo-produkt"
     in_stock: "I lager"
     sold: "Sålda"
     standard_price: "Standardpris"
     crew_price: "Crewpris"
+    purchase_price: "Inköpspris"
+    profit: "Förtjänst/st"
   product_types:
     titles:
       index: "Alla produkttyper"

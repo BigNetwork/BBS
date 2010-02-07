@@ -43,5 +43,33 @@ class ProductType < ActiveRecord::Base
       false
     end
   end
+  
+  def combo_purchase_price
+    if is_combo?
+      total = 0.0
+      # TODO: Support for endless loops of childrens childrens children (etc). Did you think recursion? =)
+      for child in children
+        unless child.purchase_price.nil?
+          total += child.purchase_price
+        end
+      end
+      total
+    end
+  end
+  
+  def is_combo?
+    return !children.empty?
+  end
+
+  def profit
+    # TODO: Find out if we should compare with crewprice or standard price.
+    if is_combo?
+      return standard_price - combo_purchase_price
+    else
+      unless standard_price.nil? || purchase_price.nil?
+        return standard_price - purchase_price
+      end
+    end
+  end
 
 end

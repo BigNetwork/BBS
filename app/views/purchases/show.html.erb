@@ -16,5 +16,5 @@ Originated from <%= link_to "#{t('cart')} #{@purchase.cart.id}", @purchase.cart 
   
 <% end %>
 
-<%= link_to 'Edit', edit_purchase_path(@purchase) %> |
-<%= link_to 'Back', purchases_path %>
+&larr; <%= link_to t('Back'), purchases_path %> <%= t('or') %>
+<%= link_to t('Edit'), edit_purchase_path(@purchase) %>

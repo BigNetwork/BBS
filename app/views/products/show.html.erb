@@ -1,8 +1,8 @@
 <p>
   <b>Product type:</b>
-  <%=h @product.product_type_id %>
+  <%= link_to h(@product.product_type.name), @product.product_type %>
 </p>
 
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+&larr; <%= link_to t('Back'), products_path %> <%= t('or') %>
+<%= link_to t('Edit'), edit_product_path(@product) %>

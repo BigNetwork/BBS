@@ -1,16 +1,20 @@
 <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.label :standard_price %><br />
-    <%= f.text_field :standard_price %> kr
-  </p>
-  <p>
-    <%= f.label :crew_price %><br />
-    <%= f.text_field :crew_price %> kr
-  </p>
+  <%= f.label :name, t('product_type.name') %><br />
+  <%= f.text_field :name %>
+</p>
+<p>
+  <%= f.label :description, t('product_type.description') %><br />
+  <%= f.text_area :description %>
+</p>
+<p>
+  <%= f.label :standard_price, t('product_type.standard_price') %><br />
+  <%= f.text_field :standard_price %> kr
+</p>
+<p>
+  <%= f.label :crew_price, t('product_type.crew_price') %><br />
+  <%= f.text_field :crew_price %> kr
+</p>
+<p>
+  <%= f.label :purchase_price, t('product_type.purchase_price') %><br />
+  <%= f.text_field :purchase_price %> kr
+</p>

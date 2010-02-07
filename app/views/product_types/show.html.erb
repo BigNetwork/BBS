@@ -1,66 +1,92 @@
+<h1><%=h @product_type.name %></h1>
 <p>
-  <b>Name:</b>
-  <%=h @product_type.name %>
-</p>
-
-<p>
-  <b>Description:</b>
+  <b><%= t('product_type.description') %>:</b>
   <%=h @product_type.description %>
 </p>
 
+<h3>In stock</h3>
+
+<table>
+  <tr>
+    <th>Purchased:</th>
+    <td class="quantity"><%= @product_type.products.count %></td>
+  </tr>
+  <tr>
+    <th>In stock:</th>
+    <td class="quantity"><%= @product_type.quantity_in_stock %></td>
+  </tr>
+  <tr>
+    <th>Sold:</th>
+    <td class="quantity"><%= @product_type.quantity_sold %></td>
+  </tr>
+</table>
+
+<h3>Prices and profit:</h3>
+
+<table id="product_type_price_table">
+  <tr>
+    <th><%= t('product_type.standard_price') %>:</th>
+    <td class="money"><%= number_to_currency @product_type.standard_price %></td>
+  </tr>
+  <tr>
+    <th><%= t('product_type.crew_price') %>:</th>
+    <td class="money"><%= number_to_currency @product_type.crew_price %></td>
+  </tr>
+  <tr>
+    <th><%= t('product_type.purchase_price') %>:</th>
+    <td class="money"><%= number_to_currency @product_type.purchase_price %></td>
+  </tr>
+  <tr>
+    <th><%= t('product_type.profit') %>:</th>
+    <td class="money"><%= number_to_currency @product_type.profit %></td>
+  </tr>
+</table>
+
 <p>
-  <b>Standard price:</b>
-  <%=h @product_type.standard_price %>
+  It costed <strong><%= number_to_currency(@product_type.products.count * @product_type.purchase_price) %></strong> to buy the <%= @product_type.products.count %> <%=h @product_type.name %>s. 
 </p>
 
 <p>
-  <b>Crew price:</b>
-  <%=h @product_type.crew_price %>
+  So far have we sold <%= @product_type.quantity_sold %> and that amounts for <%= number_to_currency(@product_type.quantity_sold * @product_type.purchase_price) %>. 
+  That makes a <%= number_to_currency(@product_type.quantity_sold * @product_type.profit) %> profit. 
 </p>
+
+<p>
+  We need to sell for at least <%= number_to_currency((@product_type.products.count * @product_type.purchase_price) - (@product_type.quantity_sold * @product_type.profit)) %> to reach break-even for the <%=h @product_type.name %>s.
+</p>
+
+<p>
+  If we sell all remaining <%= @product_type.quantity_in_stock %> <%=h @product_type.name %>s we can get a total of <%= number_to_currency(@product_type.products.count * @product_type.standard_price) %>, which makes a total profit of <%= number_to_currency(@product_type.products.count * @product_type.profit) %>
+</p>
+
+<h3>Special offers:</h3>
 
 <% if @product_type.children.count > 0 %>
-  
   Detta specialerbjudande består av följande 
   <% if @product_type.children.count > 1 %>
     <%= @product_type.children.count %> produkter:
   <% else %>
     produkt:
   <% end %>
-
   <ul>
   <% for child in @product_type.children %>
     <li><%= link_to h(child.name), child %></li>
   <% end %>
   </ul>
-
 <% end %>
-
 <% if @product_type.parents.uniq.count > 0 %>
-  
   Denna produkt är en del i följande 
   <% if @product_type.parents.uniq.count > 1 %>
     <%= @product_type.parents.uniq.count %> specialerbjudanden:
   <% else %>
     specialerbjudande:
   <% end %>
-
   <ul>
   <% for parent in @product_type.parents.uniq %>
     <li><%= link_to h(parent.name), parent %></li>
   <% end %>
   </ul>
-
 <% end %>
 
-<h3>In stock</h3>
-
-<p>
-  <% if @product_type.products.count > 0 %>
-  <%= @product_type.products.count %> in stock.  
-  <% else %>
-  None in stock.
-  <% end %>
-</p>
-
-<%= link_to 'Edit', edit_product_type_path(@product_type) %> |
-<%= link_to 'Back', product_types_path %>
+&larr; <%= link_to t('Back'), product_types_path %>
+<%= link_to t('Edit'), edit_product_type_path(@product_type) %>

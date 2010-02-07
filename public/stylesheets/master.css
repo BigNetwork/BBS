@@ -23,6 +23,13 @@ input, textarea{
     font-size: 1em;
 }
 
+table td.money, table th.money{
+    text-align: right;
+}
+table td.quantity, table th.quantity{
+    text-align: right;
+}
+
 .flash{
     display: block;
     line-height: 2em;
@@ -93,12 +100,6 @@ table.index_table th{
 }
 table.index_table td{
 }
-table.index_table td.money, table.index_table th.money{
-    text-align: right;
-}
-table.index_table td.quantity, table.index_table th.quantity{
-    text-align: right;
-}
 table.index_table tr.odd{
     background: #272727;
 }
@@ -161,6 +162,10 @@ table.index_table tr.even{
     display: block;
     font-size: 90%;
     margin-top: 0.5em;
+}
+
+#product_type_price_table th{
+    text-align: left;
 }
 
 #footer{

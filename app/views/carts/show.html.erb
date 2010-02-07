@@ -28,6 +28,5 @@
   </p>
 <% end %>
 
-<%= link_to 'Edit', edit_cart_path(@cart) %> |
-<%= link_to 'Back', carts_path %>
-
+&larr; <%= link_to t('Back'), carts_path %> <%= t('or') %>
+<%= link_to t('Edit'), edit_cart_path(@cart) %>
