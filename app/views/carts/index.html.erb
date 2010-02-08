@@ -9,7 +9,7 @@
   <tr class="<%= cycle :odd, :even %>">
     <td><%= link_to "#{t('cart')} #{cart.id}", cart %></td>
     <td><%= link_to t('Edit'), edit_cart_path(cart) %></td>
-    <td><%= link_to t('Destroy'), cart, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td class="destroy"><%= link_to t('Destroy'), cart, :confirm => t('Are you sure?'), :method => :delete %></td>
   </tr>
 <% end %>
 </table>

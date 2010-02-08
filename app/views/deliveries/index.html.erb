@@ -4,14 +4,16 @@
   <tr>
     <th><%= t('delivery') %></th>
     <th><%= t('delivery_attributes.delivered') %>:</th>
+    <th><%= t('delivery_attributes.created_at') %>:</th>
   </tr>
 
 <% @deliveries.each do |delivery| %>
   <tr class="<%= cycle :odd, :even %>">
     <td><%= link_to "#{t('delivery')} #{delivery.id}", delivery %></td>
     <td><%= delivery.quantity %> x <%= link_to delivery.product_type.name, delivery.product_type %></td>
+    <td><%= l delivery.created_at, :format => :short %></td>
     <td><%= link_to t('Edit'), edit_delivery_path(delivery) %></td>
-    <td><%= link_to t('Destroy'), delivery, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td class="destroy"><%= link_to t('Destroy'), delivery, :confirm => t('Are you sure?'), :method => :delete %></td>
   </tr>
 <% end %>
 </table>

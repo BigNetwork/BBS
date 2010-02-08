@@ -1,9 +1,9 @@
 <div id="sales_products">
   <h2><%= t('products') %>:</h2>
   <ul id="product_types">
-  <% for product_type in ProductType.all %>
+  <% for product_type in @product_types %>
     <li class="<%= "not_in_stock"  unless product_type.in_stock? %>">
-        <% link_to product_type do %>
+        <% link_to url_for(:controller => 'cart_rows', :action => 'create', 'cart_row[cart_id]' => @cart.id, 'cart_row[product_type_id]' => product_type.id, 'cart_row[quantity]' => 1), :method => :post do %>
             <span class="name">
                 <%= product_type.name %>
             </span>
@@ -29,13 +29,17 @@
 
 <h2><%= t('cart') %>:</h2>
 
-<% form_for(Cart.new) do |f| %>
+<%= render :partial => '/carts/table', :locals => { :cart => @cart } %>
+
+<% form_for(@purchase) do |f| %>
   <%= f.error_messages %>
-  
-  <%= render :partial => '/carts/form', :locals => { :f => f } %>
+
+  <%#= render :partial => 'form', :locals => { :f => f } %> 
+
+  <%= f.hidden_field :cart_id, { :value => @cart.id } %>
 
   <p>
-    <%= f.submit t('Create') %>
+    <%= f.submit t('Buy') %>
   </p>
 <% end %>
 

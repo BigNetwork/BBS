@@ -29,7 +29,7 @@
     </td>
     <td class="money"><%= number_to_currency product_type.profit %></td>
     <td><%= link_to t('Edit'), edit_product_type_path(product_type) %></td>
-    <td><%= link_to t('Destroy'), product_type, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td class="destroy"><%= link_to t('Destroy'), product_type, :confirm => t('Are you sure?'), :method => :delete %></td>
   </tr>
 <% end %>
 </table>

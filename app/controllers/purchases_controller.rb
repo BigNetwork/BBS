@@ -48,7 +48,7 @@ class PurchasesController < ApplicationController
         
         bind_products
         
-        format.html { redirect_to(@purchase) }
+        format.html { redirect_to(:back) }
         format.xml  { render :xml => @purchase, :status => :created, :location => @purchase }
       else
         format.html { render :action => "new" }

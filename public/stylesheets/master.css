@@ -10,8 +10,8 @@ body{
 }
 
 h1, h2, h3, h4, h5, h6{
-    -webkit-text-stroke: 0.5px transparent;
-/*    text-shadow: #222 0px -1px 0px;*/
+/*    -webkit-text-stroke: 0.5px transparent;*/
+    text-shadow: 0.1em 0.1em 0.1em #000;
 }
 
 a:link{
@@ -22,17 +22,51 @@ a:visited{
     color: #fcf;
 }
 
-input, textarea{
+a:hover{
+    color: #66f;
+}
+
+input, textarea, select, option{
     background: #111;
     color: #fff;
     font-size: 1em;
+    padding: 0.5em;
+}
+
+input:hover, textarea:hover, select:hover{
+    border-color: #99f;
+}
+
+input:focus, textarea:focus, select:focus{
+    border-color: yellow;
+}
+
+input[type=submit]{
+    -webkit-border-radius: 0.5em;
+    background: #009;
+    border-color: #00f;
+    text-shadow: 0.1em 0.1em 0px #003;
+}
+
+input[type=submit]:hover{
+    background: #00f;
+    border-color: #fff;
 }
 
 table td.money, table th.money{
-    text-align: right;
+    text-align: right !important;
 }
 table td.quantity, table th.quantity{
-    text-align: right;
+    text-align: right !important;
+}
+table td.date, table th.date{
+    text-align: right !important;
+}
+table tr.odd{
+    background: #272727;
+}
+table tr.even{
+    background: #222;
 }
 
 .flash{
@@ -57,6 +91,12 @@ table td.quantity, table th.quantity{
     margin-top: 1em;
 }
 
+#logo a{
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 0 0 6px #ccc;
+}
+
 #menu{
     list-style-type: none;
     margin: 0;
@@ -77,8 +117,11 @@ table td.quantity, table th.quantity{
     background: #222;
     border: 1px solid #333;
     border-bottom-color: #222;
+    color: #fff;
     display: block;
     padding: 0.5em 1em;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px #000;
 }
 
 #warehouse_menu{
@@ -128,11 +171,55 @@ table.index_table th{
 }
 table.index_table td{
 }
-table.index_table tr.odd{
-    background: #272727;
+
+table.index_table td.destroy{
+    font-size: 0.9em;
+    line-height: 1.5em;
+    width: 1.5em;
 }
-table.index_table tr.even{
-    background: #222;
+table.index_table td.destroy a{
+    display: block;
+    text-align: center;
+}
+table.index_table td.destroy a:hover{
+    background: red;
+    color: white;
+    text-decoration: none;
+}
+
+table#cart_table{
+    border-spacing: 0;
+    width: 100%;
+}
+table#cart_table th, table#cart_table td{
+    padding: 0.4em;
+}
+table#cart_table th{
+    text-align: left;
+}
+table#cart_table tr.headers th{
+    border-bottom: 1px solid #666;
+}
+table#cart_table tr.sum th, table#cart_table tr.sum td{
+    border-top: 1px solid #666;
+    font-size: 150%;
+    padding: 0.2em;
+}
+table#cart_table td.destroy{
+    width: 1.5em;
+}
+table#cart_table td.destroy a{
+    color: #800;
+    display: block;
+    font-size: 0.9em;
+    line-height: 1.5em;
+    text-align: center;
+    text-decoration: none;
+}
+table#cart_table td.destroy a:hover{
+    background: red;
+    color: black;
+    text-decoration: none;
 }
 
 #sales_products{
@@ -154,8 +241,8 @@ table.index_table tr.even{
 #sales_products #product_types li a{
     -moz-border-radius: 0.5em;
     -webkit-border-radius: 0.5em;
-    background: green;
-    border: 1px solid #222;
+    background: #060;
+    border: 2px outset #090;
     color: #fff;
     display: block;
     height: 7em;
@@ -167,20 +254,40 @@ table.index_table tr.even{
 }
 
 #sales_products #product_types li.not_in_stock a{
+    /* Make them red: */
+    /*
     background: #600;
+    border-color: #900;
+    */
+    /* Or, make them gray: */
+    background: #111;
+    border-color: #111;
+    border-style: solid;
+    color: #333;
 }
 
 #sales_products #product_types li a:hover{
     border-color: #fff;
 }
 
+#sales_products #product_types li.not_in_stock a:hover{
+    border-color: #111;
+    cursor: default;
+}
+
 #sales_products #product_types li a span.name{
     display: block;
     font-weight: bold;
     margin-top: 1em;
+    text-shadow: 1px 1px 1px #030;
 }
+
+#sales_products #product_types li.not_in_stock a span.name{
+    text-shadow: none;
+}
+
 #sales_products #product_types li a span.quantity_in_stock{
-    color: #fff;
+    color: lightgreen;
     display: block;
     font-size: 90%;
     margin-top: 0.5em;

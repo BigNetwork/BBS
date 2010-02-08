@@ -12,7 +12,7 @@
     <td><%=h product_type_relation.child_id %></td>
     <td><%= link_to t('Show'), product_type_relation %></td>
     <td><%= link_to t('Edit'), edit_product_type_relation_path(product_type_relation) %></td>
-    <td><%= link_to 'Destroy', product_type_relation, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', product_type_relation, :confirm => t('Are you sure?'), :method => :delete %></td>
   </tr>
 <% end %>
 </table>

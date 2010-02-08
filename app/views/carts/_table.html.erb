@@ -1,0 +1,22 @@
+<table id="cart_table">
+  <tr class="headers">
+    <th><%= t('cart_row_attributes.product_type') %>:</th>
+    <th class="quantity"><%= t('Quantity') %>:</th>
+    <th class="money"><%= t('cart_row_attributes.row_sum') %>:</th>
+    <th></th>
+  </tr>
+<% for cart_row in @cart.cart_rows %>
+  <tr class="<%= cycle :odd, :even %>">
+    <td><%= link_to h(cart_row.product_type.name), cart_row.product_type %></td>
+    <td class="quantity"><%= cart_row.quantity %></td>
+    <td class="money"><%= number_to_currency cart_row.sum %></td>
+    <td class="destroy"><%= link_to t('Destroy'), cart_row, :method => :delete %></td>
+  </tr>
+<% end %>
+  <tr class="sum">
+    <th><%= t('Total') %></th>
+    <td class="quantity"><%= @cart.total_quantity %></td>
+    <td class="money"><%= number_to_currency @cart.sum %></td>
+    <td></td>
+  </tr>
+</table>

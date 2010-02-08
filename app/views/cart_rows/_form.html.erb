@@ -1,4 +1,7 @@
-<% if :cart_id.nil? %>
+<% 
+  if :cart_id.nil? 
+    # FIXME: This check (checking for empty cart_id in symbol) doesn't work.
+%>
    <p>
       <%= f.label :cart_id %><br />
       <%= f.collection_select :cart_id, Cart.all, :id, :id %>
@@ -12,6 +15,6 @@
   <%= f.collection_select :product_type_id, ProductType.all, :id, :name %>
 </p>
 <p>
-  <%= f.label :quantity %><br />
+  <%= f.label :quantity, t('Quantity') %><br />
   <%= f.text_field :quantity %>
 </p>

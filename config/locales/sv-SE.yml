@@ -10,13 +10,18 @@
   Destroy: "X"
   New: "Ny"
   Create: "Skapa"
+  Save: "Spara"
   Back: "Tillbaka"
   or: "eller"
+  Quantity: 'Antal'
+  Buy: "Köp"
+  Are you sure?: "Är du säker?"
+  Total: "Summa"
   
   product_type:
     name: "Namn"
     description: "Beskrivning"
-    combination: "Kombo-produkt"
+    combination: "Kombo-vara"
     in_stock: "I lager"
     sold: "Sålda"
     standard_price: "Standardpris"
@@ -25,11 +30,11 @@
     profit: "Förtjänst/st"
   product_types:
     titles:
-      index: "Alla produkttyper"
-      new: "Ny produkttyp"
-      edit: "Ändrar produkttyp"
-      show: "Produkttyp"
-    new: "Ny produkttyp"
+      index: "Alla varutyper"
+      new: "Ny varutyp"
+      edit: "Ändrar varutyp"
+      show: "Varutyp"
+    new: "Ny varutyp"
 
   # or we could use this structure:
   
@@ -38,13 +43,19 @@
   administration: "Administration"
   statistics: "Statistik"
   
-  product: "Produkt"
-  products: "Produkter"
+  product: "Vara"
+  products: "Varor"
   
-  cart: "Kundvagn"
-  carts: "Kundvagnar"
+  cart: "Beställning"
+  carts: "Beställningar"
   cart_attributes:
-    #...
+    total: "Summa"
+    
+  cart_row: "Beställningsrad"
+  cart_rows: "Beställningsrader"
+  cart_row_attributes:
+    row_sum: "Delsumma"
+    product_type: "Vara"
     
   purchase: "Köp"
   purchases: "Köp"
@@ -55,6 +66,7 @@
   deliveries: "Leveranser"
   delivery_attributes:
     delivered: "Vad som levererades"
+    created_at: "Levererades"
 
   # or like this:
     
