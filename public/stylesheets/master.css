@@ -310,6 +310,13 @@ table#cart_table td.destroy a:hover{
     text-align: left;
 }
 
+table#statistics_table{
+    border-spacing: 0;
+}
+table#statistics_table th, table#statistics_table td{
+    padding: 0.4em;
+}
+
 #footer{
     font-size: 80%;
     text-align: center;

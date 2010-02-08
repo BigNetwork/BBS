@@ -1,22 +1,20 @@
 <h1><%= t('statistics') %></h1>
-<p>Några idéer på saker att visa här:</p>
-<table>
-  <tr>
-    <td>Hur mycket är summan av allt vi köpt/registrerat in i systemet?</td>
-    <td><%= number_to_currency @sum_of_all_in_registered %></td>
+<table id="statistics_table">
+  <tr class="odd">
+    <td>Hur mycket har vi köpt för?</td>
+    <td class="money"><%= number_to_currency @sum_of_all_in_registered %></td>
   </tr>
-  <tr>
+  <tr class="even">
     <td>Hur mycket har vi sålt för?</td>
-    <td><%= number_to_currency @sum_of_all_sold %></td>
+    <td class="money"><%= number_to_currency @sum_of_all_sold %></td>
   </tr>
-  <tr>
-    <td>Hur mycket till måste vi sälja för att nå break-even (plus-minus-noll)?</td>
-    <td><%= number_to_currency @money_to_break_even %></td>
+  <tr class="odd">
+    <td>Hur mycket mer måste vi sälja för att nå break-even (plus-minus-noll)?</td>
+    <td class="money"><%= number_to_currency @money_to_break_even %></td>
   </tr>
-  <tr>
+  <tr class="even">
     <td>Hur mycket plus går vi om vi säljer allt vi har lagt in i systemet?</td>
-    <td>?</td>
+    <td class="money"><%= number_to_currency @sum_of_profits %></td>
   </tr>
 </table>
-<p>Kom JÄTTEGÄRNA med fler idéer om vad vi behöver veta för statistik.</p>
 

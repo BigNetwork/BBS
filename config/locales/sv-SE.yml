@@ -64,6 +64,7 @@
 
   delivery: "Leverans"
   deliveries: "Leveranser"
+  new_delivery: "Ny leverans"
   delivery_attributes:
     delivered: "Vad som levererades"
     created_at: "Levererades"
