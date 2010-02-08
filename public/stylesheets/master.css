@@ -293,7 +293,7 @@ table#cart_table td.destroy a:hover{
     margin-top: 0.5em;
 }
 #sales_products #product_types li.not_in_stock a span.quantity_in_stock{
-    color: red;
+    color: #600;
 }
 #sales_products #product_types li a span.standard_price{
     display: block;

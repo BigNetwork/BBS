@@ -2,25 +2,7 @@
   <h2><%= t('products') %>:</h2>
   <ul id="product_types">
   <% for product_type in @product_types %>
-    <li class="<%= "not_in_stock"  unless product_type.in_stock? %>">
-        <% link_to url_for(:controller => 'cart_rows', :action => 'create', 'cart_row[cart_id]' => @cart.id, 'cart_row[product_type_id]' => product_type.id, 'cart_row[quantity]' => 1), :method => :post do %>
-            <span class="name">
-                <%= product_type.name %>
-            </span>
-            <span class="quantity_in_stock">
-                <% if product_type.in_stock? %>
-                    <%= product_type.quantity_in_stock %>st
-                <% elsif product_type.quantity_in_stock == 0 %>
-                    Slut
-                <% else %>
-                    <%= product_type.quantity_in_stock %>
-                <% end %>
-            </span>
-            <span class="standard_price">
-                <%= number_to_currency product_type.standard_price %>
-            </span>
-        <% end %>
-    </li>
+    <%= render :partial => 'product_type', :locals => { :product_type => product_type, :cart => @cart} %>
   <% end %>
   </ul>
 </div>
