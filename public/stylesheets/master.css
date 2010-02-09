@@ -88,7 +88,8 @@ table tr.even{
 
 #logo{
     float: right;
-    margin-top: 1em;
+    margin: 0;
+    padding: 0;
 }
 
 #logo a{
@@ -100,11 +101,10 @@ table tr.even{
 #menu{
     list-style-type: none;
     margin: 0;
-    margin-top: 1em;
+    margin-top: 2em;
     margin-bottom: -1px;
     overflow: auto;
     padding: 0;
-    width: 100%;
 }
 
 #menu li{
@@ -117,11 +117,16 @@ table tr.even{
     background: #1b1b1b;
     border: 1px solid #2a2a2a;
     border-bottom-color: #333;
-    color: #fff;
+    color: #ccc;
     display: block;
     padding: 0.5em 1em;
     text-decoration: none;
     text-shadow: 1px 1px 1px #000;
+}
+
+#menu li a:hover{
+    background: #1d1d1d;
+    color: #fff;
 }
 
 #menu li a.current{
@@ -162,6 +167,7 @@ table tr.even{
 #page{
     background: #222;
     border: 1px solid #333;
+    clear: both;
     overflow: auto;
     padding: 3%;
     padding-top: 1%;
