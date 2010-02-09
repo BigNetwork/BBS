@@ -180,14 +180,15 @@ table.index_table td.edit{
 }
 
 #menu li a.current{
-    background: #222;
+    background: #1e1e1e;
     border: 1px solid #333;
     border-bottom-color: #222;
 }
 
 #warehouse_menu{
-    background: #222;
+    background: #1e1e1e;
     border: 1px solid #333;
+    border-bottom: none;
     list-style-type: none;
     margin: 0;
     margin-bottom: -1px;
@@ -199,6 +200,9 @@ table.index_table td.edit{
     float: left;
 }
 #warehouse_menu li a{
+    border: 1px solid #1e1e1e;
+    border-top: none;
+    border-bottom: 1px solid #333;
     color: #ccc;
     display: block;
     padding: 0.5em 1em;
@@ -209,10 +213,12 @@ table.index_table td.edit{
     color: #fff;
 }
 #warehouse_menu li a.current{
-    background: #333;
+    background: #222;
+    border-color: #333;
+    border-bottom-color: #222;
 }
 #warehouse_menu li a.current:hover{
-    background: #333;
+    background: #222;
 }
 #page{
     background: #222;
