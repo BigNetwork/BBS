@@ -8,6 +8,15 @@
 
 <% end %>
 
+<h3>Purchase:</h3>
+<% if @cart.purchase.nil? %>
+  <p>Cart has not been purchased yet.</p>
+<% else %>
+  <p>
+    Cart was purchased with <%= link_to "#{t('purchase')} #{@cart.purchase.id}", @cart.purchase %>.
+  </p>
+<% end %>
+
 <!--
 
 <% form_for(@cart_row) do |f| %>

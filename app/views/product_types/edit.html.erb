@@ -1,4 +1,4 @@
-<h1>Editing <%= controller.controller_name.humanize.singularize.downcase %></h1>
+<h1><%= t('Editing') %> <%= t('Product Type')%> <%= @product_type.name %></h1>
 
 <% form_for(@product_type) do |f| %>
   <%= f.error_messages %>
@@ -6,9 +6,9 @@
   <%= render :partial => 'form', :locals => { :f => f } %>
   
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit t('Update') %>
   </p>
 <% end %>
 
-<%= link_to t('Show'), @product_type %> |
-&larr; <%= link_to t('Back'), product_types_path %>
+&larr; <%= link_to t('Back'), product_types_path %> <%= t('or') %>
+<%= link_to t('Show'), @product_type %>

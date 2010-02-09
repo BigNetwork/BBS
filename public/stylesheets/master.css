@@ -6,12 +6,12 @@ html, body{
 body{
     background: #0B0B0B url('/images/bg_body.jpg') repeat-x;
     color: #eee;
-    font-family: sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6{
 /*    -webkit-text-stroke: 0.5px transparent;*/
-    text-shadow: 0.1em 0.1em 0.1em #000;
+    text-shadow: 0.07em 0.07em 0.07em #000;
 }
 
 a:link{
@@ -28,6 +28,7 @@ a:hover{
 
 input, textarea, select, option{
     background: #111;
+    border: 2px inset #333;
     color: #fff;
     font-size: 1em;
     padding: 0.5em;
@@ -53,6 +54,17 @@ input[type=submit]:hover{
     border-color: #fff;
 }
 
+form .explanation{
+    color: #cc6;
+    font-size: 85%;
+}
+
+table tr.odd{
+    background: #272727;
+}
+table tr.even{
+    background: #222;
+}
 table td.money, table th.money{
     text-align: right !important;
 }
@@ -62,23 +74,58 @@ table td.quantity, table th.quantity{
 table td.date, table th.date{
     text-align: right !important;
 }
-table tr.odd{
-    background: #272727;
+table td.destroy{
+    width: 1.5em;
 }
-table tr.even{
-    background: #222;
+table td.destroy a{
+    color: #800;
+    display: block;
+    font-size: 0.9em;
+    height: 100%;
+    margin: 1px;
+    text-align: center;
+    text-decoration: none;
+}
+table td.destroy a:hover{
+    background: #600;
+    border: 1px outset #600;
+    color: white;
+    margin: 0;
+    text-decoration: none;
+}
+table.index_table td.edit{
+    text-align: right;
+    width: 2em;
 }
 
 .flash{
+    background: #111;
+    border: 2px inset #333;
     display: block;
     line-height: 2em;
+    margin-top: 1em;
+    padding: 0.2em 1em;
 }
 
 .flash#notice{
-    color: green;
+    background: #060;
+    color: white;
 }
 .flash#error{
-    color: red;
+    background: #600;
+    color: white;
+}
+.flash#warning{
+    background: #880;
+    color: white;
+}
+.flash#message{
+    background: #666;
+    color: white;
+}
+.flash a.hide{
+    color: #ccc;
+    float: right;
 }
 
 #container{
@@ -178,7 +225,7 @@ table.index_table{
     width: 100%;
 }
 table.index_table td, table.index_table th{
-    padding: 0.4em;
+    padding: 0.5em;
 }
 table.index_table th{
     border-bottom: 1px solid #ccc;
@@ -187,22 +234,6 @@ table.index_table th{
 }
 table.index_table td{
 }
-
-table.index_table td.destroy{
-    font-size: 0.9em;
-    line-height: 1.5em;
-    width: 1.5em;
-}
-table.index_table td.destroy a{
-    display: block;
-    text-align: center;
-}
-table.index_table td.destroy a:hover{
-    background: red;
-    color: white;
-    text-decoration: none;
-}
-
 table#cart_table{
     border-spacing: 0;
     width: 100%;
@@ -221,21 +252,9 @@ table#cart_table tr.sum th, table#cart_table tr.sum td{
     font-size: 150%;
     padding: 0.2em;
 }
-table td.destroy{
-    width: 1.5em;
-}
-table td.destroy a{
-    color: #800;
-    display: block;
-    font-size: 0.9em;
-    line-height: 1.5em;
-    text-align: center;
-    text-decoration: none;
-}
-table td.destroy a:hover{
-    background: red;
-    color: black;
-    text-decoration: none;
+table#cart_table span.times{
+    color: #444;
+    margin: 0 0.4em;
 }
 
 #sales_products{

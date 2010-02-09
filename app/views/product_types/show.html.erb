@@ -4,7 +4,7 @@
   <%=h @product_type.description %>
 </p>
 
-<h3>In stock</h3>
+<h3><%= t('In stock') %>:</h3>
 
 <table>
   <tr>
@@ -21,7 +21,7 @@
   </tr>
 </table>
 
-<h3>Prices and profit:</h3>
+<h3><%= t('Prices and profit') %>:</h3>
 
 <table id="product_type_price_table">
   <tr>
@@ -59,7 +59,7 @@
   If we sell all remaining <%= @product_type.quantity_in_stock %> <%=h @product_type.name %>s we can get a total of <%= number_to_currency(@product_type.products.length * @product_type.standard_price) %>, which makes a total profit of <%= number_to_currency(@product_type.products.length * @product_type.profit) %>
 </p>
 
-<h3>Special offers:</h3>
+<h3><%= t('Special offers') %>:</h3>
 
 <% if @product_type.children.length > 0 %>
   Detta specialerbjudande består av följande 
@@ -88,5 +88,5 @@
   </ul>
 <% end %>
 
-&larr; <%= link_to t('Back'), product_types_path %>
+&larr; <%= link_to t('Back'), product_types_path %> <%= t('or') %>
 <%= link_to t('Edit'), edit_product_type_path(@product_type) %>

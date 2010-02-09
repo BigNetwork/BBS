@@ -12,12 +12,17 @@
   Index: "Alla"
   Create: "Skapa"
   Save: "Spara"
+  Update: "Uppdatera"
   Back: "Tillbaka"
+  Editing: "Ändrar"
   or: "eller"
   Quantity: 'Antal'
   Buy: "Köp"
   Are you sure?: "Är du säker?"
   Total: "Summa"
+  "Yes": "Ja" # Quoting needed since Yes and No are YAML keywords
+  "No": "Nej" # Quoting needed since Yes and No are YAML keywords
+  times: "x"
   
   product_type:
     name: "Namn"
@@ -29,6 +34,7 @@
     crew_price: "Crewpris"
     purchase_price: "Inköpspris"
     profit: "Förtjänst/st"
+    decimalinfo: "Ska du ange priser i ören, använd punkt (.) istället för komma (,). Alltså 0.50 för 50 öre."
   product_types:
     titles:
       index: "Alla varutyper"
@@ -60,6 +66,7 @@
     
   purchase: "Köp"
   purchases: "Köp"
+  purchased: "Köpt"
   purchase_attributes:
     sum: "Summa"
 
@@ -74,6 +81,22 @@
     
   deliveries_title:
     index: "Alla leveranser"
+
+  # or like this:
+    
+  Product Type: "Varutyp"
+  Product types: "Varutyper"
+  In stock: "I lager"
+  Prices and profit: "Priser och förtjänst"
+  Special offers: "Specialerbjudanden"
+  Product: "Vara"
+  Products: "Varor"
+  Delivery: "Leverans"
+  Deliveries: "Leveranser"
+  New delivery: "Ny leverans"
+  Deliver: "Leverera"
+  Price each: "Styckpris"
+  Hide: "Göm"
 
   ##################################### The borrowed:
     

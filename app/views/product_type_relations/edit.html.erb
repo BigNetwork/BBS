@@ -1,4 +1,4 @@
-<h1>Editing product type relation</h1>
+<h1><%= t('Editing') %> product type relation</h1>
 
 <% form_for(@product_type_relation) do |f| %>
   <%= f.error_messages %>
@@ -12,7 +12,7 @@
     <%= f.text_field :child_id %>
   </p>
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit t('Update') %>
   </p>
 <% end %>
 

@@ -21,7 +21,7 @@
     </td>
     <td><%= link_to "#{t('delivery')} #{product.delivery.id}", product.delivery %></td>
     <td><%= link_to t('Show'), product %></td>
-    <td><%= link_to t('Edit'), edit_product_path(product) %></td>
+    <td class="edit"><%= link_to t('Edit'), edit_product_path(product) %></td>
     <td class="destroy"><%= link_to t('Destroy'), product, :confirm => t('Are you sure?'), :method => :delete %></td>
   </tr>
 <% end %>

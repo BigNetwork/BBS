@@ -16,7 +16,7 @@
     <td class="money"><%= number_to_currency purchase.sum %></td>
     <td class="date"><%= l purchase.created_at, :format => :short %></td>
     <td><%= link_to "Cart #{purchase.cart.id}", purchase.cart %></td>
-    <td><%= link_to t('Edit'), edit_purchase_path(purchase) %></td>
+    <td class="edit"><%= link_to t('Edit'), edit_purchase_path(purchase) %></td>
     <td class="destroy"><%= link_to t('Destroy'), purchase, :confirm => t('Are you sure?'), :method => :delete %></td>
   </tr>
 <% end %>

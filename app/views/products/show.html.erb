@@ -1,8 +1,14 @@
+<h1><%= t('product') %> <%= @product.id %></h1>
 <p>
-  <b>Product type:</b>
+  <b><%= t("Product Type") %>:</b>
   <%= link_to h(@product.product_type.name), @product.product_type %>
 </p>
 
+<% unless @product.purchase.nil? %>
+<p>
+  The product was bought with <%= link_to "#{t('purchase')} #{@product.purchase.id}", @product.purchase %>.
+</p>
+<% end %>
 
 &larr; <%= link_to t('Back'), products_path %> <%= t('or') %>
 <%= link_to t('Edit'), edit_product_path(@product) %>

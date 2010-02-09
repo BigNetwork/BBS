@@ -13,7 +13,7 @@
     <td><%= link_to h(cart_row.product_type.name), cart_row.product_type %></td>
     <td><%=h cart_row.quantity %></td>
     <td><%= link_to t('Show'), cart_row %></td>
-    <td><%= link_to t('Edit'), edit_cart_row_path(cart_row) %></td>
+    <td class="edit"><%= link_to t('Edit'), edit_cart_row_path(cart_row) %></td>
     <td class="destroy"><%= link_to t('Destroy'), cart_row, :confirm => t('Are you sure?'), :method => :delete %></td>
   </tr>
 <% end %>

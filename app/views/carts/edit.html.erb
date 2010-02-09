@@ -1,4 +1,4 @@
-<h1>Editing cart</h1>
+<h1><%= t('Editing') %> cart</h1>
 
 <% form_for(@cart) do |f| %>
   <%= f.error_messages %>
@@ -6,7 +6,7 @@
   <%= render :partial => 'form', :locals => { :f => f } %>
 
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit t('Update') %>
   </p>
 <% end %>
 

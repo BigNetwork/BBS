@@ -7,8 +7,23 @@
   <title>BBS - <%= t("#{controller.controller_name}") %> - <%= t("#{controller.action_name.titleize}") %></title>
   <%= stylesheet_link_tag 'scaffold' %>
   <%= stylesheet_link_tag 'master' %>
+  <%= javascript_include_tag :all, :cache => true %>
 </head>
 <body>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1928824-8']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+  })();
+
+</script>
 
 <div id="container">
 
@@ -26,7 +41,12 @@
 <div id="page">
 
 <%- [:error, :warning, :notice, :message].each do |key| -%>
-  <%= content_tag :div, flash[key], :class => 'flash', :id => key if flash[key] %>
+  <% if flash[key] %>
+    <% content_tag :div, flash[key], :class => 'flash', :id => key do %>
+      <%= flash[key] %>
+      <%= link_to t('Hide'), "#", { :class => 'hide', :onclick => "$('#{key}').fade({ duration: 0.5 }); return false;"} %>
+    <% end %>
+  <% end %>
 <%- end -%>
 
 <%= yield %>

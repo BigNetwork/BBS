@@ -100,6 +100,14 @@ class PurchasesController < ApplicationController
   # DELETE /purchases/1.xml
   def destroy
     @purchase = Purchase.find(params[:id])
+    
+    # TODO: Release all products that were bound to this purchase.
+    
+    for product in @purchase.products
+      product.purchase_id = nil
+      product.save(false)
+    end
+    
     @purchase.destroy
 
     respond_to do |format|

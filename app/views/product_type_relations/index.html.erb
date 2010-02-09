@@ -11,7 +11,7 @@
     <td><%=h product_type_relation.parent_id %></td>
     <td><%=h product_type_relation.child_id %></td>
     <td><%= link_to t('Show'), product_type_relation %></td>
-    <td><%= link_to t('Edit'), edit_product_type_relation_path(product_type_relation) %></td>
+    <td class="edit"><%= link_to t('Edit'), edit_product_type_relation_path(product_type_relation) %></td>
     <td><%= link_to 'Destroy', product_type_relation, :confirm => t('Are you sure?'), :method => :delete %></td>
   </tr>
 <% end %>
