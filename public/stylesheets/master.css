@@ -360,9 +360,12 @@ table#cart_table span.times{
 
 table#statistics_table{
     border-spacing: 0;
+    font-size: 130%;
+    line-height: 2em;
+    width: 100%;
 }
 table#statistics_table th, table#statistics_table td{
-    padding: 0.4em;
+    padding: 0.6em 1.2em;
 }
 
 #footer{

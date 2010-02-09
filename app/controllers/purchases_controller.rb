@@ -56,28 +56,6 @@ class PurchasesController < ApplicationController
       end
     end
   end
-  
-  def bind_products
-    
-    # If we know the cart, snatch products that match that cart:
-    unless @purchase.cart_id.nil?
-      @cart = Cart.find_by_id(@purchase.cart_id)  
-      for cart_row in @cart.cart_rows
-        # Find some products to snatch:
-        for i in 1..cart_row.quantity
-            product = Product.find_by_product_type_id(cart_row.product_type, :conditions => { :purchase_id => nil} )
-            unless product.nil?
-                product.purchase_id = @purchase.id
-                product.save(false)
-            else
-                # Problem, not enough products of that type available!
-                flash[:error] = "Problem! Not enough #{cart_row.product_type.name} available in stock!"
-            end
-        end
-      end
-    end
-    
-  end
 
   # PUT /purchases/1
   # PUT /purchases/1.xml
@@ -115,4 +93,29 @@ class PurchasesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  private
+  
+    def bind_products
+
+      # If we know the cart, snatch products that match that cart:
+      unless @purchase.cart_id.nil?
+        @cart = Cart.find_by_id(@purchase.cart_id)  
+        for cart_row in @cart.cart_rows
+          # Find some products to snatch:
+          for i in 1..cart_row.quantity
+              product = Product.find_by_product_type_id(cart_row.product_type, :conditions => { :purchase_id => nil} )
+              unless product.nil?
+                  product.purchase_id = @purchase.id
+                  product.save(false)
+              else
+                  # Problem, not enough products of that type available!
+                  flash[:error] = "Problem! Not enough #{cart_row.product_type.name} available in stock!"
+              end
+          end
+        end
+      end
+
+    end
+  
 end

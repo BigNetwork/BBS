@@ -7,10 +7,10 @@ class Product < ActiveRecord::Base
   validates_presence_of :product_type_id
   
   def sold?
-    unless purchase_id.nil?
-      return true
-    else
+    if purchase.nil?
       return false
+    else
+      return true
     end
   end
 

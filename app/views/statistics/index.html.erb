@@ -9,12 +9,16 @@
     <td class="money"><%= number_to_currency @sum_of_all_sold %></td>
   </tr>
   <tr class="odd">
-    <td>Hur mycket mer måste vi sälja för att nå break-even (plus-minus-noll)?</td>
+    <td>Hur mycket mer måste vi sälja för att nå break-even (plus minus noll)?</td>
     <td class="money"><%= number_to_currency @money_to_break_even %></td>
   </tr>
   <tr class="even">
+    <td>Hur mycket plus har vi gått hittills?</td>
+    <td class="money"><%= number_to_currency @sum_of_sold_profits %></td>
+  </tr>
+  <tr class="even">
     <td>Hur mycket plus går vi om vi säljer allt vi har lagt in i systemet?</td>
-    <td class="money"><%= number_to_currency @sum_of_profits %></td>
+    <td class="money"><%= number_to_currency @sum_of_total_profits %></td>
   </tr>
 </table>
 
