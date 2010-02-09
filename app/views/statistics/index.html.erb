@@ -1,5 +1,6 @@
 <h1><%= t('statistics') %></h1>
-<table id="statistics_table">
+<h3><%= t('Sales') %>:</h3>
+<table class="statistics_table">
   <tr class="odd">
     <td>Hur mycket har vi köpt för?</td>
     <td class="money"><%= number_to_currency @sum_of_all_in_registered %></td>
@@ -8,17 +9,34 @@
     <td>Hur mycket har vi sålt för?</td>
     <td class="money"><%= number_to_currency @sum_of_all_sold %></td>
   </tr>
-  <tr class="odd">
+  <tr class="sum">
+    <td>Resultat:</td>
+    <td class="money <%= "negative" if @result < 0 %><%= "positive" if @result >= 0 %>">
+      <%= number_to_currency @result %>
+    </td>
+  </tr>
+  <!--
+  <tr class="odd sum">
     <td>Hur mycket mer måste vi sälja för att nå break-even (plus minus noll)?</td>
     <td class="money"><%= number_to_currency @money_to_break_even %></td>
   </tr>
-  <tr class="even">
-    <td>Hur mycket plus har vi gått hittills?</td>
-    <td class="money"><%= number_to_currency @sum_of_sold_profits %></td>
+  -->
+</table>
+<h3><%= t('Profit') %>:</h3>
+<table class="statistics_table">
+  <!--
+  <tr class="odd">
+    <td>Hittills?</td>
+    <td class="money <%= "negative" if @sum_of_sold_profits < 0 %><%= "positive" if @sum_of_sold_profits >= 0 %>">
+      <%= number_to_currency @sum_of_sold_profits %>
+    </td>
   </tr>
-  <tr class="even">
-    <td>Hur mycket plus går vi om vi säljer allt vi har lagt in i systemet?</td>
-    <td class="money"><%= number_to_currency @sum_of_total_profits %></td>
+  -->
+  <tr class="odd">
+    <td>Om vi säljer allt vi har lagt in i systemet?</td>
+    <td class="money <%= "negative" if @sum_of_total_profits < 0 %><%= "positive" if @sum_of_total_profits >= 0 %>">
+      <%= number_to_currency @sum_of_total_profits %>
+    </td>
   </tr>
 </table>
 

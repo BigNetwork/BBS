@@ -15,6 +15,7 @@ class StatisticsController < ApplicationController
     end
     
     @money_to_break_even = @sum_of_all_in_registered - @sum_of_all_sold
+    @result = @sum_of_all_sold - @sum_of_all_in_registered
     
     @sum_of_sold_profits = 0.0
     for product in sold_products

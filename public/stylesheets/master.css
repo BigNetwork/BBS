@@ -71,6 +71,12 @@ table tr.even{
 table td.money, table th.money{
     text-align: right !important;
 }
+table .money.negative{
+    color: #f66;
+}
+table .money.positive{
+    color: #6f6;
+}
 table td.quantity, table th.quantity{
     text-align: right !important;
 }
@@ -358,14 +364,19 @@ table#cart_table span.times{
     text-align: left;
 }
 
-table#statistics_table{
+table.statistics_table{
     border-spacing: 0;
-    font-size: 130%;
+    font-size: 110%;
     line-height: 2em;
-    width: 100%;
+    margin: 0 2%;
+    margin-bottom: 3em;
+    width: 96%;
 }
-table#statistics_table th, table#statistics_table td{
+table.statistics_table th, table.statistics_table td{
     padding: 0.6em 1.2em;
+}
+table.statistics_table tr.sum th, table.statistics_table tr.sum td{
+    border-top: 1px solid #666;
 }
 
 #footer{
