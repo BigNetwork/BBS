@@ -1,4 +1,4 @@
-<h1>Cart <%= h @cart.id %></h1>
+<h1><%= t('cart') %> <%= h @cart.id %></h1>
 
 <h3>Products in cart:</h3>
 <% if @cart.cart_rows.empty? %>
@@ -7,6 +7,8 @@
 <%= render :partial => 'table', :locals => { :cart => @cart } %>
 
 <% end %>
+
+<!--
 
 <% form_for(@cart_row) do |f| %>
   <h3>Add products to cart:</h3>
@@ -25,5 +27,9 @@
   </p>
 <% end %>
 
+-->
+
+<p>
 &larr; <%= link_to t('Back'), carts_path %> <%= t('or') %>
 <%= link_to t('Edit'), edit_cart_path(@cart) %>
+</p>

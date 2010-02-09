@@ -1,5 +1,5 @@
 class Delivery < ActiveRecord::Base
-  has_many :products
+  has_many :products, :dependent => :destroy
   belongs_to :product_type
   
   validates_presence_of :product_type_id, :quantity

@@ -67,7 +67,9 @@ class DeliveriesController < ApplicationController
   # PUT /deliveries/1.xml
   def update
     @delivery = Delivery.find(params[:id])
-
+    
+    # TODO: Change the associated Products if the quantity or product type was changed on a Delivery.
+    
     respond_to do |format|
       if @delivery.update_attributes(params[:delivery])
         flash[:notice] = 'Delivery was successfully updated.'
