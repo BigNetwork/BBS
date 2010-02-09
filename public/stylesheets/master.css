@@ -1,10 +1,13 @@
 html, body{
+    background: #0B0B0B;
     margin: 0;
     padding: 0;
+    height: 100%;
+    width: 100%;
 }
 
 body{
-    background: #0B0B0B url('/images/bg_body.jpg') repeat-x;
+    background: url('/images/bg_body.jpg') repeat-x;
     color: #eee;
     font-family: Helvetica, Arial, sans-serif;
 }
@@ -130,6 +133,7 @@ table.index_table td.edit{
 
 #container{
     margin: 0 auto;
+    padding-top: 2em;
     width: 960px;
 }
 
@@ -148,7 +152,6 @@ table.index_table td.edit{
 #menu{
     list-style-type: none;
     margin: 0;
-    margin-top: 2em;
     margin-bottom: -1px;
     overflow: auto;
     padding: 0;
@@ -339,6 +342,10 @@ table#cart_table span.times{
 #sales_cart{
     float: right;
     width: 45%;
+}
+
+#sales_cart input[type=submit]{
+    float: right;
 }
 
 #product_type_price_table th{
