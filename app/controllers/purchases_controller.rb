@@ -2,7 +2,7 @@ class PurchasesController < ApplicationController
   # GET /purchases
   # GET /purchases.xml
   def index
-    @purchases = Purchase.all
+    @purchases = Purchase.all(:order => "id DESC")
 
     respond_to do |format|
       format.html # index.html.erb

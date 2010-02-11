@@ -1,19 +1,11 @@
 <li class="<%= "not_in_stock"  unless product_type.in_stock? %>">
-    <% link_to url_for(:controller => 'cart_rows', :action => 'create', 'cart_row[cart_id]' => @cart.id, 'cart_row[product_type_id]' => product_type.id, 'cart_row[quantity]' => 1), :method => :post do %>
-        <span class="name">
-            <%= product_type.name %>
-        </span>
-        <span class="standard_price">
-            <%= number_to_currency product_type.standard_price %>
-        </span>
-        <span class="quantity_in_stock">
-            <% if product_type.in_stock? %>
-                <%= product_type.quantity_in_stock %> i lager
-            <% elsif product_type.quantity_in_stock == 0 %>
-                Slut
-            <% else %>
-                <%= product_type.quantity_in_stock %>
-            <% end %>
-        </span>
+    <% if product_type.in_stock? %>
+      <% link_to url_for(:controller => 'cart_rows', :action => 'create', 'cart_row[cart_id]' => @cart.id, 'cart_row[product_type_id]' => product_type.id, 'cart_row[quantity]' => 1), {:method => :post, :class => 'product_type_button'} do %>
+        <%= render :partial => 'product_type_button_content', :locals => { :product_type => product_type } %>
+      <% end %>
+    <% else %>
+      <div class="product_type_button">
+        <%= render :partial => 'product_type_button_content', :locals => { :product_type => product_type } %>
+      </div>
     <% end %>
 </li>

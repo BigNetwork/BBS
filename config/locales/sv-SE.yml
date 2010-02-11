@@ -64,9 +64,9 @@
     row_sum: "Delsumma"
     product_type: "Vara"
     
-  purchase: "Köp"
-  purchases: "Köp"
-  purchased: "Köpt"
+  purchase: "Försäljning"
+  purchases: "Försäljningshistorik"
+  purchased: "Sålt"
   purchase_attributes:
     sum: "Summa"
 
@@ -95,9 +95,9 @@
   
   Listing carts: "Alla kundvagnar"
   
-  Listing purchases: "Alla köp"
+  Listing purchases: "Alla försäljningar"
   Items sold: "Varor sålda"
-  Purchased at: "Köptes"
+  Purchased at: "Såldes"
   Came from Cart: "Kom från beställning"
   
   Delivery: "Leverans"

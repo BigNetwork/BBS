@@ -1,0 +1,15 @@
+<span class="name">
+            <%= product_type.name %>
+        </span>
+        <span class="standard_price">
+            <%= number_to_currency product_type.standard_price %>
+        </span>
+        <span class="quantity_in_stock">
+            <% if product_type.in_stock? %>
+                <%= product_type.quantity_in_stock %> i lager
+            <% elsif product_type.quantity_in_stock == 0 %>
+                Slut
+            <% else %>
+                <%= product_type.quantity_in_stock %>
+            <% end %>
+        </span>

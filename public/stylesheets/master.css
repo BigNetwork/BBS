@@ -288,7 +288,7 @@ table#cart_table span.times{
     float: left;
 }
 
-#sales_products #product_types li a{
+#sales_products #product_types li .product_type_button{
     -moz-border-radius: 0.5em;
     -webkit-border-radius: 0.5em;
     background: #060;
@@ -303,7 +303,7 @@ table#cart_table span.times{
     width: 9em;
 }
 
-#sales_products #product_types li.not_in_stock a{
+#sales_products #product_types li.not_in_stock .product_type_button{
     /* Make them red: */
     /*
     background: #600;
@@ -325,27 +325,27 @@ table#cart_table span.times{
     cursor: default;
 }
 
-#sales_products #product_types li a span.name{
+#sales_products #product_types li .product_type_button span.name{
     display: block;
     font-weight: bold;
     margin-top: 1em;
     text-shadow: 1px 1px 1px #030;
 }
 
-#sales_products #product_types li.not_in_stock a span.name{
+#sales_products #product_types li.not_in_stock .product_type_button span.name{
     text-shadow: none;
 }
 
-#sales_products #product_types li a span.quantity_in_stock{
+#sales_products #product_types li .product_type_button span.quantity_in_stock{
     color: lightgreen;
     display: block;
     font-size: 90%;
     margin-top: 0.5em;
 }
-#sales_products #product_types li.not_in_stock a span.quantity_in_stock{
+#sales_products #product_types li.not_in_stock .product_type_button span.quantity_in_stock{
     color: #600;
 }
-#sales_products #product_types li a span.standard_price{
+#sales_products #product_types li .product_type_button span.standard_price{
     display: block;
     font-size: 90%;
     margin-top: 0.5em;
