@@ -1,12 +1,12 @@
-<h1>Purchase <%= @purchase.id %></h1>
+<h1><%= t("Purchase") %> <%= @purchase.id %></h1>
 
-Originated from <%= link_to "#{t('cart')} #{@purchase.cart.id}", @purchase.cart %>
+<%= t('Came from Cart') %> <%= link_to "#{t('cart')} #{@purchase.cart.id}", @purchase.cart %>.
 
 <% if @purchase.products.empty? %>
   
 <% else %>
   
-  <h3>Sold in this purchase:</h3>
+  <h3><%= t('Products sold in this purchase') %>:</h3>
   
   <ul>
     <% for product in @purchase.products %>
@@ -16,5 +16,4 @@ Originated from <%= link_to "#{t('cart')} #{@purchase.cart.id}", @purchase.cart 
   
 <% end %>
 
-&larr; <%= link_to t('Back'), purchases_path %> <%= t('or') %>
-<%= link_to t('Edit'), edit_purchase_path(@purchase) %>
+&larr; <%= link_to t('Back'), purchases_path %>

@@ -84,22 +84,29 @@
 
   # or like this:
     
+  # Product Types:
   Product Type: "Varutyp"
   Product types: "Varutyper"
   In stock: "I lager"
   Prices and profit: "Priser och förtjänst"
   Special offers: "Specialerbjudanden"
   
+  # Products:
   Product: "Vara"
   Products: "Varor"
   
+  # Carts:
   Listing carts: "Alla kundvagnar"
   
+  # Purchases:
+  Purchase: "Försäljning"
   Listing purchases: "Alla försäljningar"
   Items sold: "Varor sålda"
   Purchased at: "Såldes"
   Came from Cart: "Kom från beställning"
+  Products sold in this purchase: "Varor sålda i denna försäljning"
   
+  # Deliveries
   Delivery: "Leverans"
   Deliveries: "Leveranser"
   New delivery: "Ny leverans"
