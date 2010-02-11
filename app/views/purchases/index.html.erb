@@ -1,12 +1,12 @@
-<h1>Listing purchases</h1>
+<h1><%= t('Listing purchases') %></h1>
 
 <table class="index_table">
   <tr>
     <th><%= t('purchase') %>:</th>
-    <th class="quantity">Items sold:</th>
+    <th class="quantity"><%= t("Items sold") %>:</th>
     <th class="money"><%= t('purchase_attributes.sum') %>:</th>
-    <th class="date">Purchased at:</th>
-    <th>Came from Cart:</th>
+    <th class="date"><%= t('Purchased at') %>:</th>
+    <th><%= t('Came from Cart') %>:</th>
   </tr>
 
 <% @purchases.each do |purchase| %>
@@ -15,13 +15,8 @@
     <td class="quantity"><%= purchase.products.length %></td>
     <td class="money"><%= number_to_currency purchase.sum %></td>
     <td class="date"><%= l purchase.created_at, :format => :short %></td>
-    <td><%= link_to "Cart #{purchase.cart.id}", purchase.cart %></td>
-    <td class="edit"><%= link_to t('Edit'), edit_purchase_path(purchase) %></td>
+    <td><%= link_to "#{t('cart')} #{purchase.cart.id}", purchase.cart %></td>
     <td class="destroy"><%= link_to t('Destroy'), purchase, :confirm => t('Are you sure?'), :method => :delete %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New purchase', new_purchase_path %>

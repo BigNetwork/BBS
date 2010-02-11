@@ -14,7 +14,7 @@ class CartRowsControllerTest < ActionController::TestCase
 
   test "should create cart_row" do
     assert_difference('CartRow.count') do
-      post :create, :cart_row => { }
+      post :create, :cart_row => { :product_type_id => 1, :quantity => 1}
     end
 
     assert_redirected_to cart_row_path(assigns(:cart_row))

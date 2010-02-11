@@ -2,6 +2,8 @@
 
 one:
   cart_id: 1
-
+  product_type_id: 1
+  
 two:
   cart_id: 1
+  product_type_id: 2

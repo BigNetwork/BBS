@@ -30,7 +30,8 @@
 <h2 id="logo"><%= link_to 'Bignetwork Bong System', root_url %></h2>
 
 <%= render :partial => 'layouts/menu' %>
-<% if controller.controller_name == 'sales' %>
+<% if controller.controller_name == 'sales' || controller.controller_name == 'purchases' %>
+  <!-- SHOW NO SUB MENU -->
 <% elsif controller.controller_name == 'product_types' || controller.controller_name == 'deliveries' %>
 <%= render :partial => 'layouts/warehouse_menu' %>
 <% elsif controller.controller_name == 'statistics' %>

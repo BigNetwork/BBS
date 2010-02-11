@@ -14,7 +14,7 @@ class DeliveriesControllerTest < ActionController::TestCase
 
   test "should create delivery" do
     assert_difference('Delivery.count') do
-      post :create, :delivery => { }
+      post :create, :delivery => { :product_type_id => 1, :quantity => 1 }
     end
 
     assert_redirected_to delivery_path(assigns(:delivery))
