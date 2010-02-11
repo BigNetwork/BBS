@@ -105,12 +105,19 @@
   Purchased at: "Såldes"
   Came from Cart: "Kom från beställning"
   Products sold in this purchase: "Varor sålda i denna försäljning"
+  Price name: "Pris"
   
-  # Deliveries
+  # Deliveries:
   Delivery: "Leverans"
   Deliveries: "Leveranser"
   New delivery: "Ny leverans"
   Deliver: "Leverera"
+  
+  # Prices:
+  
+  
+  # Price Types:
+  
   
   Price each: "Styckpris"
   

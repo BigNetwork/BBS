@@ -19,4 +19,8 @@ class Cart < ActiveRecord::Base
     quantity
   end
   
+  def purchased
+    return !purchase.nil?
+  end
+  
 end
