@@ -131,7 +131,22 @@
   
   Sales: "Försäljning"
   Profit: "Förtjänst"
-
+  
+  # Or like this (the built in?):
+  
+  activerecord:
+    models:
+      user: "Användare"
+    attributes:
+      user:
+        login: "Användarnamn"
+    errors:
+      template:
+        header:
+          one: "1 fel hindrade denna {{model}} från att sparas"
+          other: "{{count}} fel hindrade denna {{model}} från att sparas"
+        body: "Det var problem med dessa fält:"
+  
   ##################################### The borrowed:
     
   number:

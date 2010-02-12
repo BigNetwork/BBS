@@ -175,6 +175,7 @@ table.index_table td.edit{
 }
 
 #errorExplanation ul li {
+  color: #333;
   font-size: 12px;
   list-style: square;
 }
