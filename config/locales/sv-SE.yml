@@ -65,7 +65,7 @@
     product_type: "Vara"
     
   purchase: "Försäljning"
-  purchases: "Försäljningshistorik"
+  purchases: "Historik"
   purchased: "Sålt"
   purchase_attributes:
     sum: "Summa"
@@ -131,25 +131,11 @@
   
   Sales: "Försäljning"
   Profit: "Förtjänst"
-  
-  # Or like this (the built in?):
-  
-#  activerecord:
-#    models:
-#      user: "Användare"
-#    attributes:
-#      user:
-#        login: "Användarnamn"
-#  activerecord:
-#    errors:
-#      template:
-#        header:
-#          one: "1 fel hindrade denna {{model}} från att sparas"
-#          other: "{{count}} fel hindrade denna {{model}} från att sparas"
-#        body: "Det var problem med dessa fält:"
-  
-  ##################################### The borrowed:
-    
+
+  attributes:
+    created_at: "Skapades"
+    updated_at: "Uppdaterades"
+
   number:
     # Used in number_with_delimiter()
     # These are also the defaults for 'currency', 'percentage', 'precision', and 'human'
@@ -307,7 +293,13 @@
       # For example,
       #   user: "Dude"
       # will translate User model name to "Dude"
-
+    
+    models:
+      delivery:
+        attributes:
+          created_at: "Skapades"
+          user_id: "Skapades av"
+    
     # Translate model attribute names. Used in Model.human_attribute_name(attribute).
     #attributes:
       # For example,

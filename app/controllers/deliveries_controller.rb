@@ -44,6 +44,9 @@ class DeliveriesController < ApplicationController
   # POST /deliveries.xml
   def create
     @delivery = Delivery.new(params[:delivery])
+    if logged_in?
+      @delivery.user_id = current_user.id
+    end
 
     respond_to do |format|
       if @delivery.save
