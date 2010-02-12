@@ -5,7 +5,7 @@ class SalesController < ApplicationController
   def index
     @cart = Cart.find_last_by_user_id(current_user.id)
     #@cart = Cart.last
-    if @cart.nil || @cart.purchased  # Get a new cart if noone was found or the last one was already used
+    if @cart.nil? || @cart.purchased  # Get a new cart if noone was found or the last one was already used
       @cart = Cart.new
       if logged_in?
         @cart.user_id = current_user.id
