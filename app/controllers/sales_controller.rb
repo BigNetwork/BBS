@@ -12,7 +12,7 @@ class SalesController < ApplicationController
       end
       @cart.save(false) # Save the cart so we can get an ID for it (so we can bind CartRows to it later)
     end
-    @product_types = ProductType.all
+    @product_types = ProductType.all(:order => :name)
     @purchase = Purchase.new
   end
 end

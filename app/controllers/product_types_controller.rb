@@ -5,7 +5,7 @@ class ProductTypesController < ApplicationController
   # GET /product_types
   # GET /product_types.xml
   def index
-    @product_types = ProductType.all(:include => :products)
+    @product_types = ProductType.all(:include => :products, :order => :name)
 
     respond_to do |format|
       format.html # index.html.erb
