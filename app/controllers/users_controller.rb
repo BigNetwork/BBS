@@ -1,18 +1,13 @@
 class UsersController < ApplicationController
-  # Be sure to include AuthenticationSystem in Application Controller instead
-  include AuthenticatedSystem
   
+  before_filter :login_required, :only => ['index', 'show', 'destroy']
+
   def index
     @users = User.all
   end
   
   def show
     @user = User.find_by_id(params[:id])
-  end
-
-  # render new.rhtml
-  def new
-    @user = User.new
   end
  
   def create

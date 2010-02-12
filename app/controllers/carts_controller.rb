@@ -1,4 +1,7 @@
 class CartsController < ApplicationController
+  
+  before_filter :login_required
+
   # GET /carts
   # GET /carts.xml
   def index

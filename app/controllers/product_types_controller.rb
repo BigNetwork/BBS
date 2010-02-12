@@ -1,4 +1,7 @@
 class ProductTypesController < ApplicationController
+
+  before_filter :login_required
+
   # GET /product_types
   # GET /product_types.xml
   def index

@@ -1,4 +1,7 @@
 class DeliveriesController < ApplicationController
+
+  before_filter :login_required
+
   # GET /deliveries
   # GET /deliveries.xml
   def index

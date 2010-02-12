@@ -1,4 +1,7 @@
 class PurchasesController < ApplicationController
+
+  before_filter :login_required
+
   # GET /purchases
   # GET /purchases.xml
   def index
