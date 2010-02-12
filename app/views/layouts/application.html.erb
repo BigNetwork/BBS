@@ -32,10 +32,11 @@
 <% if controller.controller_name == 'sales' || controller.controller_name == 'purchases' %>
   <!-- SHOW NO SUB MENU -->
 <% elsif controller.controller_name == 'product_types' || controller.controller_name == 'deliveries' %>
-<%= render :partial => 'layouts/warehouse_menu' %>
+  <%= render :partial => 'layouts/warehouse_menu' %>
 <% elsif controller.controller_name == 'statistics' %>
+<% elsif controller.controller_name == 'cart_rows' %>
+  <%= render :partial => 'layouts/administration_menu' %>
 <% else %>
-<%= render :partial => 'layouts/administration_menu' %>
 <% end %>
 
 <div id="page">

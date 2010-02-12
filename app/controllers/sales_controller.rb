@@ -1,4 +1,7 @@
 class SalesController < ApplicationController
+  
+  before_filter :login_required
+  
   def index
     @cart = Cart.last
     #@cart = Cart.find_by_id(session[:cart_id])
