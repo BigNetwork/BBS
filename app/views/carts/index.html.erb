@@ -5,6 +5,7 @@
     <th><%= t('cart') %>:</th>
     <th><%= t('cart_rows') %>:</th>
     <th><%= t('purchased') %>:</th>
+    <th><%= Purchase.human_attribute_name('user_id') %></th>
   </tr>
 
 <% @carts.each do |cart| %>
@@ -12,6 +13,7 @@
     <td><%= link_to "#{t('cart')} #{cart.id}", cart %></td>
     <td><%= cart.cart_rows.length unless cart.cart_rows.nil? %></td>
     <td><% if cart.purchase.nil? %><%= t('No') %><% else %><%= t('Yes') %>, <%= link_to "#{t('purchase')} #{cart.purchase.id}", cart.purchase %><% end %></td>
+    <td><%= link_to cart.user.login, cart.user unless cart.user.nil? %></td>
     <td class="edit"><%= link_to t('Edit'), edit_cart_path(cart) %></td>
     <td class="destroy"><%= link_to t('Destroy'), cart, :confirm => t('Are you sure?'), :method => :delete %></td>
   </tr>

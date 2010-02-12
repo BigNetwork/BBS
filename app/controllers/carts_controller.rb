@@ -47,6 +47,9 @@ class CartsController < ApplicationController
   # POST /carts.xml
   def create
     @cart = Cart.new(params[:cart])
+    if logged_in?
+      @cart.user_id = current_user.id
+    end
 
     respond_to do |format|
       if @cart.save
