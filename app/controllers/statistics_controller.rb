@@ -6,7 +6,9 @@ class StatisticsController < ApplicationController
     
     @sum_of_all_in_registered = 0.0
     for product in all_products
-      @sum_of_all_in_registered += product.product_type.purchase_price
+      unless product.product_type.nil?
+        @sum_of_all_in_registered += product.product_type.purchase_price
+      end
     end
     
     @sum_of_all_sold = 0.0
