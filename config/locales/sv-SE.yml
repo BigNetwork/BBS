@@ -111,13 +111,15 @@
   Delivery: "Leverans"
   Deliveries: "Leveranser"
   New delivery: "Ny leverans"
-  Deliver: "Leverera"
+  Deliver: "Leverera"  
   
-  # Prices:
+  # Users:
   
-  
-  # Price Types:
-  
+    
+  # Sessions:
+  Username: "Användarnamn"  
+  Password: "Lösenord"
+  Log in: "Logga in"
   
   Price each: "Styckpris"
   
