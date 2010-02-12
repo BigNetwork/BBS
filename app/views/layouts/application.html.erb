@@ -57,7 +57,7 @@
 <div id="footer">
   <ul id="footer_menu"></ul>
   <% if logged_in? %>
-    Logged in as <%= link_to current_user.login, current_user %>
+    <%= t('Logged in as') %> <%= link_to current_user.login, current_user %>,
     <%= link_to t('Logout'), logout_path %>
   <% else %>
     <%= link_to t('Login'), login_path %>
