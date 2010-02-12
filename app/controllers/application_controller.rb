@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   
+  include AuthenticatedSystem
+  
   before_filter :set_user_language
   
   def set_user_language

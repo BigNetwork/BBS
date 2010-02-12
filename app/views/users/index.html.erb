@@ -1,0 +1,5 @@
+<ul>
+<% for user in @users %>
+  <li><%= link_to user.login, user %> (<%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %>)</li>
+<% end %>
+</ul>
