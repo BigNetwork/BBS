@@ -44,6 +44,9 @@ class PurchasesController < ApplicationController
   # POST /purchases.xml
   def create
     @purchase = Purchase.new(params[:purchase])
+    if logged_in?
+      @purchase.user_id = current_user.id
+    end
 
     respond_to do |format|
       if @purchase.save

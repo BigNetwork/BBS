@@ -7,6 +7,7 @@
     <th class="money"><%= t('purchase_attributes.sum') %>:</th>
     <th class="date"><%= t('Purchased at') %>:</th>
     <th><%= t('Came from Cart') %>:</th>
+    <th><%= Purchase.human_attribute_name('user_id') %></th>
   </tr>
 
 <% @purchases.each do |purchase| %>
@@ -16,6 +17,7 @@
     <td class="money"><%= number_to_currency purchase.sum %></td>
     <td class="date"><%= l purchase.created_at, :format => :short %></td>
     <td><%= link_to "#{t('cart')} #{purchase.cart.id}", purchase.cart %></td>
+    <td><%= link_to purchase.user.login, purchase.user unless purchase.user.nil? %></td>
     <td class="destroy"><%= link_to t('Destroy'), purchase, :confirm => t('Are you sure?'), :method => :delete %></td>
   </tr>
 <% end %>

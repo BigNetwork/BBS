@@ -1,6 +1,7 @@
 class Purchase < ActiveRecord::Base
   has_many :products
   belongs_to :cart
+  belongs_to :user
   
   def sum
     # TODO: Check for crew or standard price!
