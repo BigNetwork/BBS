@@ -9,6 +9,8 @@ class ProductType < ActiveRecord::Base
   has_many :products
   has_many :cart_rows
   
+  validates_presence_of :purchase_price, :standard_price, :crew_price
+  
   def not_sold_products
     Product.find(:all, :conditions => { :product_type_id => id, :purchase_id => nil} )
   end
