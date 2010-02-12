@@ -26,7 +26,17 @@ class User < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation
 
-
+  def sold_for
+    if purchases.nil?
+      return 0.0
+    else
+      sum = 0.0
+      for purchase in purchases
+        sum += purchase.sum
+      end
+      sum
+    end
+  end
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #
