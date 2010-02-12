@@ -134,18 +134,19 @@
   
   # Or like this (the built in?):
   
-  activerecord:
-    models:
-      user: "Användare"
-    attributes:
-      user:
-        login: "Användarnamn"
-    errors:
-      template:
-        header:
-          one: "1 fel hindrade denna {{model}} från att sparas"
-          other: "{{count}} fel hindrade denna {{model}} från att sparas"
-        body: "Det var problem med dessa fält:"
+#  activerecord:
+#    models:
+#      user: "Användare"
+#    attributes:
+#      user:
+#        login: "Användarnamn"
+#  activerecord:
+#    errors:
+#      template:
+#        header:
+#          one: "1 fel hindrade denna {{model}} från att sparas"
+#          other: "{{count}} fel hindrade denna {{model}} från att sparas"
+#        body: "Det var problem med dessa fält:"
   
   ##################################### The borrowed:
     
@@ -253,16 +254,15 @@
       second: "Sekund"
 
   activemodel:
+    
+
+  activerecord:
     errors:
       template:
         header:
           one:    "Ett fel förhindrade denna {{model}} från att sparas"
           other:  "{{count}} fel förhindrade denna {{model}} från att sparas"
-        # The variable :count is also available
         body: "Det var problem med följande fält:"
-
-  activerecord:
-    errors:
       # The values :model, :attribute and :value are always available for interpolation
       # The value :count is available when applicable. Can be used for pluralization.
       messages:
