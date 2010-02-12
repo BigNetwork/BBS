@@ -1,5 +1,12 @@
-<ul>
+<table class="index_table">
+  <tr>
+    <th><%= User.human_attribute_name('login') %></th>
+    <th><%= t('Sold for') %></th>
+  </tr>
 <% for user in @users %>
-  <li><%= link_to user.login, user %> (<%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %>)</li>
+  <tr>
+    <td><%= link_to user.login, user %></td>
+    <td><%= number_to_currency user.sold_for %></td>
+  </tr>
 <% end %>
-</ul>
+</table>

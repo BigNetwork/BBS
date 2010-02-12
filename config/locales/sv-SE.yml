@@ -94,6 +94,7 @@
   # Products:
   Product: "Vara"
   Products: "Varor"
+  products: "varor"
   
   # Carts:
   Listing carts: "Alla kundvagnar"
@@ -114,7 +115,8 @@
   Deliver: "Leverera"  
   
   # Users:
-  
+  Has delivered: "Har levererat"
+  Sold for: "Har sålt för"
     
   # Sessions:
   Username: "Användarnamn"  

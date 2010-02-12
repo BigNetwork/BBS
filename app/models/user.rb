@@ -37,6 +37,18 @@ class User < ActiveRecord::Base
       sum
     end
   end
+  
+  def delivered_total_quantity
+    if deliveries.nil?
+      return 0
+    else
+      quantity = 0
+      for delivery in deliveries
+        quantity += delivery.quantity
+      end
+      quantity
+    end
+  end
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #
