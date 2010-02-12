@@ -1,12 +1,16 @@
+<h1><%= t('All users') %></h1>
+
 <table class="index_table">
   <tr>
-    <th><%= User.human_attribute_name('login') %></th>
-    <th><%= t('Sold for') %></th>
+    <th><%= User.human_attribute_name('login') %>:</th>
+    <th><%= t('Sold for') %>:</th>
+    <th><%= t('Has delivered') %>:</th>
   </tr>
 <% for user in @users %>
   <tr>
     <td><%= link_to user.login, user %></td>
     <td><%= number_to_currency user.sold_for %></td>
+    <td><%= user.delivered_total_quantity %> <%= t('products') %></td>
   </tr>
 <% end %>
 </table>

@@ -1,0 +1,14 @@
+<h1><%= t('Editing') %> User</h1>
+
+<% form_for(@user) do |f| %>
+  <%= f.error_messages %>
+  
+  <%= render :partial => 'form', :locals => { :f => f } %> 
+
+  <p>
+    <%= f.submit t('Update') %>
+  </p>
+<% end %>
+
+&larr; <%= link_to t('Back'), users_path %> <%= t('or') %>
+<%= link_to t('Show'), @user %>
