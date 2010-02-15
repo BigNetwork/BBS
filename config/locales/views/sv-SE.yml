@@ -1,0 +1,33 @@
+"sv-SE":
+
+  # How should this file be structured? 
+  
+  # Like this?  
+  #  actionview:
+  #    views:
+  #      product_type:
+  #        index:
+  #          title: "Titel"
+  
+  # Or like this?
+  views:
+    layouts:
+      application:
+        menu:
+    carts:
+    deliveries:
+    product_types:
+      index:
+        title: "Alla varutyper"
+      show:
+        title: "{{name}}"
+      edit:
+        title: "Ändrar {{name}}"
+      new:
+        title: "Ny varutyp"
+    sessions:
+      new:
+        title: "Logga in"
+        explanation: "Använd samma uppgifter som till Winter/SummerGate-hemsidorna."
+    users:
+      

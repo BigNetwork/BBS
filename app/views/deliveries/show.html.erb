@@ -1,3 +1,13 @@
+<h1><%= Delivery.human_name.capitalize %> <%= @delivery.id %></h1>
 
-<%= link_to t('Edit'), edit_delivery_path(@delivery) %> |
+<% unless @delivery.products.nil? %>
+  <p><%= t('Delivered') %>: <%= @delivery.quantity %> <%= t('times') %> <%= link_to h(@delivery.product_type.name), @delivery.product_type %></p>
+<% end %>
+
+<% unless @delivery.user.nil? %>
+  <p>
+    <%= t('Delivered by') %>: <%= link_to h(@delivery.user.login), @delivery.user %>
+  </p>
+<% end %>
+
 &larr; <%= link_to t('Back'), deliveries_path %>

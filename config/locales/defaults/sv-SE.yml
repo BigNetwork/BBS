@@ -157,12 +157,6 @@
       #   user: "Dude"
       # will translate User model name to "Dude"
     
-    models:
-      delivery:
-        attributes:
-          created_at: "Skapades"
-          user_id: "Skapades av"
-    
     # Translate model attribute names. Used in Model.human_attribute_name(attribute).
     #attributes:
       # For example,

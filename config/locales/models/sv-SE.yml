@@ -1,0 +1,17 @@
+"sv-SE":
+  activerecord:
+    models:
+      cart_row: "rad i kundvagn"
+      cart: "kundvagn"
+      delivery: "leverans"
+      product: "produkt"
+      product_type:
+        one: "vara"
+        other: "{{count}} varor"
+      purchase: "köp"
+      user: "användare"
+      
+    attributes:
+      delivery:
+        created_at: "Skapades"
+        user_id: "Skapades av"

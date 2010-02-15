@@ -113,6 +113,8 @@
   Deliveries: "Leveranser"
   New delivery: "Ny leverans"
   Deliver: "Leverera"  
+  Delivered: "Levererades"
+  Delivered by: "Levererades av"
   
   # Users:
   All users: "Alla användare"
