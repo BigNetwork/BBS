@@ -63,6 +63,10 @@ input[type=submit]:hover{
     border-color: #fff;
 }
 
+input:-webkit-autofill{
+    color: #000;
+}
+
 form .explanation{
     color: #cc6;
     font-size: 85%;
