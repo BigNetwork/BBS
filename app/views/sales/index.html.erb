@@ -1,5 +1,5 @@
 <div id="sales_products">
-  <h2><%= t('products') %>:</h2>
+  <h2><%= t('.products_title') %>:</h2>
   <ul id="product_types">
   <% for product_type in @product_types %>
     <%= render :partial => 'product_type', :locals => { :product_type => product_type, :cart => @cart} %>
