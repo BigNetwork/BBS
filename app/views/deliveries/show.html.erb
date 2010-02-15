@@ -1,7 +1,9 @@
 <h1><%= Delivery.human_name.capitalize %> <%= @delivery.id %></h1>
 
+<p><%= t('Delivered') %>: <%= l @delivery.created_at, :format => :long %></p>
+
 <% unless @delivery.products.nil? %>
-  <p><%= t('Delivered') %>: <%= @delivery.quantity %> <%= t('times') %> <%= link_to h(@delivery.product_type.name), @delivery.product_type %></p>
+  <p><%= t('Contained') %>: <%= @delivery.quantity %> <%= t('times') %> <%= link_to h(@delivery.product_type.name), @delivery.product_type %></p>
 <% end %>
 
 <% unless @delivery.user.nil? %>

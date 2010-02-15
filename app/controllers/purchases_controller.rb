@@ -113,6 +113,8 @@ class PurchasesController < ApplicationController
               product = Product.find_by_product_type_id(cart_row.product_type, :conditions => { :purchase_id => nil} )
               unless product.nil?
                   product.purchase_id = @purchase.id
+                  #product.sold_for_price = product.product_type.standard_price # TODO: Handle different prices!
+                  purchase_price = product.product_type.purchase_price
                   product.save(false)
               else
                   # Problem, not enough products of that type available!

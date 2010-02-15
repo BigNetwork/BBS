@@ -1,5 +1,7 @@
 <h1><%= t("Purchase") %> <%= @purchase.id %></h1>
 
+<p><%= t('Purchased at') %>: <%= l @purchase.created_at, :format => :long %></p>
+
 <%= t('Came from Cart') %> <%= link_to "#{t('cart')} #{@purchase.cart.id}", @purchase.cart %>.
 
 <% if @purchase.products.empty? %>
