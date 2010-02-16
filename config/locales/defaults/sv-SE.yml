@@ -1,3 +1,7 @@
+# Swedish translation, by Johan Lundström (johanlunds@gmail.com), with parts taken
+# from http://github.com/daniel/swe_rails
+# updated by Sven Dahlstrand (sven.dahlstrand@gmail.com)
+
 "sv-SE":
   number:
     # Used in number_with_delimiter()

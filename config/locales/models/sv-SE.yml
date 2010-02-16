@@ -10,8 +10,12 @@
         other: "{{count}} varor"
       purchase: "köp"
       user: "användare"
-      
     attributes:
       delivery:
         created_at: "Skapades"
-        user_id: "Skapades av"
+        user_id: "Gjordes av"
+      purchase:
+        user_id: "Gjordes av"
+      user:
+        login: "användarnamn"
+        password: "lösenord"
