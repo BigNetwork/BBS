@@ -1,4 +1,4 @@
-<h1><%=h @product_type.name %></h1>
+<h1><%= t('.title', :name => @product_type.name) %></h1>
 <p>
   <b><%= t('product_type.description') %>:</b>
   <%=h @product_type.description %>

@@ -45,11 +45,6 @@
 
   # or we could use this structure:
   
-  sales: "Försäljning"
-  warehouse: "Lager"
-  administration: "Administration"
-  statistics: "Statistik"
-  
   product: "Vara"
   products: "Varor"
   
@@ -64,8 +59,6 @@
     row_sum: "Delsumma"
     product_type: "Vara"
     
-  purchase: "Försäljning"
-  purchases: "Historik"
   purchased: "Sålt"
   purchase_attributes:
     sum: "Summa"

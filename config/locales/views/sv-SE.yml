@@ -15,10 +15,33 @@
       title: "Ny varutyp"
   sales:
     index:
-      products_title: "Varor"
+      product_types_subtitle: "Varor"
+      cart_subtitle: "Beställning"
   sessions:
     new:
       title: "Logga in"
       explanation: "Använd samma uppgifter som till Winter/SummerGate-hemsidorna."
+  statistics:
+    index:
+      title: "Statistik"
+      sales_subtitle: "Försäljning"
+      bought_for: "Hur mycket har vi köpt för?"
+      sold_for: "Hur mycket har vi sålt för?"
+      result: "Resultat"
+      to_break_even: "Hur mycket mer måste vi sälja för att nå break-even (plus minus noll)?"
+      profit_subtitle: "Förtjänst"
+      so_far: "Hittills?"
+      if_we_sell_all: "Om vi säljer allt vi har lagt in i systemet?"
   users:
-    
+  
+  # And an exception to the rule:
+  menu:
+    sales: "Försäljning"
+    warehouse: "Lager"
+    history: "Historik"
+    statistics: "Statistik"
+    # And the submenus (another exception to the rule):
+    product_types: "Alla varutyper"
+    new_product_type: "Ny varutyp"
+    deliveries: "Alla leveranser"
+    new_delivery: "Ny leverans"

@@ -1,4 +1,4 @@
-<h1><%= t('Editing') %> <%= t('Product Type')%> <%= @product_type.name %></h1>
+<h1><%= t('.title', :name => @product_type.name) %></h1>
 
 <% form_for(@product_type) do |f| %>
   <%= f.error_messages %>
