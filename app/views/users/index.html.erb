@@ -2,15 +2,17 @@
 
 <table class="index_table">
   <tr>
-    <th><%= User.human_attribute_name('login') %>:</th>
-    <th><%= t('Sold for') %>:</th>
-    <th><%= t('Has delivered') %>:</th>
+    <th><%= User.human_attribute_name('login').capitalize %>:</th>
+    <th><%= User.human_attribute_name('has_done').capitalize %>:</th>
+    <th><%= User.human_attribute_name('sold_for').capitalize %>:</th>
+    <th><%= User.human_attribute_name('has_delivered').capitalize %>:</th>
   </tr>
 <% for user in @users %>
   <tr>
     <td><%= link_to user.login, user %></td>
+    <td><%= user.purchases.length %> <%= Purchase.human_name %></td>
     <td><%= number_to_currency user.sold_for %></td>
-    <td><%= user.delivered_total_quantity %> <%= t('products') %></td>
+    <td><%= ProductType.human_name :count => user.delivered_total_quantity %></td>
   </tr>
 <% end %>
 </table>

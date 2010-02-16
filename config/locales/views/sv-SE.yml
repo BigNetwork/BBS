@@ -6,6 +6,9 @@
   deliveries:
     index:
       title: "Alla leveranser"
+    edit:
+    new:
+    show:
   layouts:
     application:
       title: "BBS"
@@ -21,9 +24,17 @@
       title: "Ändrar {{name}}"
     new:
       title: "Ny varutyp"
+  products:
+    index:
+    edit:
+    new:
+    show:
   purchases:
     index:
       title: "Historik"
+    edit:
+    new:
+    show:
   sales:
     index:
       title: "Försäljning"
@@ -44,7 +55,9 @@
       profit_subtitle: "Förtjänst"
       so_far: "Hittills?"
       if_we_sell_all: "Om vi säljer allt vi har lagt in i systemet?"
-  users:
+  users:    
+    index:
+    show:
   
   # And an exception to the rule:
   menu:

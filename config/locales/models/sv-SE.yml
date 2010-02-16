@@ -9,7 +9,7 @@
         zero: "0 varor"
         one: "1 vara"
         many: "{{count}} varor"
-        other: "varor"
+        other: "{{count}} varor"
       purchase: "köp"
       user: "användare"
     attributes:
@@ -24,3 +24,6 @@
       user:
         login: "användarnamn"
         password: "lösenord"
+        has_done: "har sålt"
+        sold_for: "har sålt för"
+        has_delivered: "har levererat"
