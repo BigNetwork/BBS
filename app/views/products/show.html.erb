@@ -1,4 +1,4 @@
-<h1><%= t('product') %> <%= @product.id %></h1>
+<h1><%= Product.human_name.capitalize %> <%= @product.id %></h1>
 <p>
   <b><%= t("Product Type") %>:</b>
   <%= link_to h(@product.product_type.name), @product.product_type %>
@@ -6,7 +6,15 @@
 
 <% unless @product.purchase.nil? %>
 <p>
-  The product was bought with <%= link_to "#{t('purchase')} #{@product.purchase.id}", @product.purchase %>.
+  <%= Product.human_attribute_name('bought_with') %> <%= link_to "#{Purchase.human_name} #{@product.purchase.id}", @product.purchase %>.
+</p>
+
+<p>
+  <%= Product.human_attribute_name('purchase_price') %>: <%= number_to_currency @product.purchase_price %>
+</p>
+
+<p>
+  <%= Product.human_attribute_name('sold_for_price') %>: <%= number_to_currency @product.sold_for_price %>
 </p>
 <% end %>
 

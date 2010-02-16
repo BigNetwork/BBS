@@ -4,7 +4,7 @@
       cart_row: "rad i kundvagn"
       cart: "kundvagn"
       delivery: "leverans"
-      product: "produkt"
+      product: "vara"
       product_type:
         zero: "0 varor"
         one: "1 vara"
