@@ -90,8 +90,9 @@
   Listing carts: "Alla kundvagnar"
   
   # Purchases:
-  Purchase: "Försäljning"
-  Listing purchases: "Alla försäljningar"
+  Purchase: "Köp"
+  All purchases: "Alla köp"
+  Listing purchases: "Alla köp"
   Items sold: "Varor sålda"
   Purchased at: "Såldes"
   Came from Cart: "Kom från beställning"
@@ -102,6 +103,7 @@
   Delivery: "Leverans"
   Deliveries: "Leveranser"
   New delivery: "Ny leverans"
+  All deliveries: "Alla leveranser"
   Deliver: "Leverera"  
   Delivered: "Levererades"
   Delivered by: "Levererades av"
