@@ -6,11 +6,16 @@
       delivery: "leverans"
       product: "produkt"
       product_type:
-        one: "vara"
-        other: "{{count}} varor"
+        zero: "0 varor"
+        one: "1 vara"
+        many: "{{count}} varor"
+        other: "varor"
       purchase: "köp"
       user: "användare"
     attributes:
+      cart_row:
+        price_each: "styckpris"
+        sum: "delsumma"
       delivery:
         created_at: "Skapades"
         user_id: "Gjordes av"

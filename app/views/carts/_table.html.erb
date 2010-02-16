@@ -1,9 +1,9 @@
 <table id="cart_table">
   <tr class="headers">
-    <th><%= t('cart_row_attributes.product_type') %>:</th>
+    <th><%= ProductType.human_name.capitalize %>:</th>
 <!--    <th class="quantity"><%= t('Quantity') %>:</th>-->
-    <th class="money"><%= t('Price each') %>:</th>
-    <th class="money"><%= t('cart_row_attributes.row_sum') %>:</th>
+    <th class="money"><%= CartRow.human_attribute_name('price_each').capitalize %>:</th>
+    <th class="money"><%= CartRow.human_attribute_name('sum').capitalize %>:</th>
     <th></th>
   </tr>
 <% for cart_row in @cart.cart_rows %>
@@ -18,7 +18,7 @@
   </tr>
 <% end %>
   <tr class="sum">
-    <td><%= @cart.total_quantity %> <%= t('Products').downcase %></td>
+    <td><%= ProductType.human_name(:count => @cart.total_quantity) %></td>
     <th></th>
     <td class="money"><%= number_to_currency @cart.sum %></td>
     <td></td>

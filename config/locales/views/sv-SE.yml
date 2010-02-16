@@ -4,17 +4,29 @@
 #      whatyouwant: "whatyouwant in another language"
   carts:
   deliveries:
+    index:
+      title: "Alla leveranser"
+  layouts:
+    application:
+      title: "BBS"
+      logged_in_as: "Inloggad som"
+      logout: "Logga ut"
+      login: "Logga in"
   product_types:
     index:
       title: "Alla varutyper"
     show:
-      title: "{{name}}"
+      title: ""
     edit:
       title: "Ändrar {{name}}"
     new:
       title: "Ny varutyp"
+  purchases:
+    index:
+      title: "Historik"
   sales:
     index:
+      title: "Försäljning"
       product_types_subtitle: "Varor"
       cart_subtitle: "Beställning"
   sessions:
