@@ -57,7 +57,10 @@
       if_we_sell_all: "Om vi säljer allt vi har lagt in i systemet?"
   users:    
     index:
+      title: "Alla användare"
     show:
+      title: "Visar användare"
+      other_subtitle: "Övrigt"
   
   # And an exception to the rule:
   menu:

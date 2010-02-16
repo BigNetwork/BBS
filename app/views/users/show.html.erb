@@ -1,16 +1,22 @@
 <h1><%= @user.login %></h1>
 
 <% unless @user.purchases.nil? %>
-  <h3><%= t('Sold for') %> <%= number_to_currency @user.sold_for %>:</h3>
+  <h3>
+    <%= User.human_attribute_name('sold_for').capitalize %>
+    <%= number_to_currency @user.sold_for %>:
+  </h3>
   <ul>
     <% for purchase in @user.purchases %>
-      <li><%= link_to "#{t('purchase')} #{purchase.id}", purchase %></li>
+      <li><%= link_to "#{Purchase.human_name.capitalize} #{purchase.id}", purchase %></li>
     <% end %>
   </ul>  
 <% end %>
 
 <% unless @user.deliveries.nil? %>
-  <h3><%= t('Has delivered') %> <%= @user.delivered_total_quantity %> <%= t('products') %>:</h3>
+  <h3>
+    <%= User.human_attribute_name('has_delivered').capitalize %>
+    <%= ProductType.human_name :count => @user.delivered_total_quantity %>:
+  </h3>
   <ul>
     <% for delivery in @user.deliveries %>
       <li><%= link_to "#{t('delivery')} #{delivery.id}", delivery %></li>
@@ -18,7 +24,7 @@
   </ul>
 <% end %>
 
-<h3>Övrigt:</h3>
+<h3><%= t('.other_subtitle') %>:</h3>
 
 <% unless @user.bls_id.nil? %>
   <%= link_to "#{@user.login} på WinterGate", "http://www.wintergate.se/index.php?controller=user&action=show&id=#{@user.bls_id}" %>
