@@ -6,12 +6,12 @@
   <% end %>
   </ul>
 
-  <p>
+  <div id="price_selector">
     <%= t('.prices_for') %>:
     <%= link_to_if (session[:price_name] != 'standard'), t('.participants'), { :controller => :sales, :action => :index, :price => 'standard'} %>
     eller
     <%= link_to_if (session[:price_name] != 'crew'), t('.crew'), { :controller => :sales, :action => :index, :price => 'crew'} %>
-  </p>
+  </div>
 </div>
 
 <div id="sales_cart">

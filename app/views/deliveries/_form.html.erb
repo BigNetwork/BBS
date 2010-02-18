@@ -1,9 +1,9 @@
-<p>
-  <%= f.label :product_type_id, t('Product Type')+':' %><br/>
+<li>
+  <%= f.label :product_type_id, t('Product Type')+':' %>
   <%= f.collection_select :product_type_id, ProductType.all(:include => :children, :order => :name), :id, :name %>
   <%# TODO: Only allow the user to select actual products for delivery, not special/grouped/combo products. %>
-</p>
-<p>
-  <%= f.label :quantity, t('Quantity')+':' %><br/>
+</li>
+<li>
+  <%= f.label :quantity, t('Quantity')+':' %>
   <%= f.text_field :quantity %>
-</p>
+</li>

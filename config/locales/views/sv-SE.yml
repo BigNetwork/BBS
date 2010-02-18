@@ -72,7 +72,7 @@
     history: "Historik"
     statistics: "Statistik"
     # And the submenus (another exception to the rule):
-    product_types: "Alla varutyper"
+    product_types: "Varutyper"
     new_product_type: "Ny varutyp"
-    deliveries: "Alla leveranser"
+    deliveries: "Leveranser"
     new_delivery: "Ny leverans"

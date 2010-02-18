@@ -73,6 +73,35 @@ input:-webkit-autofill{
 form .explanation{
     color: #cc6;
     font-size: 85%;
+    margin: 2em 0 2em 13em;
+}
+
+form ol, form ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+form ol li, form ul li{
+    margin-bottom: 1em;
+}
+
+label{
+    display: block;
+    float: left;
+    margin-right: 1em;
+    line-height: 2.6em;
+    text-align: right;
+    width: 10em;
+}
+
+input, textarea{
+    width: 20em;
+}
+
+input[type=button], input[type=submit]{
+    margin-left: 11em;
+    width: 5em;
 }
 
 table tr.odd{
@@ -220,6 +249,7 @@ table.index_table td.edit{
 }
 
 #menu li a{
+    -webkit-border-top-left-radius: 0.7em;
     background: #1b1b1b;
     border: 1px solid #2a2a2a;
     border-bottom-color: #333;
@@ -236,7 +266,7 @@ table.index_table td.edit{
 }
 
 #menu li a.current{
-    background: #1e1e1e;
+    background: #222 /*#1e1e1e*/;
     border: 1px solid #333;
     border-bottom-color: #222;
 }
@@ -279,6 +309,7 @@ table.index_table td.edit{
 #page{
     -webkit-border-radius: 0.7em;
     -webkit-border-top-left-radius: 0;
+    -webkit-border-top-right-radius: 0;
     background: #222;
     border: 1px solid #333;
     clear: both;
@@ -401,6 +432,10 @@ table#cart_table span.times{
     display: block;
     font-size: 90%;
     margin-top: 0.5em;
+}
+
+#price_selector{
+    clear: left;
 }
 
 #sales_cart{

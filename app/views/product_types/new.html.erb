@@ -2,12 +2,16 @@
 
 <% form_for(@product_type) do |f| %>
   <%= f.error_messages %>
+  
+  <ol>
+  
+    <%= render :partial => 'form', :locals => { :f => f } %>
 
-  <%= render :partial => 'form', :locals => { :f => f } %>
-
-  <p>
-    <%= f.submit t('Create') %>
-  </p>
+    <li>
+      <%= f.submit t('Create') %>
+    </li>
+  
+  </ol>
 <% end %>
 
 &larr; <%= link_to t('All Product Types'), product_types_path %>

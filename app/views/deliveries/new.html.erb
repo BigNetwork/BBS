@@ -3,11 +3,16 @@
 <% form_for(@delivery) do |f| %>
   <%= f.error_messages %>
 
+  <ol>
+
   <%= render :partial => 'form', :locals => { :f => f } %> 
 
-  <p>
+  <li>
     <%= f.submit t('Create') %>
-  </p>
+  </li>
+  
+  </ol>
+  
 <% end %>
 
 &larr; <%= link_to t('All deliveries'), deliveries_path %>
