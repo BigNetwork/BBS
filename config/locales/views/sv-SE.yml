@@ -42,7 +42,10 @@
       prices_for: "Visar priser för"
       participants: "Deltagare"
       crew: "Crew"
+      standard_price: "Deltagarpriser"
+      crew_price: "Crewpriser"
       cart_subtitle: "Beställning"
+      change_prices: "Ändra priser"
   sessions:
     new:
       title: "Logga in"

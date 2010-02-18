@@ -1,22 +1,32 @@
 <div id="sales_products">
-  <h2><%= t('.product_types_subtitle') %>:</h2>
+
+  <div id="price_selector">
+    <%- form_tag sales_path, {:method => :get, :id => 'price_swapping_form'} do -%>
+      <label>
+        <%= radio_button_tag 'price', 'standard', (true if (session[:price_name] == 'standard')), :onclick => '$("price_swapping_form").submit();' %>
+        <%= t('.crew_price') %>
+      </label>
+      <label>
+        <%= radio_button_tag 'price', 'crew', (true if (session[:price_name] == 'crew')), :onclick => '$("price_swapping_form").submit();' %>
+        <%= t('.standard_price') %>
+      </label>
+      <%= submit_tag t('.change_prices') %>
+    <%- end -%>
+  </div>
+
+  <h1><%= t('.product_types_subtitle') %>:</h1>
+  
   <ul id="product_types">
   <% for product_type in @product_types %>
     <%= render :partial => 'product_type', :locals => { :product_type => product_type, :cart => @cart} %>
   <% end %>
   </ul>
-
-  <div id="price_selector">
-    <%= t('.prices_for') %>:
-    <%= link_to_if (session[:price_name] != 'standard'), t('.participants'), { :controller => :sales, :action => :index, :price => 'standard'} %>
-    eller
-    <%= link_to_if (session[:price_name] != 'crew'), t('.crew'), { :controller => :sales, :action => :index, :price => 'crew'} %>
-  </div>
+  
 </div>
 
 <div id="sales_cart">
 
-<h2><%= t('.cart_subtitle') %>:</h2>
+<h1><%= t('.cart_subtitle') %> #<%= @cart.id %>:</h1>
 
 <%= render :partial => '/carts/table', :locals => { :cart => @cart } %>
 

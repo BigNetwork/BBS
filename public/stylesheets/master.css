@@ -76,17 +76,20 @@ form .explanation{
     margin: 2em 0 2em 13em;
 }
 
-form ol, form ul{
+form ol, 
+form ul{
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
-form ol li, form ul li{
+form ol li, 
+form ul li{
     margin-bottom: 1em;
 }
 
-label{
+form ol li label,
+form ul li label{
     display: block;
     float: left;
     margin-right: 1em;
@@ -95,13 +98,17 @@ label{
     width: 10em;
 }
 
-input, textarea{
+input[type=text], 
+input[type=password], 
+textarea{
     width: 20em;
 }
 
-input[type=button], input[type=submit]{
+form ol li input[type=button], 
+form ol li input[type=submit],
+form ul li input[type=button], 
+form ul li input[type=submit]{
     margin-left: 11em;
-    width: 5em;
 }
 
 table tr.odd{
@@ -110,7 +117,8 @@ table tr.odd{
 table tr.even{
     background: #222;
 }
-table td.money, table th.money{
+table td.money, 
+table th.money{
     text-align: right !important;
 }
 table .money.negative{
@@ -356,6 +364,7 @@ table#cart_table span.times{
 }
 
 #sales_products{
+    border-right: 1px solid #333;
     float: left;
     overflow: auto;
     width: 55%;
@@ -435,12 +444,30 @@ table#cart_table span.times{
 }
 
 #price_selector{
-    clear: left;
+    float: right;
+    margin: 2em 2em 0 0;
+}
+
+#price_selector form#price_swapping_form{
+    
+}
+
+#price_swapping_form input[type=radio]{
+    cursor: pointer;
+    margin-left: 1em;
+}
+
+#price_swapping_form label{
+    cursor: pointer;
+}
+
+#price_swapping_form input[type=submit]{
+    display: none;
 }
 
 #sales_cart{
     float: right;
-    width: 45%;
+    width: 43%;
 }
 
 #sales_cart input[type=submit]{
