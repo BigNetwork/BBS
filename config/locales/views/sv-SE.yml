@@ -5,7 +5,8 @@
   carts:
   deliveries:
     index:
-      title: "Alla leveranser"
+      title: "Alla leveranser:"
+      no_deliveries_yet: "Inga leveranser har gjorts ännu."
     edit:
     new:
     show:
@@ -17,7 +18,9 @@
       login: "Logga in"
   product_types:
     index:
-      title: "Alla varutyper"
+      title: "Alla varutyper:"
+      no_product_types: "Inga varutyper inlagda ännu."
+      new_product_type: "Ny varutyp"
     show:
       title: ""
     edit:
@@ -31,7 +34,8 @@
     show:
   purchases:
     index:
-      title: "Historik"
+      title: "Alla gjorda köp:"
+      no_purchases_made: "Inga köp har gjorts ännu."
     edit:
     new:
     show:
@@ -46,6 +50,12 @@
       crew_price: "Crewpriser"
       cart_subtitle: "Beställning"
       change_prices: "Ändra priser"
+      welcome_title: "Är du redo att ta en oskuld?"
+      welcome_text: "Som du ser så är systemet tomt. Gör såhär för att komma igång:"
+      add_some_product_types: "Lägg till en varutyp"
+      register_some_deliveries: "Registrera en leverans"
+      good_to_go: "Börja sälj!"
+      
   sessions:
     new:
       title: "Logga in"

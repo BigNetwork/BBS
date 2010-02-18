@@ -9,7 +9,9 @@ class SalesController < ApplicationController
     elsif params[:price] == 'standard'
       session[:price_name] = 'standard'
     else
-      session[:price_name] = 'standard'
+      if session[:price_name] != 'crew' && session[:price_name] != 'standard'
+        session[:price_name] = 'standard'
+      end
     end
     
     # Get us a cart:

@@ -218,6 +218,11 @@ table.index_table td.edit{
   padding: 5px;
 }
 
+#errorExplanation ul{
+    margin: 1em;
+    padding: 0 1em;
+}
+
 #errorExplanation ul li {
   color: #333;
   font-size: 12px;
@@ -361,6 +366,12 @@ table#cart_table tr.sum th, table#cart_table tr.sum td{
 table#cart_table span.times{
     color: #444;
     margin: 0 0.4em;
+}
+
+ol#welcome_list li{
+    font-size: 130%;
+    letter-spacing: 1px;
+    margin: 2em 0 1em 0;
 }
 
 #sales_products{

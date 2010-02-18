@@ -1,25 +1,32 @@
 <h1><%= t('.title') %></h1>
 
-<table class="index_table">
-  <tr>
-    <th><%= t('delivery') %></th>
-    <th><%= t('delivery_attributes.delivered') %>:</th>
-    <th><%= Delivery.human_attribute_name('created_at')%><%#t('delivery_attributes.created_at') %>:</th>
-    <th><%= Delivery.human_attribute_name('user_id') %>:</th>
-  </tr>
+<% if @deliveries.empty? %>
+  <p>
+    <%= t('.no_deliveries_yet') %>
+  </p>
+<% else %>
 
-<% @deliveries.each do |delivery| %>
-  <tr class="<%= cycle :odd, :even %>">
-    <td><%= link_to "#{t('delivery')} #{delivery.id}", delivery %></td>
-    <td><%= delivery.quantity %> x <%= link_to delivery.product_type.name, delivery.product_type %></td>
-    <td><%= l delivery.created_at, :format => :short %></td>
-    <td>
-      <%= link_to delivery.user.login, delivery.user unless delivery.user.nil? %>
-    </td>
-    <td class="destroy"><%= link_to t('Destroy'), delivery, :confirm => t('Are you sure?'), :method => :delete %></td>
-  </tr>
+  <table class="index_table">
+    <tr>
+      <th><%= t('delivery') %></th>
+      <th><%= t('delivery_attributes.delivered') %>:</th>
+      <th><%= Delivery.human_attribute_name('created_at')%><%#t('delivery_attributes.created_at') %>:</th>
+      <th><%= Delivery.human_attribute_name('user_id') %>:</th>
+    </tr>
+  <% @deliveries.each do |delivery| %>
+    <tr class="<%= cycle :odd, :even %>">
+      <td><%= link_to "#{t('delivery')} #{delivery.id}", delivery %></td>
+      <td><%= delivery.quantity %> x <%= link_to delivery.product_type.name, delivery.product_type %></td>
+      <td><%= l delivery.created_at, :format => :short %></td>
+      <td>
+        <%= link_to delivery.user.login, delivery.user unless delivery.user.nil? %>
+      </td>
+      <td class="destroy"><%= link_to t('Destroy'), delivery, :confirm => t('Are you sure?'), :method => :delete %></td>
+    </tr>
+  <% end %>
+  </table>
+  
 <% end %>
-</table>
 
 <br />
 

@@ -1,58 +1,70 @@
-<div id="sales_products">
+<% if @product_types.empty? %>
+  <h1><%= t('.welcome_title') %></h1>
+  <p>
+    <%= t('.welcome_text') %>
+  </p>
+  <ol id="welcome_list">
+    <li><%= t('.add_some_product_types') %></li>
+    <li><%= t('.register_some_deliveries') %></li>
+    <li><%= t('.good_to_go') %></li>
+  </ol>
+<% else %>
+  <div id="sales_products">
 
-  <div id="price_selector">
-    <%- form_tag sales_path, {:method => :get, :id => 'price_swapping_form'} do -%>
-      <label>
-        <%= radio_button_tag 'price', 'standard', (true if (session[:price_name] == 'standard')), :onclick => '$("price_swapping_form").submit();' %>
-        <%= t('.crew_price') %>
-      </label>
-      <label>
-        <%= radio_button_tag 'price', 'crew', (true if (session[:price_name] == 'crew')), :onclick => '$("price_swapping_form").submit();' %>
-        <%= t('.standard_price') %>
-      </label>
-      <%= submit_tag t('.change_prices') %>
-    <%- end -%>
+    <div id="price_selector">
+      <%- form_tag sales_path, {:method => :get, :id => 'price_swapping_form'} do -%>
+        <label>
+          <%= radio_button_tag 'price', 'standard', (true if (session[:price_name] == 'standard')), :onclick => '$("price_swapping_form").submit();' %>
+          <%= t('.standard_price') %>
+        </label>
+        <label>
+          <%= radio_button_tag 'price', 'crew', (true if (session[:price_name] == 'crew')), :onclick => '$("price_swapping_form").submit();' %>
+          <%= t('.crew_price') %>
+        </label>
+        <%= submit_tag t('.change_prices') %>
+      <%- end -%>
+    </div>
+
+    <h1><%= t('.product_types_subtitle') %>:</h1>
+
+    <ul id="product_types">
+    <% for product_type in @product_types %>
+      <%= render :partial => 'product_type', :locals => { :product_type => product_type, :cart => @cart} %>
+    <% end %>
+    </ul>
+  
   </div>
 
-  <h1><%= t('.product_types_subtitle') %>:</h1>
-  
-  <ul id="product_types">
-  <% for product_type in @product_types %>
-    <%= render :partial => 'product_type', :locals => { :product_type => product_type, :cart => @cart} %>
+  <div id="sales_cart">
+
+  <h1><%= t('.cart_subtitle') %> #<%= @cart.id %>:</h1>
+
+  <%= render :partial => '/carts/table', :locals => { :cart => @cart } %>
+
+  <% form_for(@purchase) do |f| %>
+    <%= f.error_messages %>
+
+    <%#= render :partial => 'form', :locals => { :f => f } %> 
+
+    <%= f.hidden_field :cart_id, { :value => @cart.id } %>
+
+  <!--
+    <p>
+      <label>
+        <%#= f.radio_button :price_name, "standard", :checked => true %>
+        Standard
+      </label>
+      <label>
+        <%#= f.radio_button :price_name, "crew" %>
+        Crew
+      </label>
+    </p>
+  -->
+
+    <p>
+      <%= f.submit t('Buy') %>
+    </p>
   <% end %>
-  </ul>
-  
-</div>
 
-<div id="sales_cart">
-
-<h1><%= t('.cart_subtitle') %> #<%= @cart.id %>:</h1>
-
-<%= render :partial => '/carts/table', :locals => { :cart => @cart } %>
-
-<% form_for(@purchase) do |f| %>
-  <%= f.error_messages %>
-
-  <%#= render :partial => 'form', :locals => { :f => f } %> 
-
-  <%= f.hidden_field :cart_id, { :value => @cart.id } %>
-
-<!--
-  <p>
-    <label>
-      <%#= f.radio_button :price_name, "standard", :checked => true %>
-      Standard
-    </label>
-    <label>
-      <%#= f.radio_button :price_name, "crew" %>
-      Crew
-    </label>
-  </p>
--->
-
-  <p>
-    <%= f.submit t('Buy') %>
-  </p>
+  </div>
 <% end %>
-
-</div>

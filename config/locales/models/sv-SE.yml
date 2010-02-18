@@ -17,6 +17,8 @@
         price_each: "styckpris"
         sum: "delsumma"
       delivery:
+        quantity: "Antal"
+        product_type_id: "Varutyp"
         created_at: "Skapades"
         user_id: "Gjordes av"
       product:

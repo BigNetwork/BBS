@@ -1,5 +1,13 @@
 <h1><%= t('.title') %></h1>
 
+<% if @product_types.empty? %>
+  
+  <p>
+    <%= t('.no_product_types') %>
+  </p>
+  
+<% else %>
+
 <table class="index_table">
   <tr>
     <th><%= t('product_type.name') %></th>
@@ -34,6 +42,8 @@
 <% end %>
 </table>
 
+<% end %>
+
 <br />
 
-<%= link_to "#{t('New')} #{ProductType.human_name}", new_product_type_path %>
+<%= link_to t('.new_product_type'), new_product_type_path %>
