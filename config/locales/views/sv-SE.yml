@@ -24,7 +24,7 @@
     show:
       title: ""
     edit:
-      title: "Ändrar {{name}}"
+      title: "Ändrar "
     new:
       title: "Ny varutyp"
   products:

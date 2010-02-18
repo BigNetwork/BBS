@@ -1,13 +1,18 @@
-<h1><%= t('.title', :name => @product_type.name) %></h1>
+<h1><%= t('.title') %> <%= h @product_type.name %></h1>
 
 <% form_for(@product_type) do |f| %>
   <%= f.error_messages %>
 
-  <%= render :partial => 'form', :locals => { :f => f } %>
+  <ol>
   
-  <p>
-    <%= f.submit t('Update') %>
-  </p>
+    <%= render :partial => 'form', :locals => { :f => f } %>
+
+    <li>
+      <%= f.submit t('Create') %>
+    </li>
+  
+  </ol>
+  
 <% end %>
 
 &larr; <%= link_to t('Back'), product_types_path %> <%= t('or') %>
