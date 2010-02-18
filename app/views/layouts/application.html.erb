@@ -7,8 +7,8 @@
   <title><%= t("#{controller.controller_name}.#{controller.action_name}.title") %> - <%= t('.title') %></title>
   <%= stylesheet_link_tag 'master' %>
   <%= stylesheet_link_tag 'prototip' %>
-  <%= javascript_include_tag :all, :cache => true %>
-  <%= javascript_include_tag 'prototip/prototip.js', :cache => true %>
+  <%= javascript_include_tag :all %>
+  <%= javascript_include_tag 'prototip/prototip.js' %>
 </head>
 <body class="<%= "#{controller.controller_name} #{controller.action_name}" %>">
 
