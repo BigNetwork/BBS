@@ -5,6 +5,13 @@
     <%= render :partial => 'product_type', :locals => { :product_type => product_type, :cart => @cart} %>
   <% end %>
   </ul>
+
+  <p>
+    <%= t('.prices_for') %>:
+    <%= link_to_if (session[:price_name] != 'standard'), t('.participants'), { :controller => :sales, :action => :index, :price => 'standard'} %>
+    eller
+    <%= link_to_if (session[:price_name] != 'crew'), t('.crew'), { :controller => :sales, :action => :index, :price => 'crew'} %>
+  </p>
 </div>
 
 <div id="sales_cart">

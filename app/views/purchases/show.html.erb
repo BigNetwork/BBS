@@ -1,8 +1,20 @@
 <h1><%= t("Purchase") %> <%= @purchase.id %></h1>
 
-<p><%= t('Purchased at') %>: <%= l @purchase.created_at, :format => :long %></p>
+<p>
+  <%= t('Purchased at') %>: <%= l @purchase.created_at, :format => :long %>
+</p>
 
-<%= t('Came from Cart') %> <%= link_to "#{t('cart')} #{@purchase.cart.id}", @purchase.cart %>.
+<p>
+  <%= t('Came from Cart') %> <%= link_to "#{t('cart')} #{@purchase.cart.id}", @purchase.cart %>.
+</p>
+
+<p>
+  <%= t('sold_price_name') %>: <%= t("#{@purchase.price_name}_price") %>
+</p>
+
+<p>
+  <%= Purchase.human_attribute_name('user_id') %>: <%= link_to @purchase.user.login, @purchase.user %>
+</p>
 
 <% if @purchase.products.empty? %>
   

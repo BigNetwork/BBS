@@ -19,8 +19,13 @@
       delivery:
         created_at: "Skapades"
         user_id: "Gjordes av"
+      product:
+        bought_with: "Köptes med"
+        sold_for_price: "Såldes för"
+        purchase_price: "Köptes in för"
       purchase:
-        user_id: "Gjordes av"
+        created_at: "När"
+        user_id: "Såldes av"
       user:
         login: "användarnamn"
         password: "lösenord"

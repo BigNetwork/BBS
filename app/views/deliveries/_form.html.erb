@@ -1,6 +1,6 @@
 <p>
   <%= f.label :product_type_id, t('Product Type')+':' %><br/>
-  <%= f.collection_select :product_type_id, ProductType.all(:include => :children), :id, :name %>
+  <%= f.collection_select :product_type_id, ProductType.all(:include => :children, :order => :name), :id, :name %>
   <%# TODO: Only allow the user to select actual products for delivery, not special/grouped/combo products. %>
 </p>
 <p>

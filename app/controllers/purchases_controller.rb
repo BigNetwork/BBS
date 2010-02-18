@@ -44,13 +44,14 @@ class PurchasesController < ApplicationController
   # POST /purchases.xml
   def create
     @purchase = Purchase.new(params[:purchase])
+    @purchase.price_name = session[:price_name]
     if logged_in?
       @purchase.user_id = current_user.id
     end
 
     respond_to do |format|
       if @purchase.save
-        flash[:notice] = 'Purchase was successfully created.'
+        flash[:notice] = t('Purchase was successfully created')
         
         bind_products
         
@@ -70,7 +71,7 @@ class PurchasesController < ApplicationController
 
     respond_to do |format|
       if @purchase.update_attributes(params[:purchase])
-        flash[:notice] = 'Purchase was successfully updated.'
+        flash[:notice] = t('Purchase was successfully updated.')
         format.html { redirect_to(@purchase) }
         format.xml  { head :ok }
       else
@@ -113,7 +114,10 @@ class PurchasesController < ApplicationController
               product = Product.find_by_product_type_id(cart_row.product_type, :conditions => { :purchase_id => nil} )
               unless product.nil?
                   product.purchase_id = @purchase.id
-                  product.sold_for_price = product.product_type.standard_price # TODO: Handle different prices!
+                  # FIXME: This is EXTREMELY ugly (with dynamic variable names). And not to say inreliable.
+                  if @purchase.price_name == 'standard' || @purchase.price_name == 'crew'
+                    product.sold_for_price = product.product_type.send("#{ @purchase.price_name }_price")
+                  end
                   product.purchase_price = product.product_type.purchase_price
                   product.save(false)
               else

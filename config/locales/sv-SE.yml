@@ -4,6 +4,7 @@
   Show: "Visa"
   Edit: "Ändra"
   Destroy: "X"
+  Undo: "Ångra"
   New: "Ny"
   Index: "Alla"
   Create: "Skapa"
@@ -98,6 +99,10 @@
   Came from Cart: "Kom från beställning"
   Products sold in this purchase: "Varor sålda i denna försäljning"
   Price name: "Pris"
+  Purchase was successfully created: "Köpet gick igenom!"
+  sold_price_name: "Såldes för"
+  standard_price: "Deltagarpris"
+  crew_price: "Crewpris"
   
   # Deliveries:
   Delivery: "Leverans"

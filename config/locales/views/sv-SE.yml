@@ -39,6 +39,9 @@
     index:
       title: "Försäljning"
       product_types_subtitle: "Varor"
+      prices_for: "Visar priser för"
+      participants: "Deltagare"
+      crew: "Crew"
       cart_subtitle: "Beställning"
   sessions:
     new:

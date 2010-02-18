@@ -12,7 +12,13 @@
     <td>
       <%= cart_row.quantity %><span class="times"><%= t('times') %></span><%= link_to h(cart_row.product_type.name), cart_row.product_type %>
     </td>
-    <td class="money"><%= number_to_currency cart_row.product_type.standard_price %></td>
+    <td class="money">
+      <% if @cart.price_name == 'standard' %>
+        <%= number_to_currency cart_row.product_type.standard_price %>
+      <% elsif @cart.price_name == 'crew' %>
+        <%= number_to_currency cart_row.product_type.crew_price %>
+      <% end %>
+    </td>
     <td class="money"><%= number_to_currency cart_row.sum %></td>
     <td class="destroy"><%= link_to t('Destroy'), cart_row, :method => :delete %></td>
   </tr>

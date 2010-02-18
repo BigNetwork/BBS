@@ -8,7 +8,13 @@ class Purchase < ActiveRecord::Base
     theSum = 0.0
     
     for product in products
-      theSum += product.product_type.standard_price
+      if price_name == 'standard'
+        theSum += product.product_type.standard_price
+      elsif price_name == 'crew'
+        theSum += product.product_type.crew_price
+      else
+        #theSum += product.product_type.standard_price
+      end
     end
     
     theSum
