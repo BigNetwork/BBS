@@ -17,7 +17,7 @@
           <%= radio_button_tag 'price', 'standard', (true if (session[:price_name] == 'standard')), :onclick => '$("price_swapping_form").submit();' %>
           <%= t('.standard_price') %>
         </label>
-        <label>
+        <label id="standard_price_label">
           <%= radio_button_tag 'price', 'crew', (true if (session[:price_name] == 'crew')), :onclick => '$("price_swapping_form").submit();' %>
           <%= t('.crew_price') %>
         </label>
@@ -47,19 +47,6 @@
     <%#= render :partial => 'form', :locals => { :f => f } %> 
 
     <%= f.hidden_field :cart_id, { :value => @cart.id } %>
-
-  <!--
-    <p>
-      <label>
-        <%#= f.radio_button :price_name, "standard", :checked => true %>
-        Standard
-      </label>
-      <label>
-        <%#= f.radio_button :price_name, "crew" %>
-        Crew
-      </label>
-    </p>
-  -->
 
     <p>
       <%= f.submit t('Buy') %>

@@ -4,8 +4,17 @@
         <%= render :partial => 'product_type_button_content', :locals => { :product_type => product_type } %>
       <% end %>
     <% else %>
-      <div class="product_type_button">
+      <div class="product_type_button" id="product_type_button_<%= product_type.id %>">
         <%= render :partial => 'product_type_button_content', :locals => { :product_type => product_type } %>
       </div>
+      <script type="text/javascript" charset="utf-8">
+        new Tip(product_type_button_<%= product_type.id %>, '', {
+          title: 'Slut i lager',
+          style: 'darkgrey',
+          stem: 'topLeft',
+          hook: { tip: 'topLeft', mouse: false },
+          offset: { x: 20, y: 90 }
+        });
+      </script>
     <% end %>
 </li>

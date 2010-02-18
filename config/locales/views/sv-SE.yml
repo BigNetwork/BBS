@@ -64,7 +64,7 @@
     index:
       title: "Statistik"
       sales_subtitle: "Försäljning"
-      bought_for: "Hur mycket har vi köpt för?"
+      bought_for: "Hur mycket har vi köpt in för?"
       sold_for: "Hur mycket har vi sålt för?"
       result: "Resultat"
       to_break_even: "Hur mycket mer måste vi sälja för att nå break-even (plus minus noll)?"
