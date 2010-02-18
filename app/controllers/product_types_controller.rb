@@ -47,8 +47,8 @@ class ProductTypesController < ApplicationController
 
     respond_to do |format|
       if @product_type.save
-        flash[:notice] = 'ProductType was successfully created.'
-        format.html { redirect_to(@product_type) }
+        flash[:notice] = t('ProductType was successfully created')
+        format.html { redirect_to(product_types_url) }
         format.xml  { render :xml => @product_type, :status => :created, :location => @product_type }
       else
         format.html { render :action => "new" }

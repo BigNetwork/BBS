@@ -11,7 +11,8 @@
 <table class="index_table">
   <tr>
     <th><%= t('product_type.name') %></th>
-    <th><%= t('product_type.combination') %>?</th>
+<!--    <th><%= t('product_type.combination') %>?</th>-->
+    <th class="quantity"><%= t('product_type.delivered') %></th>
     <th class="quantity"><%= t('product_type.in_stock') %></th>
     <th class="quantity"><%= t('product_type.sold') %></th>
     <th class="money"><%= t('product_type.standard_price') %></th>
@@ -23,7 +24,8 @@
 <% @product_types.each do |product_type| %>
   <tr class="<%= cycle :odd, :even %>">
     <td><%= link_to h(product_type.name), product_type %></td>
-    <td><%= "Ja" unless product_type.children.empty? %></td>
+<!--    <td><%= "Ja" unless product_type.children.empty? %></td>-->
+    <td class="quantity"><%= product_type.quantity_delivered %></td>
     <td class="quantity"><%= product_type.quantity_in_stock %></td>
     <td class="quantity"><%= product_type.quantity_sold %></td>
     <td class="money"><%= number_to_currency product_type.standard_price %></td>

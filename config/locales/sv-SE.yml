@@ -25,6 +25,7 @@
     name: "Namn"
     description: "Beskrivning"
     combination: "Kombo-vara"
+    delivered: "Inlevererat"
     in_stock: "I lager"
     sold: "Sålda"
     standard_price: "Lanarpris"
@@ -81,6 +82,7 @@
   Prices and profit: "Priser och förtjänst"
   Special offers: "Specialerbjudanden"
   All Product Types: "Alla varutyper"
+  ProductType was successfully created: "Varutypen skapades."
   
   # Products:
   Product: "Vara"
