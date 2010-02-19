@@ -35,7 +35,7 @@
   <tr class="odd">
     <td><%= t('.if_we_sell_all') %></td>
     <td class="money <%= "negative" if @sum_of_total_profits < 0 %><%= "positive" if @sum_of_total_profits >= 0 %>">
-      <%= number_to_currency @sum_of_total_profits %>
+      <%= "+" if @sum_of_total_profits > 0 %><%= number_to_currency @sum_of_total_profits %>
     </td>
   </tr>
 </table>
