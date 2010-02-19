@@ -16,7 +16,13 @@
   <% @deliveries.each do |delivery| %>
     <tr class="<%= cycle :odd, :even %>">
       <td><%= link_to "#{t('delivery')} #{delivery.id}", delivery %></td>
-      <td><%= delivery.quantity %> x <%= link_to delivery.product_type.name, delivery.product_type %></td>
+      <td>
+        <%- if delivery.product_type.nil? -%>
+          <%= t('.product_type_missing') %>
+        <%- else -%>
+          <%= delivery.quantity %> x <%= link_to delivery.product_type.name, delivery.product_type %>
+        <%- end -%>
+      </td>
       <td><%= l delivery.created_at, :format => :short %></td>
       <td>
         <%= link_to delivery.user.login, delivery.user unless delivery.user.nil? %>

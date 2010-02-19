@@ -10,23 +10,41 @@
   <tr class="<%= cycle :odd, :even %>">
  <!--   <td class="quantity"></td>-->
     <td>
-      <%= cart_row.quantity %><span class="times"><%= t('times') %></span><%= link_to h(cart_row.product_type.name), cart_row.product_type %>
+      <%- if cart_row.product_type.nil? -%>
+        <%= t('.product_type_missing') %>
+      <%- else -%>
+        <%= cart_row.quantity %><span class="times"><%= t('times') %></span><%= link_to h(cart_row.product_type.name), cart_row.product_type %>
+      <%- end -%>
     </td>
     <td class="money">
-      <% if @cart.price_name == 'standard' %>
-        <%= number_to_currency cart_row.product_type.standard_price %>
-      <% elsif @cart.price_name == 'crew' %>
-        <%= number_to_currency cart_row.product_type.crew_price %>
-      <% end %>
+      <%- if cart_row.product_type.nil? -%>
+        Error
+      <%- else -%>
+        <% if @cart.price_name == 'standard' %>
+          <%= number_to_currency cart_row.product_type.standard_price %>
+        <% elsif @cart.price_name == 'crew' %>
+          <%= number_to_currency cart_row.product_type.crew_price %>
+        <% end %>
+      <%- end -%>
     </td>
-    <td class="money"><%= number_to_currency cart_row.sum %></td>
-    <td class="destroy"><%= link_to t('Destroy'), cart_row, :method => :delete %></td>
+    <td class="money">
+      <%- if cart_row.product_type.nil? -%>
+        Error
+      <%- else -%>
+        <%= number_to_currency cart_row.sum %>
+      <%- end -%>
+    </td>
+    <td class="destroy">
+      <%= link_to t('Destroy'), cart_row, :method => :delete %>
+    </td>
   </tr>
 <% end %>
   <tr class="sum">
     <td><%= ProductType.human_name(:count => @cart.total_quantity) %></td>
     <th></th>
-    <td class="money"><%= number_to_currency @cart.sum %></td>
+    <td class="money">
+      <%#= number_to_currency @cart.sum %>
+    </td>
     <td></td>
   </tr>
 </table>

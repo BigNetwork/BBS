@@ -3,10 +3,13 @@
 #    view:
 #      whatyouwant: "whatyouwant in another language"
   carts:
+    table:
+      product_type_missing: "Fel! Varutypen saknas."
   deliveries:
     index:
       title: "Alla leveranser:"
       no_deliveries_yet: "Inga leveranser har gjorts ännu."
+      product_type_missing: "Fel! Varutypen saknas."
     edit:
     new:
     show:
