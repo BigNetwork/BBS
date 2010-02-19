@@ -1,0 +1,8 @@
+<ul>
+  <li><%= link_to h(product_type.name), product_type %></li>
+  <% unless product_type.children.empty? %>
+    <% for child in product_type.children %>
+      <%= render :partial => 'tree', :locals => { :product_type => child } %>
+    <% end %>
+  <% end %>
+</ul>

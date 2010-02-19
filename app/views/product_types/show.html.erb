@@ -1,10 +1,15 @@
 <h1><%= t('.title') %> <%= h @product_type.name %></h1>
+
 <p>
-  <b><%= t('product_type.description') %>:</b>
-  <%=h @product_type.description %>
+  <%- if @product_type.description.empty? -%>
+    <%= t('.no_description') %>
+  <%- else -%>
+    <b><%= t('product_type.description') %>:</b>
+    <%=h @product_type.description %>
+  <%- end -%>
 </p>
 
-<h3><%= t('In stock') %>:</h3>
+<h2><%= t('.in_stock_subtitle') %>:</h2>
 
 <table>
   <tr>
@@ -21,7 +26,7 @@
   </tr>
 </table>
 
-<h3><%= t('Prices and profit') %>:</h3>
+<h2><%= t('.prices_and_profit_subtitle') %>:</h2>
 
 <table id="product_type_price_table">
   <tr>
@@ -42,9 +47,13 @@
   </tr>
 </table>
 
+<% unless @product_type.children.length > 0 || @product_type.parents.uniq.length > 0 %>
+
 <p>
-  It costed <strong><%= number_to_currency(@product_type.products.length * @product_type.purchase_price) %></strong> to buy the <%= @product_type.products.length %> <%=h @product_type.name %>s. 
+  <%= t('.buy_cost_text', :money => number_to_currency(@product_type.products.length * @product_type.purchase_price), :count => @product_type.products.length, :type => @product_type.name ) %>
 </p>
+
+<!--
 
 <p>
   So far have we sold <%= @product_type.quantity_sold %> and that amounts for <%= number_to_currency(@product_type.quantity_sold * @product_type.purchase_price) %>. 
@@ -58,21 +67,23 @@
 <p>
   If we sell all remaining <%= @product_type.quantity_in_stock %> <%=h @product_type.name %>s we can get a total of <%= number_to_currency(@product_type.products.length * @product_type.standard_price) %>, which makes a total profit of <%= number_to_currency(@product_type.products.length * @product_type.profit) %>
 </p>
+-->
 
-<h3><%= t('Special offers') %>:</h3>
+<%- end -%>
+
+<h2><%= t('.special_offers') %>:</h2>
 
 <% if @product_type.children.length > 0 %>
   Detta specialerbjudande består av följande 
   <% if @product_type.children.length > 1 %>
-    <%= @product_type.children.length %> produkter:
+    <%#= @product_type.children.length %> produkter:
   <% else %>
     produkt:
   <% end %>
-  <ul>
   <% for child in @product_type.children %>
-    <li><%= link_to h(child.name), child %></li>
+    <%= render :partial => 'tree', :locals => { :product_type => child } %> 
   <% end %>
-  </ul>
+  
 <% end %>
 <% if @product_type.parents.uniq.length > 0 %>
   Denna produkt är en del i följande 
@@ -91,5 +102,15 @@
   <p>Inga specialerbjudanden relaterade till denna varutyp.</p>
 <% end %>
 
-&larr; <%= link_to t('All Product Types'), product_types_path %> <%= t('or') %>
-<%= link_to t('Edit'), edit_product_type_path(@product_type) %>
+<p>
+  <%= link_to t('.add_product_type_relation'), new_product_type_relation_path %>
+</p>
+
+<hr style="border: 1px"/>
+
+<p>
+  &larr;
+  <%= link_to t('All Product Types'), product_types_path %>
+  <%= t('or') %>
+  <%= link_to t('Edit'), edit_product_type_path(@product_type) %>
+</p>

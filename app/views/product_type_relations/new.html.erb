@@ -1,19 +1,19 @@
-<h1>New product type relation</h1>
+<h1><%= t('.title') %></h1>
 
 <% form_for(@product_type_relation) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :parent_id %><br />
-    <%= f.collection_select :parent_id, ProductType.find(:all), :id, :name %>
+    <%= f.label :parent_id, ProductTypeRelation.human_attribute_name(:parent_id)+":" %><br />
+    <%= f.collection_select :parent_id, ProductType.find(:all, :order => :name), :id, :name %>
   </p>
   <p>
-    <%= f.label :child_id %><br />
-    <%= f.collection_select :child_id, ProductType.find(:all), :id, :name %>
+    <%= f.label :child_id, ProductTypeRelation.human_attribute_name(:child_id)+":" %><br />
+    <%= f.collection_select :child_id, ProductType.find(:all, :order => :name), :id, :name %>
   </p>
   <p>
     <%= f.submit t('Create') %>
   </p>
 <% end %>
 
-&larr; <%= link_to t('Back'), product_type_relations_path %>
+&larr; <%= link_to t('Back'), :back %>

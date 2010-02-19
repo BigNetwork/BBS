@@ -1,18 +1,44 @@
-<h1>Listing <%= controller.controller_name.humanize.downcase %></h1>
+<h1><%= t('.title') %></h1>
 
 <table class="index_table">
   <tr>
-    <th>Parent</th>
-    <th>Child</th>
+    <th><%= ProductTypeRelation.human_attribute_name(:parent_id) %>:</th>
+    <th><%= ProductTypeRelation.human_attribute_name(:child_id) %>:</th>
+    <th></th>
   </tr>
 
 <% @product_type_relations.each do |product_type_relation| %>
   <tr>
-    <td><%=h product_type_relation.parent_id %></td>
-    <td><%=h product_type_relation.child_id %></td>
+    <td><%= link_to h(product_type_relation.parent.name), product_type_relation.parent %></td>
+    <td><%= link_to h(product_type_relation.child.name), product_type_relation.child %></td>
+    <td>
+      <ul>
+        <li><%= product_type_relation.parent.name %></li>
+      <% unless product_type_relation.parent.children.empty? %>
+        <% for product_type in product_type_relation.parent.children %>
+          <ul>
+            <li>
+              <% if product_type == product_type_relation.child %>
+                <strong><%= link_to product_type.name, product_type %></strong>
+              <% else %>
+                <%= product_type.name %>
+              <% end %>
+            </li>
+            <% unless product_type.children.empty? %>
+              <ul>
+              <% for product_type_child in product_type.children %>
+                <li><%= product_type_child.name %></li>
+              <% end %>
+              </ul>
+            <% end %>
+          </ul>
+        <% end %>
+      <% end %>
+      </ul>
+    </td>
     <td><%= link_to t('Show'), product_type_relation %></td>
     <td class="edit"><%= link_to t('Edit'), edit_product_type_relation_path(product_type_relation) %></td>
-    <td><%= link_to 'Destroy', product_type_relation, :confirm => t('Are you sure?'), :method => :delete %></td>
+    <td class="destroy"><%= link_to t('Destroy'), product_type_relation, :confirm => t('Are you sure?'), :method => :delete %></td>
   </tr>
 <% end %>
 </table>

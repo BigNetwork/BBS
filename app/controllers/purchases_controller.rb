@@ -111,19 +111,19 @@ class PurchasesController < ApplicationController
         for cart_row in @cart.cart_rows
           # Find some products to snatch:
           for i in 1..cart_row.quantity
-              product = Product.find_by_product_type_id(cart_row.product_type, :conditions => { :purchase_id => nil} )
-              unless product.nil?
-                  product.purchase_id = @purchase.id
-                  # FIXME: This is EXTREMELY ugly (with dynamic variable names). And not to say inreliable.
-                  if @purchase.price_name == 'standard' || @purchase.price_name == 'crew'
-                    product.sold_for_price = product.product_type.send("#{ @purchase.price_name }_price")
-                  end
-                  product.purchase_price = product.product_type.purchase_price
-                  product.save(false)
-              else
-                  # Problem, not enough products of that type available!
-                  flash[:error] = "Problem! Not enough #{cart_row.product_type.name} available in stock!"
-              end
+            product = Product.find_by_product_type_id(cart_row.product_type, :conditions => { :purchase_id => nil} )
+            unless product.nil?
+                product.purchase_id = @purchase.id
+                # FIXME: This is EXTREMELY ugly (with dynamic variable names). And not to say inreliable.
+                if @purchase.price_name == 'standard' || @purchase.price_name == 'crew'
+                  product.sold_for_price = product.product_type.send("#{ @purchase.price_name }_price")
+                end
+                product.purchase_price = product.product_type.purchase_price
+                product.save(false)
+            else
+                # Problem, not enough products of that type available!
+                flash[:error] = "Problem! Not enough #{cart_row.product_type.name} available in stock!"
+            end
           end
         end
       end

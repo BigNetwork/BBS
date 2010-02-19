@@ -11,6 +11,10 @@ class ProductType < ActiveRecord::Base
   
   validates_presence_of :purchase_price, :standard_price, :crew_price
   
+  def self.all_non_special_offers
+    ProductType.all(:conditions => "product_types.id NOT IN (SELECT product_type_relations.parent_id AS id FROM product_type_relations)", :order => :name)
+  end
+  
   def not_sold_products
     Product.find(:all, :conditions => { :product_type_id => id, :purchase_id => nil} )
   end
@@ -20,37 +24,105 @@ class ProductType < ActiveRecord::Base
   end
   
   def quantity_delivered
-    if children.empty?  # This standard counting method only works for non-combination products: 
-      products.length
+    if is_combo? 
+      child_instances = Array.new
+      child_in_stock = Array.new
+      
+      for child in children
+        if child_instances[child.id].nil?
+          child_instances[child.id] = 1
+          child_in_stock[child.id] = child.quantity_delivered
+        else
+          child_instances[child.id] += 1
+        end
+      end
+      qty = 0
+      fiskarray = Array.new
+      for child in children
+        fiskarray.push child_in_stock[child.id] / child_instances[child.id]
+      end
+      # Find the lower denominator in the products stocks:
+      lowest = -1
+      for item in fiskarray
+        if lowest == -1
+          lowest = item
+        elsif item < lowest
+          lowest = item
+        end
+      end
+      return lowest
     else
-      "?"
-      # TODO: Better magic for finding out stock quantity for combination products.
+      products.length
     end
   end
   
   def quantity_in_stock
-    if children.empty?  # This standard counting method only works for non-combination products: 
-      not_sold_products.length
+    if is_combo?
+      child_instances = Array.new
+      child_in_stock = Array.new
+      
+      for child in children
+        if child_instances[child.id].nil?
+          child_instances[child.id] = 1
+          child_in_stock[child.id] = child.quantity_in_stock
+        else
+          child_instances[child.id] += 1
+        end
+      end
+      qty = 0
+      fiskarray = Array.new
+      for child in children
+        fiskarray.push child_in_stock[child.id] / child_instances[child.id]
+      end
+      # Find the lower denominator in the products stocks:
+      lowest = -1
+      for item in fiskarray
+        if lowest == -1
+          lowest = item
+        elsif item < lowest
+          lowest = item
+        end
+      end
+      return lowest
     else
-      "?"
-      # TODO: Better magic for finding out stock quantity for combination products.
+      not_sold_products.length
     end
   end
   
   def quantity_sold
-    if children.empty?  # This standard counting method only works for non-combination products:
+    if is_combo?
       sold_products.length
     else
-      "?"
-      # TODO: Better magic for finding out stock quantity for combination products.
+      sold_products.length
     end
   end
   
   def in_stock?
-    if quantity_in_stock.to_i && quantity_in_stock.to_i > 0
+    if is_combo?
+      child_instances = Array.new
+      child_in_stock = Array.new
+      
+      for child in children
+        if child_instances[child.id].nil?
+          child_instances[child.id] = 1
+          child_in_stock[child.id] = child.quantity_in_stock
+        else
+          child_instances[child.id] += 1
+        end
+      end
+      # är amount > in stock? returnera false
+      for child in children
+        if child_instances[child.id] > child_in_stock[child.id]
+          return false
+        end
+      end
       true
     else
-      false
+      if quantity_in_stock.to_i && quantity_in_stock.to_i > 0
+        true
+      else
+        false
+      end
     end
   end
   
@@ -60,15 +132,17 @@ class ProductType < ActiveRecord::Base
       # TODO: Support for endless loops of childrens childrens children (etc). Did you think recursion? =)
       for child in children
         unless child.purchase_price.nil?
-          total += child.purchase_price
+          total += child.combo_purchase_price
         end
       end
       total
+    else
+      purchase_price
     end
   end
   
   def is_combo?
-    return !children.empty?
+    !children.empty?
   end
 
   def profit

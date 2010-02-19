@@ -19,6 +19,11 @@
       logged_in_as: "Inloggad som"
       logout: "Logga ut"
       login: "Logga in"
+  product_type_relations:
+    index:
+      title: "Alla specialerbjudande-relationer"
+    new:
+      title: "Ny relation mellan varor"
   product_types:
     index:
       title: "Alla varutyper:"
@@ -26,6 +31,12 @@
       new_product_type: "Ny varutyp"
     show:
       title: ""
+      no_description: ""
+      in_stock_subtitle: "I lager"
+      prices_and_profit_subtitle: "Priser och förtjänst"
+      buy_cost_text: "Det kostade {{money}} att köpa de {{count}}st {{type}}."
+      special_offers: "Specialerbjudanden"
+      add_product_type_relation: "Lägg till relation till vara"
     edit:
       title: "Ändrar "
     new:

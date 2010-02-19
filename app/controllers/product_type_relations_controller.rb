@@ -48,7 +48,7 @@ class ProductTypeRelationsController < ApplicationController
     respond_to do |format|
       if @product_type_relation.save
         flash[:notice] = 'ProductTypeRelation was successfully created.'
-        format.html { redirect_to(@product_type_relation) }
+        format.html { redirect_to(product_type_relations_url) }
         format.xml  { render :xml => @product_type_relation, :status => :created, :location => @product_type_relation }
       else
         format.html { render :action => "new" }
