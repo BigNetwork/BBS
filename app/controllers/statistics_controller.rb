@@ -75,10 +75,13 @@ class StatisticsController < ApplicationController
       end
       bc.axis :y, :range => [0,times.max], :color => "aaaaaa"
       bc.axis :x, :labels => (0..23).to_a, :font_size => 10, :color => "aaaaaa"
+      #bc.axis :right, :range => [0,times.max], :color => "aaaaaa"
+      bc.axis :x, :labels => ['Tidigt', 'Sent'], :positions => [0,100]
+      bc.axis :y, :labels => ['Inga', 'Många'], :positions => [0,100]
       bc.show_legend = true
       bc.stacked = true
       bc.data_encoding = :extended
-      @products_hours_chart_img_url = bc.to_url(:chf => "bg,s,1b1b1b", :chdlp => "r|r")
+      @products_hours_chart_img_url = bc.to_url(:chf => "bg,s,1b1b1b", :chdlp => "r|r", :chtx => "x,x,r,t", :chx1 => "1:|asdf|asd2|3:|asd3|e4")
     end
     
   end
