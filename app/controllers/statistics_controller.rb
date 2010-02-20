@@ -95,6 +95,7 @@ class StatisticsController < ApplicationController
       bc.data t("statistics.index.sold_items"), bc_products_values, "66cc66"
       bc.axis :x, :labels => bc_products_labels
       bc.axis :y, :range => [0,bc_products_values.max]
+      bc.axis :y, :labels => ['Inga', 'Många'], :positions => [0,100]
       bc.show_legend = false
       bc.data_encoding = :extended
       @products_sold_chart_img_url = bc.to_url(:chf => "bg,s,1b1b1b", :chbh => "r,4,8")
