@@ -74,7 +74,6 @@
       add_some_product_types: "Lägg till en varutyp"
       register_some_deliveries: "Registrera en leverans"
       good_to_go: "Börja sälj!"
-      
   sessions:
     new:
       title: "Logga in"
@@ -89,7 +88,7 @@
       to_break_even: "Hur mycket mer måste vi sälja för att nå break-even (plus minus noll)?"
       profit_subtitle: "Förtjänst"
       so_far: "Hittills?"
-      if_we_sell_all: "Om vi säljer allt vi har lagt in i systemet?"
+      if_we_sell_all: "Om vi säljer allt inlagt?"
       chart_sold_for: "Sålt för"
       chart_not_sold_for: "Inte sålt för"
       chart_times_header: "När på dygnet säljs våra produkter?"
