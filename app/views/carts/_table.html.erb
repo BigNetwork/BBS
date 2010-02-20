@@ -43,7 +43,7 @@
     <td><%= ProductType.human_name(:count => @cart.total_quantity) %></td>
     <th></th>
     <td class="money">
-      <%#= number_to_currency @cart.sum %>
+      <%= number_to_currency @cart.sum %>
     </td>
     <td></td>
   </tr>

@@ -9,10 +9,16 @@
     <td><%= t('.sold_for') %></td>
     <td class="money"><%= number_to_currency @sum_of_all_sold %></td>
   </tr>
-  <tr class="sum">
+  <tr class="odd sum">
     <td><%= t('.result') %>:</td>
     <td class="money <%= "negative" if @result < 0 %><%= "positive" if @result >= 0 %>">
       <%= number_to_currency @result %>
+    </td>
+  </tr>
+  <tr class="even">
+    <td><%= t('.if_we_sell_all') %></td>
+    <td class="money <%= "negative" if @sum_of_total_profits < 0 %><%= "positive" if @sum_of_total_profits >= 0 %>">
+      <%= "+" if @sum_of_total_profits > 0 %><%= number_to_currency @sum_of_total_profits %>
     </td>
   </tr>
   <!--
@@ -22,16 +28,16 @@
   </tr>
   -->
 </table>
+<!--
 <h3><%= t('.profit_subtitle') %>:</h3>
 <table class="statistics_table">
-  <!--
+
   <tr class="odd">
     <td><%= t('.so_far') %></td>
     <td class="money <%= "negative" if @sum_of_sold_profits < 0 %><%= "positive" if @sum_of_sold_profits >= 0 %>">
       <%= number_to_currency @sum_of_sold_profits %>
     </td>
   </tr>
-  -->
   <tr class="odd">
     <td><%= t('.if_we_sell_all') %></td>
     <td class="money <%= "negative" if @sum_of_total_profits < 0 %><%= "positive" if @sum_of_total_profits >= 0 %>">
@@ -39,5 +45,10 @@
     </td>
   </tr>
 </table>
+-->
 
-<%= image_tag @chart.to_url %>
+<%#= image_tag @chart.to_url %>
+
+<h2><%= t('.chart_header')%></h2>
+
+<img src="<%= @chart_img_url %>" id="statistics_chart_1" />

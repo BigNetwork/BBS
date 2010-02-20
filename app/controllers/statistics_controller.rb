@@ -2,8 +2,6 @@ class StatisticsController < ApplicationController
 
   before_filter :login_required
 
-  use_google_charts
-
   def index
     
     all_products = Product.all
@@ -29,10 +27,40 @@ class StatisticsController < ApplicationController
       @sum_of_total_profits += product.product_type.profit
     end
     
-    dataset = GoogleChartDataset.new :data => [10,50,4,10,16]
-    data = GoogleChartData.new :datasets => dataset
-    @chart = GoogleLineChart.new :width => 300, :height => 200
-    @chart.data = data
+    times = Array.new
+    
+    for product in sold_products
+      hour = product.purchase.created_at.to_s[11,2].to_i
+      if times[hour].nil?
+        times[hour] = 1
+      else
+        times[hour] += 1
+      end
+    end
+    
+    times = times.map do |time|
+      if time.nil?
+        time = 0 if time.nil?
+      else
+        time = time
+      end
+    end
+    
+    bar_1_data = times
+    #bar_2_data = [200,800,50]
+    color_1 = '009900'
+    color_2 = '00cc00'
+    names_array = (0..23).to_a
+    GoogleChart::BarChart.new("780x300", t('statistics.index.chart_image_header'), :vertical, false) do |bc|
+      bc.data t('statistics.index.chart_sold_products'), bar_1_data, color_1
+      #bc.data "SecondResultBar", bar_2_data, color_2
+      bc.axis :y, :range => [0,bar_1_data.max]
+      bc.axis :x, :labels => names_array, :font_size => 10
+      bc.show_legend = false
+      bc.data_encoding = :extended
+      #bc.shape_marker :circle, :color => '00ff00', :data_set_index => 0, :data_point_index => -1, :pixel_size => 10
+      @chart_img_url = bc.to_url
+    end
     
   end
 
