@@ -3,6 +3,9 @@
 <% if logged_in? %>
 
 <h3><%= t('.sales_subtitle') %>:</h3>
+
+<img src="<%= @sold_for_chart_url %>" id="sold_for_chart" />
+
 <table class="statistics_table">
   <tr class="odd">
     <td><%= t('.bought_for') %></td>

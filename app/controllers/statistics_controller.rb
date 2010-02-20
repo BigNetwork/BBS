@@ -6,6 +6,7 @@ class StatisticsController < ApplicationController
     
     all_products = Product.all
     sold_products = Product.all(:conditions => "purchase_id IS NOT NULL")
+    non_sold_products = all_products - sold_products
     
     @sum_of_all_in_registered = all_products.sum{ |p| p.product_type.purchase_price }
     
@@ -13,6 +14,8 @@ class StatisticsController < ApplicationController
     for product in sold_products
       @sum_of_all_sold += product.sold_for_price # TODO: Support stats calculation based on crew price.
     end
+    
+    @sum_of_non_sold = non_sold_products.sum{ |p| p.product_type.standard_price }
     
     @money_to_break_even = @sum_of_all_in_registered - @sum_of_all_sold
     @result = @sum_of_all_sold - @sum_of_all_in_registered
@@ -47,6 +50,12 @@ class StatisticsController < ApplicationController
     end
     
     #logger.info "#{ProductTypes.first.sold_per_hour}"
+    
+    GoogleChart::PieChart.new("320x200", "", false) do |pc|
+      pc.data "Ej sålt", @sum_of_non_sold
+      pc.data "Sålt", @sum_of_all_sold
+      @sold_for_chart_url = pc.to_url(:chf => "bg,s,222222", :chco => "990000,009900")
+    end
     
     GoogleChart::BarChart.new("850x300", t('statistics.index.chart_image_header'), :vertical, false) do |bc|
       bc.data t('statistics.index.chart_sold_products'), times, '999999'

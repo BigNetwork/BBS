@@ -495,13 +495,17 @@ table.statistics_table{
     line-height: 2em;
     margin: 0 2%;
     margin-bottom: 3em;
-    width: 96%;
+    width: 60%;
 }
 table.statistics_table th, table.statistics_table td{
     padding: 0.6em 1.2em;
 }
 table.statistics_table tr.sum th, table.statistics_table tr.sum td{
     border-top: 1px solid #666;
+}
+
+#sold_for_chart{
+    float: right;
 }
 
 .statistics_chart img{
