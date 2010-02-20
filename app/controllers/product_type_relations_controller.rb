@@ -28,6 +28,9 @@ class ProductTypeRelationsController < ApplicationController
   # GET /product_type_relations/new.xml
   def new
     @product_type_relation = ProductTypeRelation.new
+    unless params[:parent_id].nil?
+      @product_type_relation.parent_id = params[:parent_id].to_i
+    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -48,7 +51,7 @@ class ProductTypeRelationsController < ApplicationController
     respond_to do |format|
       if @product_type_relation.save
         flash[:notice] = 'ProductTypeRelation was successfully created.'
-        format.html { redirect_to(product_type_relations_url) }
+        format.html { redirect_to(product_type_path(@product_type_relation.parent)) }
         format.xml  { render :xml => @product_type_relation, :status => :created, :location => @product_type_relation }
       else
         format.html { render :action => "new" }
@@ -81,7 +84,7 @@ class ProductTypeRelationsController < ApplicationController
     @product_type_relation.destroy
 
     respond_to do |format|
-      format.html { redirect_to(product_type_relations_url) }
+      format.html { redirect_to(:back) }
       format.xml  { head :ok }
     end
   end

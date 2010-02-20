@@ -489,6 +489,12 @@ ol#welcome_list li{
     text-align: left;
 }
 
+.product_type_relation_remove_link{
+    color: #800;
+    float: right;
+    margin-top: 0.5em;
+}
+
 table.statistics_table{
     border-spacing: 0;
     font-size: 110%;

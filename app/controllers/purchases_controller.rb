@@ -51,12 +51,16 @@ class PurchasesController < ApplicationController
 
     respond_to do |format|
       if @purchase.save
-        flash[:notice] = t('flash.created', :item => "<a href=\"#{purchase_path(@purchase)}\">#{Purchase.human_name().capitalize} #{@purchase.id}</a>")
+        if bind_products
+          flash[:notice] = t('flash.created', :item => "<a href=\"#{purchase_path(@purchase)}\">#{Purchase.human_name().capitalize} #{@purchase.id}</a>")
+          format.html { redirect_to(:back) }
+          format.xml  { render :xml => @purchase, :status => :created, :location => @purchase }
+        else
+          if @purchase.destroy
+            format.html { redirect_to(:back) }
+          end
+        end
         
-        bind_products
-        
-        format.html { redirect_to(:back) }
-        format.xml  { render :xml => @purchase, :status => :created, :location => @purchase }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @purchase.errors, :status => :unprocessable_entity }
@@ -104,7 +108,10 @@ class PurchasesController < ApplicationController
   private
   
     def bind_products
-
+      
+      status = true
+      product_names_not_in_stock = Array.new
+      
       # If we know the cart, snatch products that match that cart:
       unless @purchase.cart_id.nil?
         @cart = Cart.find_by_id(@purchase.cart_id)  
@@ -113,20 +120,35 @@ class PurchasesController < ApplicationController
           for i in 1..cart_row.quantity
             product = Product.find_by_product_type_id(cart_row.product_type, :conditions => { :purchase_id => nil} )
             unless product.nil?
-                product.purchase_id = @purchase.id
-                # FIXME: This is EXTREMELY ugly (with dynamic variable names). And not to say inreliable.
-                if @purchase.price_name == 'standard' || @purchase.price_name == 'crew'
-                  product.sold_for_price = product.product_type.send("#{ @purchase.price_name }_price")
-                end
-                product.purchase_price = product.product_type.purchase_price
-                product.save(false)
+              product.purchase_id = @purchase.id
+              # FIXME: This is EXTREMELY ugly (with dynamic variable names). And not to say inreliable.
+              if @purchase.price_name == 'standard' || @purchase.price_name == 'crew'
+                product.sold_for_price = product.product_type.send("#{ @purchase.price_name }_price")
+              end
+              product.purchase_price = product.product_type.purchase_price
+              product.save(false)
             else
-                # Problem, not enough products of that type available!
-                flash[:error] = "Problem! Not enough #{cart_row.product_type.name} available in stock!"
+              status = false
+              # Problem, not enough products of that type available!
+              product_names_not_in_stock.push cart_row.product_type.name
             end
           end
         end
       end
+      
+      unless product_names_not_in_stock.empty?  # Did any errors occur?
+        flash[:error] = t('flash.purchases.not_in_stock')
+        for product_name in product_names_not_in_stock
+          flash[:error] += "<br/>" + t("flash.purchases.product_name_not_in_stock", :name => product_name)
+        end 
+        # Reverse all purchased products:
+        for product in Product.find_all_by_purchase_id(@purchase.id)
+          product.purchase_id = nil
+          product.save(false)
+        end
+      end
+      
+      return status
 
     end
   

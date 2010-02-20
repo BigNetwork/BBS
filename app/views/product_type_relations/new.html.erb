@@ -1,14 +1,13 @@
-<h1><%= t('.title') %></h1>
+<h1><%= t('.title', :parent => @product_type_relation.parent.name) %>:</h1>
 
 <% form_for(@product_type_relation) do |f| %>
   <%= f.error_messages %>
 
+    <%#= f.label :parent_id, ProductTypeRelation.human_attribute_name(:parent_id)+":" %>
+    <%#= f.collection_select :parent_id, ProductType.find(:all, :order => :name), :id, :name %>
+	<%= f.hidden_field :parent_id %>
   <p>
-    <%= f.label :parent_id, ProductTypeRelation.human_attribute_name(:parent_id)+":" %><br />
-    <%= f.collection_select :parent_id, ProductType.find(:all, :order => :name), :id, :name %>
-  </p>
-  <p>
-    <%= f.label :child_id, ProductTypeRelation.human_attribute_name(:child_id)+":" %><br />
+    <%= f.label :child_id, t('.child')+":" %><br />
     <%= f.collection_select :child_id, ProductType.find(:all, :order => :name), :id, :name %>
   </p>
   <p>
@@ -16,4 +15,4 @@
   </p>
 <% end %>
 
-&larr; <%= link_to t('Back'), :back %>
+&larr; <%= link_to t('Back') + " " +  t('to') + " " + @product_type_relation.parent.name, product_type_path(@product_type_relation.parent) %>

@@ -20,6 +20,7 @@
   "Yes": "Ja" # Quoting needed since Yes and No are YAML keywords
   "No": "Nej" # Quoting needed since Yes and No are YAML keywords
   times: "x"
+  to: "till"
   
   product_type:
     name: "Namn"

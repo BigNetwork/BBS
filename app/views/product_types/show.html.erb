@@ -74,15 +74,18 @@
 <h2><%= t('.special_offers') %>:</h2>
 
 <% if @product_type.children.length > 0 %>
-  Detta specialerbjudande består av följande 
+  <p>Detta specialerbjudande består av följande 
   <% if @product_type.children.length > 1 %>
     <%#= @product_type.children.length %> produkter:
   <% else %>
     produkt:
   <% end %>
-  <% for child in @product_type.children %>
-    <%= render :partial => 'tree', :locals => { :product_type => child } %> 
-  <% end %>
+  </p>
+
+	<% for product_type_relation in @product_type.childings %>
+		<%= link_to t('.remove_relation', :item => @product_type.name), product_type_relation, { :confirm => t('Are you sure?'), :method => :delete, :class => 'product_type_relation_remove_link' } %>
+		<%= render :partial => 'tree', :locals => { :product_type => product_type_relation.child }%>
+	<% end %>
   
 <% end %>
 <% if @product_type.parents.uniq.length > 0 %>
@@ -103,7 +106,7 @@
 <% end %>
 
 <p>
-  <%= link_to t('.add_product_type_relation'), new_product_type_relation_path %>
+  <%= link_to t('.add_product_type_relation'), { :controller => :product_type_relations, :action => :new, :parent_id => @product_type.id} %>
 </p>
 
 <hr style="border: 1px"/>
