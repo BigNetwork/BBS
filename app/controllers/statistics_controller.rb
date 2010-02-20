@@ -81,7 +81,7 @@ class StatisticsController < ApplicationController
       bc.show_legend = true
       bc.stacked = true
       bc.data_encoding = :extended
-      @products_hours_chart_img_url = bc.to_url(:chf => "bg,s,1b1b1b", :chdlp => "r|r", :chtx => "x,x,r,t", :chx1 => "1:|asdf|asd2|3:|asd3|e4")
+      @products_hours_chart_img_url = bc.to_url :chf => "bg,s,1b1b1b", :chdlp => "r|r", :chtx => "x,x,r,t", :chx1 => "1:|asdf|asd2|3:|asd3|e4"
     end
     
     bc_products_labels = ProductType.all(:order => :name).map do |pt|
