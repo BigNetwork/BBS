@@ -13,5 +13,9 @@ class Product < ActiveRecord::Base
       return true
     end
   end
+  
+  def sold_in_special_offer
+    ProductType.find(sold_in_special_offer_id)
+  end
 
 end

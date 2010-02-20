@@ -94,6 +94,7 @@ class PurchasesController < ApplicationController
     
     for product in @purchase.products
       product.purchase_id = nil
+      product.sold_in_special_offer_id = nil
       product.save(false)
     end
     
@@ -108,8 +109,6 @@ class PurchasesController < ApplicationController
   private
   
     def bind_products
-      
-      status = true
       product_names_not_in_stock = Array.new
       
       # If we know the cart, snatch products that match that cart:
@@ -118,20 +117,12 @@ class PurchasesController < ApplicationController
         for cart_row in @cart.cart_rows
           # Find some products to snatch:
           for i in 1..cart_row.quantity
-            product = Product.find_by_product_type_id(cart_row.product_type, :conditions => { :purchase_id => nil} )
-            unless product.nil?
-              product.purchase_id = @purchase.id
-              # FIXME: This is EXTREMELY ugly (with dynamic variable names). And not to say inreliable.
-              if @purchase.price_name == 'standard' || @purchase.price_name == 'crew'
-                product.sold_for_price = product.product_type.send("#{ @purchase.price_name }_price")
-              end
-              product.purchase_price = product.product_type.purchase_price
-              product.save(false)
+            if(cart_row.product_type.is_combo?)
+              pt_id = cart_row.product_type.id
             else
-              status = false
-              # Problem, not enough products of that type available!
-              product_names_not_in_stock.push cart_row.product_type.name
+              pt_id = nil
             end
+            product_names_not_in_stock += bind_product(cart_row.product_type, pt_id)
           end
         end
       end
@@ -148,8 +139,38 @@ class PurchasesController < ApplicationController
         end
       end
       
-      return status
+      return product_names_not_in_stock.empty?
 
+    end
+    
+    def bind_product(product_type, parent_id)
+      product_names_not_in_stock = Array.new
+      if product_type.is_combo?
+        for child in product_type.children
+          tempArray = bind_product(child, product_type.id)
+          unless tempArray.empty?
+            product_names_not_in_stock += tempArray
+          end
+        end
+      else
+        product = Product.find_by_product_type_id(product_type.id, :conditions => { :purchase_id => nil} )
+        unless product.nil?
+          product.purchase_id = @purchase.id  # This is what makes it purchased!
+          # FIXME: This is EXTREMELY ugly (with dynamic variable names). And not to say inreliable.
+          if @purchase.price_name == 'standard' || @purchase.price_name == 'crew'
+            product.sold_for_price = product.product_type.send("#{ @purchase.price_name }_price")
+          end
+          product.purchase_price = product.product_type.purchase_price
+          unless parent_id.nil?
+            product.sold_in_special_offer_id = parent_id
+          end
+          product.save(false)
+        else
+          # Problem, not enough products of that type available!
+          product_names_not_in_stock.push product_type.name
+        end
+      end
+      return product_names_not_in_stock
     end
   
 end

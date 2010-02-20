@@ -18,5 +18,12 @@
 </p>
 <% end %>
 
+<% unless @product.sold_in_special_offer_id.nil? %>
+	<p>
+		<%= Product.human_attribute_name('sold_in_special_offer_id') %>:
+		<%= link_to @product.sold_in_special_offer.name, @product.sold_in_special_offer %>
+	</p>
+<% end %>
+
 &larr; 
 <%= link_to t('Back'), :back %>

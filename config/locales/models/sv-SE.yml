@@ -25,6 +25,7 @@
         bought_with: "Köptes med"
         sold_for_price: "Såldes för"
         purchase_price: "Köptes in för"
+        sold_in_special_offer_id: "Köptes som en del av specialerbjudande"
       product_type_relation:
         parent_id: "Förälder"
         child_id: "Barn"
