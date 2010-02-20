@@ -51,7 +51,7 @@ class PurchasesController < ApplicationController
 
     respond_to do |format|
       if @purchase.save
-        flash[:notice] = t('Purchase was successfully created')
+        flash[:notice] = t('flash.created', :item => "<a href=\"#{purchase_path(@purchase)}\">#{Purchase.human_name().capitalize} #{@purchase.id}</a>")
         
         bind_products
         

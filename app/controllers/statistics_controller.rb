@@ -49,11 +49,12 @@ class StatisticsController < ApplicationController
       end
     end
     
-    #logger.info "#{ProductTypes.first.sold_per_hour}"
+    @all_sold_percent = @sum_of_all_sold / (@sum_of_all_sold + @sum_of_non_sold) * 100
+    @non_sold_percent = @sum_of_non_sold / (@sum_of_all_sold + @sum_of_non_sold) * 100
     
-    GoogleChart::PieChart.new("320x150", "", false) do |pc|
-      pc.data "Sålt", @sum_of_all_sold
-      pc.data "Ej sålt", @sum_of_non_sold
+    GoogleChart::PieChart.new("370x150", "", false) do |pc|
+      pc.data "Sålt (#{sprintf("%2.f", @all_sold_percent)}%)", @sum_of_all_sold
+      pc.data "Ej sålt (#{sprintf("%2.f", @non_sold_percent)}%)", @sum_of_non_sold
       @sold_for_chart_url = pc.to_url(:chf => "bg,s,222222", :chco => "009900,663333", :cht => "p3")
     end
     

@@ -30,4 +30,6 @@
   
 <% end %>
 
-&larr; <%= link_to t('All purchases'), purchases_path %>
+&larr; <%= link_to t('All purchases'), purchases_path %> 
+<%= t('or') %>
+<%= link_to t('.undo'), @purchase, :confirm => t('Are you sure?'), :method => :delete %>
