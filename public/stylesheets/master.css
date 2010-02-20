@@ -504,10 +504,10 @@ table.statistics_table tr.sum th, table.statistics_table tr.sum td{
     border-top: 1px solid #666;
 }
 
-#statistics_chart_1{
+.statistics_chart img{
     border: 1em solid #333;
     display: block;
-    margin: 0 auto;
+    margin: 2em auto;
 }
 
 #footer{

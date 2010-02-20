@@ -155,5 +155,25 @@ class ProductType < ActiveRecord::Base
       end
     end
   end
+  
+  def sold_per_hour
+    times = Array.new
+    for product in sold_products
+      hour = product.purchase.created_at.to_s[11,2].to_i
+      if times[hour].nil?
+        times[hour] = 1
+      else
+        times[hour] += 1
+      end
+    end
+    times = times.map do |time|
+      if time.nil?
+        time = 0 if time.nil?
+      else
+        time = time
+      end
+    end
+    times
+  end
 
 end
