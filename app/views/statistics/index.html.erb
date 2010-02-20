@@ -1,4 +1,7 @@
 <h1><%= t('.title') %></h1>
+
+<% if logged_in? %>
+
 <h3><%= t('.sales_subtitle') %>:</h3>
 <table class="statistics_table">
   <tr class="odd">
@@ -48,6 +51,8 @@
 -->
 
 <%#= image_tag @chart.to_url %>
+
+<% end %>
 
 <h2><%= t('.chart_header')%></h2>
 
