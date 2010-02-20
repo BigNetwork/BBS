@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :login_required, :only => ['index', 'show', 'destroy']
 
   def index
-    @users = User.all
+    @users = User.all(:order => :login)
   end
   
   def show
