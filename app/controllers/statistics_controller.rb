@@ -48,15 +48,15 @@ class StatisticsController < ApplicationController
     
     #logger.info "#{ProductTypes.first.sold_per_hour}"
     
-    GoogleChart::BarChart.new("780x300", t('statistics.index.chart_image_header'), :vertical, false) do |bc|
-      bc.data t('statistics.index.chart_sold_products'), times, '009900'
+    GoogleChart::BarChart.new("850x300", t('statistics.index.chart_image_header'), :vertical, false) do |bc|
+      bc.data t('statistics.index.chart_sold_products'), times, '999999'
       #bc.data "SecondResultBar", bar_2_data, color_2
-      bc.axis :y, :range => [0,times.max]
-      bc.axis :x, :labels => (0..23).to_a, :font_size => 10
+      bc.axis :y, :range => [0,times.max], :color => "aaaaaa"
+      bc.axis :x, :labels => (0..23).to_a, :font_size => 10, :color => "aaaaaa"
       bc.show_legend = false
       bc.data_encoding = :extended
       #bc.shape_marker :circle, :color => '00ff00', :data_set_index => 0, :data_point_index => -1, :pixel_size => 10
-      @hours_chart_img_url = bc.to_url
+      @hours_chart_img_url = bc.to_url(:chf => "bg,s,1b1b1b")
     end
     
     GoogleChart::BarChart.new("850x300", t('statistics.index.chart_image_header'), :vertical, false) do |bc|
@@ -64,12 +64,12 @@ class StatisticsController < ApplicationController
         color = "#{rand(16).to_s(16)}#{rand(16).to_s(16)}#{rand(16).to_s(16)}#{rand(16).to_s(16)}#{rand(16).to_s(16)}#{rand(16).to_s(16)}"
         bc.data product_type.name, product_type.sold_per_hour, color
       end
-      bc.axis :y, :range => [0,times.max]
-      bc.axis :x, :labels => (0..23).to_a, :font_size => 10
+      bc.axis :y, :range => [0,times.max], :color => "aaaaaa"
+      bc.axis :x, :labels => (0..23).to_a, :font_size => 10, :color => "aaaaaa"
       bc.show_legend = true
       bc.stacked = true
       bc.data_encoding = :extended
-      @products_hours_chart_img_url = bc.to_url
+      @products_hours_chart_img_url = bc.to_url(:chf => "bg,s,1b1b1b")
     end
     
   end

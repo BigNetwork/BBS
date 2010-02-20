@@ -505,9 +505,12 @@ table.statistics_table tr.sum th, table.statistics_table tr.sum td{
 }
 
 .statistics_chart img{
-    border: 1em solid #333;
+    background: #1c1c1c;
+    border: 0.2em inset #333;
     display: block;
     margin: 2em auto;
+    padding-bottom: 20px;
+    padding-left: 20px;
 }
 
 #footer{
