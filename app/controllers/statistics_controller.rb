@@ -84,6 +84,22 @@ class StatisticsController < ApplicationController
       @products_hours_chart_img_url = bc.to_url(:chf => "bg,s,1b1b1b", :chdlp => "r|r", :chtx => "x,x,r,t", :chx1 => "1:|asdf|asd2|3:|asd3|e4")
     end
     
+    bc_products_labels = ProductType.all(:order => :name).map do |pt|
+      "#{pt.name}"
+    end
+    bc_products_values = ProductType.all(:order => :name).map do |pt|
+      "#{pt.quantity_sold}".to_i
+    end
+    
+    GoogleChart::BarChart.new("850x300", t('statistics.index.chart_products_image_title'), :vertical, false) do |bc|
+      bc.data t("statistics.index.sold_items"), bc_products_values, "66cc66"
+      bc.axis :x, :labels => bc_products_labels
+      bc.axis :y, :range => [0,bc_products_values.max]
+      bc.show_legend = false
+      bc.data_encoding = :extended
+      @products_sold_chart_img_url = bc.to_url(:chf => "bg,s,1b1b1b", :chbh => "r,4,8")
+    end
+    
   end
 
 end

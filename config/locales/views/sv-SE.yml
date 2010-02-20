@@ -87,9 +87,12 @@
       if_we_sell_all: "Om vi säljer allt vi har lagt in i systemet?"
       chart_sold_for: "Sålt för"
       chart_not_sold_for: "Inte sålt för"
-      chart_header: "När på dygnet säljs våra produkter?"
+      chart_times_header: "När på dygnet säljs våra produkter?"
       chart_image_header: " "
       chart_sold_products: "Sålda produkter"
+      chart_products_title: "Vilka produkter säljer bäst?"
+      chart_products_image_title: " "
+      sold_items: "Sålda varor"
   users:    
     index:
       title: "Alla användare"
