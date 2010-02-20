@@ -60,7 +60,7 @@ class StatisticsController < ApplicationController
     end
     
     GoogleChart::BarChart.new("850x300", t('statistics.index.chart_image_header'), :vertical, false) do |bc|
-      for product_type in ProductType.all
+      for product_type in ProductType.all(:order => :name)
         color = "#{rand(16).to_s(16)}#{rand(16).to_s(16)}#{rand(16).to_s(16)}#{rand(16).to_s(16)}#{rand(16).to_s(16)}#{rand(16).to_s(16)}"
         bc.data product_type.name, product_type.sold_per_hour, color
       end

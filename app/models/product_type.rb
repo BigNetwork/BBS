@@ -20,7 +20,7 @@ class ProductType < ActiveRecord::Base
   end
   
   def sold_products
-    Product.find(:all, :conditions => ["product_type_id = ? AND purchase_id IS NOT NULL", id] )
+    Product.find(:all, :conditions => ["product_type_id = ? AND purchase_id IS NOT NULL", id])
   end
   
   def quantity_delivered
