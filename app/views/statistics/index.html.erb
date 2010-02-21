@@ -1,10 +1,11 @@
+<img src="<%= @sold_for_chart_url %>" class="sold_for_chart" />
+<img src="<%= @pie_quantity_chart_url %>" class="sold_for_chart" />
+
 <h1><%= t('.title') %></h1>
 
 <% if logged_in? %>
 
 <h3><%= t('.sales_subtitle') %>:</h3>
-
-<img src="<%= @sold_for_chart_url %>" id="sold_for_chart" />
 
 <table class="statistics_table">
   <tr class="odd">
@@ -53,17 +54,9 @@
 </table>
 -->
 
-<%#= image_tag @chart.to_url %>
-
 <% end %>
 
 <h2><%= t('.chart_times_header')%></h2>
-
-<!--
-<div class="statistics_chart">
-	<img src="<%= @hours_chart_img_url %>" id="statistics_chart_1" />
-</div>
--->
 
 <div class="statistics_chart">
 	<img src="<%= @products_hours_chart_img_url %>" id="statistics_chart_2" class="statistics_chart" />

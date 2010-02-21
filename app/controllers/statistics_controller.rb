@@ -4,21 +4,13 @@ class StatisticsController < ApplicationController
 
   def index
     
-    all_products = Product.all
-    sold_products = Product.all(:conditions => "purchase_id IS NOT NULL")
+    all_products = Product.all(:include => :product_type)
+    sold_products = Product.all(:include => [:product_type, :purchase], :conditions => "purchase_id IS NOT NULL")
     non_sold_products = all_products - sold_products
+    all_product_types_in_reverse = ProductType.all(:order => "name DESC")
+    all_product_types = ProductType.all(:order => :name)
     
     @sum_of_all_in_registered = all_products.sum{ |p| p.product_type.purchase_price }
-    
-    @sum_of_all_sold = 0.0
-    for product in sold_products
-      @sum_of_all_sold += product.sold_for_price # TODO: Support stats calculation based on crew price.
-    end
-    
-    @sum_of_non_sold = non_sold_products.sum{ |p| p.product_type.standard_price }
-    
-    @money_to_break_even = @sum_of_all_in_registered - @sum_of_all_sold
-    @result = @sum_of_all_sold - @sum_of_all_in_registered
     
     @sum_of_sold_profits = 0.0
     for product in sold_products
@@ -28,6 +20,33 @@ class StatisticsController < ApplicationController
     @sum_of_total_profits = 0.0
     for product in all_products
       @sum_of_total_profits += product.product_type.profit
+    end
+    
+    @sum_of_all_sold = sold_products.sum{ |p| p.sold_for_price }
+    @sum_of_non_sold = non_sold_products.sum{ |p| p.product_type.standard_price }
+    
+    @all_sold_percent = @sum_of_all_sold.to_f / (@sum_of_all_sold.to_f + @sum_of_non_sold.to_f) * 100
+    @non_sold_percent = @sum_of_non_sold.to_f / (@sum_of_all_sold.to_f + @sum_of_non_sold.to_f) * 100
+    
+    @quantity_of_non_sold_products = non_sold_products.length.to_i
+    @quantity_of_sold_products = sold_products.length.to_i
+    
+    @quantity_all_sold_percent = @quantity_of_sold_products.to_f     / (@quantity_of_sold_products.to_f + @quantity_of_non_sold_products.to_f) * 100
+    @quantity_non_sold_percent = @quantity_of_non_sold_products.to_f / (@quantity_of_sold_products.to_f + @quantity_of_non_sold_products.to_f) * 100
+    
+    @money_to_break_even = @sum_of_all_in_registered - @sum_of_all_sold
+    @result = @sum_of_all_sold - @sum_of_all_in_registered
+    
+    GoogleChart::PieChart.new("370x150", t('statistics.index.chart_pie_money'), false) do |pc|
+      pc.data "Sålt (#{sprintf("%2.f", @all_sold_percent)}%)", @sum_of_all_sold
+      pc.data "Ej sålt (#{sprintf("%2.f", @non_sold_percent)}%)", @sum_of_non_sold
+      @sold_for_chart_url = pc.to_url(:chf => "bg,s,222222", :chco => "009900,663333", :cht => "p3")
+    end
+    
+    GoogleChart::PieChart.new("370x150", t('statistics.index.chart_pie_quantity'), false) do |pc|
+      pc.data "Sålt (#{sprintf("%2.f", @quantity_all_sold_percent)}%)", @quantity_of_sold_products
+      pc.data "Ej sålt (#{sprintf("%2.f", @quantity_non_sold_percent)}%)", @quantity_of_non_sold_products
+      @pie_quantity_chart_url = pc.to_url(:chf => "bg,s,222222", :chco => "009900,663333", :cht => "p3")
     end
     
     times = Array.new
@@ -49,28 +68,8 @@ class StatisticsController < ApplicationController
       end
     end
     
-    @all_sold_percent = @sum_of_all_sold / (@sum_of_all_sold + @sum_of_non_sold) * 100
-    @non_sold_percent = @sum_of_non_sold / (@sum_of_all_sold + @sum_of_non_sold) * 100
-    
-    GoogleChart::PieChart.new("370x150", "", false) do |pc|
-      pc.data "Sålt (#{sprintf("%2.f", @all_sold_percent)}%)", @sum_of_all_sold
-      pc.data "Ej sålt (#{sprintf("%2.f", @non_sold_percent)}%)", @sum_of_non_sold
-      @sold_for_chart_url = pc.to_url(:chf => "bg,s,222222", :chco => "009900,663333", :cht => "p3")
-    end
-    
-    GoogleChart::BarChart.new("850x300", t('statistics.index.chart_image_header'), :vertical, false) do |bc|
-      bc.data t('statistics.index.chart_sold_products'), times, '999999'
-      #bc.data "SecondResultBar", bar_2_data, color_2
-      bc.axis :y, :range => [0,times.max], :color => "aaaaaa"
-      bc.axis :x, :labels => (0..23).to_a, :font_size => 10, :color => "aaaaaa"
-      bc.show_legend = false
-      bc.data_encoding = :extended
-      #bc.shape_marker :circle, :color => '00ff00', :data_set_index => 0, :data_point_index => -1, :pixel_size => 10
-      @hours_chart_img_url = bc.to_url(:chf => "bg,s,1b1b1b")
-    end
-    
-    GoogleChart::BarChart.new("850x300", t('statistics.index.chart_image_header'), :vertical, false) do |bc|
-      for product_type in ProductType.all(:order => "name DESC")
+    GoogleChart::BarChart.new("850x350", t('statistics.index.chart_image_header'), :vertical, false) do |bc|
+      for product_type in all_product_types_in_reverse
         color = "#{rand(16).to_s(16)}#{rand(16).to_s(16)}#{rand(16).to_s(16)}#{rand(16).to_s(16)}#{rand(16).to_s(16)}#{rand(16).to_s(16)}"
         bc.data product_type.name, product_type.sold_per_hour, color
       end
@@ -85,14 +84,10 @@ class StatisticsController < ApplicationController
       @products_hours_chart_img_url = bc.to_url :chf => "bg,s,1b1b1b", :chdlp => "r|r", :chtx => "x,x,r,t", :chx1 => "1:|asdf|asd2|3:|asd3|e4"
     end
     
-    bc_products_labels = ProductType.all(:order => :name).map do |pt|
-      "#{pt.name}"
-    end
-    bc_products_values = ProductType.all(:order => :name).map do |pt|
-      "#{pt.quantity_sold}".to_i
-    end
+    bc_products_labels = all_product_types.map { |pt| "#{pt.name}" }
+    bc_products_values = all_product_types.map { |pt| "#{pt.quantity_sold}".to_i }
     
-    GoogleChart::BarChart.new("850x300", t('statistics.index.chart_products_image_title'), :vertical, false) do |bc|
+    GoogleChart::BarChart.new("850x350", t('statistics.index.chart_products_image_title'), :vertical, false) do |bc|
       bc.data t("statistics.index.sold_items"), bc_products_values, "66cc66"
       bc.axis :x, :labels => bc_products_labels
       bc.axis :y, :range => [0,bc_products_values.max]

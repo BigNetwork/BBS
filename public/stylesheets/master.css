@@ -503,11 +503,13 @@ ol#welcome_list li{
 
 table.statistics_table{
     border-spacing: 0;
+    clear: both;
     font-size: 110%;
     line-height: 2em;
     margin: 0 2%;
     margin-bottom: 3em;
-    width: 55%;
+    margin-top: 7em;
+    width: 96%;
 }
 table.statistics_table th, table.statistics_table td{
     padding: 0.6em 1.2em;
@@ -516,8 +518,9 @@ table.statistics_table tr.sum th, table.statistics_table tr.sum td{
     border-top: 1px solid #666;
 }
 
-#sold_for_chart{
+.sold_for_chart{
     float: right;
+    margin-top: 3em;
 }
 
 .statistics_chart img{

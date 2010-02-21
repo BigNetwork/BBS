@@ -105,6 +105,8 @@
       profit_subtitle: "Förtjänst"
       so_far: "Hittills?"
       if_we_sell_all: "Om vi säljer allt inlagt?"
+      chart_pie_money: "Försäljning (inkomst i SEK)"
+      chart_pie_quantity: "Försäljning (antal varor)"
       chart_sold_for: "Sålt för"
       chart_not_sold_for: "Inte sålt för"
       chart_times_header: "När på dygnet säljs våra produkter?"
