@@ -1,5 +1,6 @@
 class Purchase < ActiveRecord::Base
   has_many :products
+  has_one :credit
   belongs_to :cart
   belongs_to :user
   
@@ -19,4 +20,9 @@ class Purchase < ActiveRecord::Base
     
     theSum
   end
+  
+  def has_credit?
+    !credit.nil?
+  end
+  
 end

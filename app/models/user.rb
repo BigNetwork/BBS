@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   has_many :deliveries
   has_many :purchases
   has_many :carts
+  has_many :credits
 
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
@@ -48,6 +49,29 @@ class User < ActiveRecord::Base
         quantity += delivery.quantity
       end
       quantity
+    end
+  end
+  
+  def unpaid_credits
+    Credit.all(:conditions => ["user_id = ? AND paid_to_user_id IS NULL", id])
+  end
+  
+  def sum_in_unpaid_credits
+    sum = unpaid_credits.sum{ |credit| credit.purchase.sum }
+    if sum.nil?
+      0
+    else
+      sum
+    end
+  end
+
+  def sum_in_credits
+    c = Credit.all(:conditions => ["user_id = ? AND paid_to_user_id IS NULL", id])
+    sum = c.sum{ |credit| credit.purchase.sum }
+    if sum.nil?
+      0
+    else
+      sum
     end
   end
 

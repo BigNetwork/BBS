@@ -1,0 +1,22 @@
+<h1><%= t('.title') %></h1>
+
+<% form_for(@credit) do |f| %>
+  <%= f.error_messages %>
+	
+	<ol>
+  <li>
+    <%= f.label :purchase_id, Purchase.human_name.capitalize + ":" %>
+  	<%= f.collection_select :purchase_id, Purchase.all(:order => "id DESC"), :id, :id %>
+
+  </li>
+  <li>
+    <%= f.label :user_id, User.human_name.capitalize + ":" %>
+  	<%= f.collection_select :user_id, User.all(:order => :login), :id, :login, :include_blank => true %>
+  </li>
+  <li>
+    <%= f.submit t('Create') %>
+  </li>
+</ol>
+<% end %>
+
+&larr; <%= link_to t('Back'), :back %>

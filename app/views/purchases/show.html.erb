@@ -30,6 +30,23 @@
   
 <% end %>
 
-&larr; <%= link_to t('All purchases'), purchases_path %> 
-<%= t('or') %>
-<%= link_to t('.undo'), @purchase, :confirm => t('Are you sure?'), :method => :delete %>
+<h3><%= t('.credit') %>:</h3>
+
+<p>
+	<% if @purchase.has_credit? %>
+		<%= link_to h(@purchase.credit.user.login), @purchase.credit.user %> köpte denna på kredit.
+		<% unless @purchase.credit.paid? %>
+			<%= link_to "Godkänn kreditåterbetalning", { :controller => :credits, :action => :edit, :id => @purchase.credit.id, :paid_to_user_id => current_user.id } %>
+			<%= t('or') %>
+			<%= link_to t('.undo_credit'), @purchase.credit, :confirm => t('Are you sure?'), :method => :delete %>
+		<% end %>
+	<% else %>
+		<%= link_to t('.add_credit'), { :controller => :credits, :action => :new, :purchase_id => @purchase.id } %>
+	<% end %>
+</p>
+
+<p>
+	&larr; <%= link_to t('All purchases'), purchases_path %> 
+	<%= t('or') %>
+	<%= link_to t('.undo'), @purchase, :confirm => t('Are you sure?'), :method => :delete %>
+</p>

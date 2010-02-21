@@ -1,0 +1,34 @@
+<h1><%= t('.title') %></h1>
+
+<table class="index_table">
+  <tr>
+    <th><%= Purchase.human_name.capitalize %>:</th>
+    <th><%= User.human_name.capitalize %>:</th>
+    <th><%= Credit.human_attribute_name('paid').capitalize %>? (<%= Credit.human_attribute_name('payee').capitalize %>)</th>
+	<th></th>
+	<th></th>
+	<th></th>
+  </tr>
+
+<% @credits.each do |credit| %>
+  <tr>
+    <td><%= link_to "#{Purchase.human_name.capitalize} #{credit.purchase.id}", credit.purchase %></td>
+    <td><%= link_to h(credit.user.login), credit.user %></td>
+    <td>
+		<% if credit.paid? %>
+			<%= t('Yes')%>
+			(<%= link_to h(credit.payee.login), credit.payee %>)
+		<% else %>
+			<%= t('No') %>
+		<% end%>
+	</td>
+    <td class="show"><%= link_to t('Show'), credit %></td>
+    <td class="edit"><%= link_to t('Edit'), edit_credit_path(credit) %></td>
+    <td class="destroy"><%= link_to t('Destroy'), credit, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to t('.new_credit'), new_credit_path %>

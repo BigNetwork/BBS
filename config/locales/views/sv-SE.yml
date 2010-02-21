@@ -5,6 +5,14 @@
   carts:
     table:
       product_type_missing: "Fel! Varutypen saknas."
+  credits:
+    index:
+      title: "Alla krediter på köp:"
+      new_credit: "Ny kredit på köp"
+    new:
+      title: "Registrera kredit på köp:"
+    edit:
+      title: "Godkänn kreditbetalning:"
   deliveries:
     index:
       title: "Alla leveranser:"
@@ -63,6 +71,9 @@
     new:
     show:
       undo: "Ångra detta köp"
+      add_credit: "Registrera att köpet köptes på kredit"
+      credit: "Kredit"
+      undo_credit: "Ångra kredit"
   sales:
     index:
       title: "Försäljning"
@@ -108,6 +119,7 @@
     show:
       title: "Visar användare"
       other_subtitle: "Övrigt"
+      credits: "Har köpt på kredit för {{money}}:"
   
   # And an exception to the rule:
   menu:

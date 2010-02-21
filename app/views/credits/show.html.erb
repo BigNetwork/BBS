@@ -1,0 +1,18 @@
+<p>
+  <b>Purchase:</b>
+  <%=h @credit.purchase_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @credit.user_id %>
+</p>
+
+<p>
+  <b>Paid to user:</b>
+  <%=h @credit.paid_to_user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_credit_path(@credit) %> |
+<%= link_to 'Back', credits_path %>

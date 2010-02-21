@@ -38,6 +38,7 @@ a:hover{
 
 input, textarea, select, option{
     -webkit-border-radius: 0.7em;
+    -moz-border-radius: 0.7em;
     background: #111;
     border: 2px inset #333;
     color: #fff;
@@ -55,6 +56,7 @@ input:focus, textarea:focus, select:focus{
 
 input[type=submit]{
     -webkit-border-radius: 0.7em;
+    -moz-border-radius: 0.7em;
     background: #009;
     border-color: #00f;
     padding: 0.5em 1em;
@@ -263,6 +265,7 @@ table.index_table td.edit{
 
 #menu li a{
     -webkit-border-top-left-radius: 0.7em;
+    -moz-border-radius-top-left: 0.7em;
     background: #1b1b1b;
     border: 1px solid #2a2a2a;
     border-bottom-color: #333;
@@ -321,8 +324,11 @@ table.index_table td.edit{
 }
 #page{
     -webkit-border-radius: 0.7em;
+    -moz-border-radius: 0.7em;
     -webkit-border-top-left-radius: 0;
+    -moz-border-radius-top-left: 0.7em;
     -webkit-border-top-right-radius: 0;
+    -moz-border-radius-top-right: 0.7em;
     background: #222;
     border: 1px solid #333;
     clear: both;

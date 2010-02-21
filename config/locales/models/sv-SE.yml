@@ -3,6 +3,7 @@
     models:
       cart_row: "rad i kundvagn"
       cart: "kundvagn"
+      credit: "köp på kredit"
       delivery: "leverans"
       product: "vara"
       product_type:
@@ -16,6 +17,12 @@
       cart_row:
         price_each: "styckpris"
         sum: "delsumma"
+      credit:
+        purchase_id: "Köp"
+        user_id: "Användare"
+        paid_to_user_id: "Betalning mottagen av"
+        paid: "betald"
+        payee: "betalningsmottagare"
       delivery:
         quantity: "Antal"
         product_type_id: "Varutyp"
@@ -38,3 +45,4 @@
         has_done: "har sålt"
         sold_for: "har sålt för"
         has_delivered: "har levererat"
+        debt: "skuld"

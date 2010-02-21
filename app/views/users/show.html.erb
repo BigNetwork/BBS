@@ -24,6 +24,27 @@
   </ul>
 <% end %>
 
+<h3><%= t('.credits', :money => number_to_currency (@user.sum_in_unpaid_credits)) %></h3>
+
+<p></p>
+
+<ul>
+	<% for credit in @user.unpaid_credits %>
+		<li>
+			<!--<%= Credit.human_name.capitalize %> #<%= credit.id %>-->
+			<%= link_to "#{Purchase.human_name.capitalize} #{credit.purchase.id}", credit.purchase %>
+			(<%= number_to_currency credit.purchase.sum %>)
+			<% if credit.paid? %>
+				<!--BETALD-->
+			<% else %>
+				<!--EJ BETALD-->
+				—
+				<%= link_to "Godkänn betalning", { :controller => :credits, :action => :edit, :id => credit.id, :paid_to_user_id => current_user.id } %>
+			<% end %>
+		</li>
+	<% end %>
+</ul>
+
 <h3><%= t('.other_subtitle') %>:</h3>
 
 <% unless @user.bls_id.nil? %>
