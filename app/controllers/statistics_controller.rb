@@ -7,8 +7,10 @@ class StatisticsController < ApplicationController
     all_products = Product.all(:include => :product_type)
     sold_products = Product.all(:include => [:product_type, :purchase], :conditions => "purchase_id IS NOT NULL")
     non_sold_products = all_products - sold_products
-    all_product_types_in_reverse = ProductType.all(:order => "name DESC")
-    all_product_types = ProductType.all(:order => :name)
+    #all_product_types_in_reverse = ProductType.all(:order => "name DESC")
+    non_special_offer_product_types_in_reverse = ProductType.all(:conditions => "product_types.id NOT IN (SELECT product_type_relations.parent_id AS id FROM product_type_relations)", :order => "name DESC")
+    #all_product_types = ProductType.all(:order => :name)
+    non_special_offer_product_types = ProductType.all_non_special_offers
     
     @sum_of_all_in_registered = all_products.sum{ |p| p.product_type.purchase_price }
     
@@ -69,7 +71,7 @@ class StatisticsController < ApplicationController
     end
     
     GoogleChart::BarChart.new("850x350", t('statistics.index.chart_image_header'), :vertical, false) do |bc|
-      for product_type in all_product_types_in_reverse
+      for product_type in non_special_offer_product_types_in_reverse
         color = "#{rand(16).to_s(16)}#{rand(16).to_s(16)}#{rand(16).to_s(16)}#{rand(16).to_s(16)}#{rand(16).to_s(16)}#{rand(16).to_s(16)}"
         bc.data product_type.name, product_type.sold_per_hour, color
       end
@@ -84,8 +86,8 @@ class StatisticsController < ApplicationController
       @products_hours_chart_img_url = bc.to_url :chf => "bg,s,1b1b1b", :chdlp => "r|r", :chtx => "x,x,r,t", :chx1 => "1:|asdf|asd2|3:|asd3|e4"
     end
     
-    bc_products_labels = all_product_types.map { |pt| "#{pt.name}" }
-    bc_products_values = all_product_types.map { |pt| "#{pt.quantity_sold}".to_i }
+    bc_products_labels = non_special_offer_product_types.map { |pt| "#{pt.name}" }
+    bc_products_values = non_special_offer_product_types.map { |pt| "#{pt.quantity_sold}".to_i }
     
     GoogleChart::BarChart.new("850x350", t('statistics.index.chart_products_image_title'), :vertical, false) do |bc|
       bc.data t("statistics.index.sold_items"), bc_products_values, "66cc66"
