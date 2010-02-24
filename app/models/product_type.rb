@@ -9,6 +9,8 @@ class ProductType < ActiveRecord::Base
   has_many :products
   has_many :cart_rows
   
+  default_scope :order => 'name'
+  
   validates_presence_of :purchase_price, :standard_price, :crew_price
   
   def self.all_non_special_offers

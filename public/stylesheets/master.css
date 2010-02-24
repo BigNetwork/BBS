@@ -351,6 +351,9 @@ table.index_table th{
 }
 table.index_table td{
 }
+table.index_table th a.sorting{
+    white-space: nowrap;
+}
 table#cart_table{
     border-spacing: 0;
     width: 100%;

@@ -1,14 +1,16 @@
 <table class="index_table">
   <tr>
-    <th><%= t('product_type.name') %></th>
+    <th><%= sorting_link t('product_type.name'), 'name' %></th>
 <!--    <th><%= t('product_type.combination') %>?</th>-->
     <th class="quantity"><%= t('product_type.delivered') %></th>
     <th class="quantity"><%= t('product_type.sold') %></th>
     <th class="quantity"><%= t('product_type.in_stock') %></th>
-    <th class="money"><%= t('product_type.standard_price') %></th>
-    <th class="money"><%= t('product_type.crew_price') %></th>
+    <th class="money"><%= sorting_link t('product_type.standard_price'), 'standard_price' %></th>
+    <th class="money"><%= sorting_link t('product_type.crew_price'), 'crew_price' %></th>
     <th class="money"><%= t('product_type.purchase_price') %></th>
     <th class="money"><%= t('product_type.profit') %></th>
+	<th></th>
+	<th></th>
   </tr>
 
 <% @product_types.each do |product_type| %>

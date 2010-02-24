@@ -5,7 +5,12 @@ class ProductTypesController < ApplicationController
   # GET /product_types
   # GET /product_types.xml
   def index
-    @product_types = ProductType.all(:include => :products, :order => :name)
+    
+    if params[:sort_by].nil?
+      @product_types = ProductType.all(:include => :products)
+    else
+      @product_types = ProductType.all(:include => :products, :order => "#{@sort_by} #{@sort_how}")
+    end
 
     respond_to do |format|
       format.html # index.html.erb
