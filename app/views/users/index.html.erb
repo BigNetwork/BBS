@@ -3,18 +3,18 @@
 <table class="index_table">
   <tr>
     <th><%= User.human_attribute_name('login').capitalize %>:</th>
-    <th><%= User.human_attribute_name('has_done').capitalize %>:</th>
-    <th><%= User.human_attribute_name('sold_for').capitalize %>:</th>
-    <th><%= User.human_attribute_name('has_delivered').capitalize %>:</th>
-	<th><%= User.human_attribute_name('debt').capitalize %>:</th>
+    <th class="quantity"><%= User.human_attribute_name('has_done').capitalize %>:</th>
+    <th class="money"><%= User.human_attribute_name('sold_for').capitalize %>:</th>
+    <th class="quantity"><%= User.human_attribute_name('has_delivered').capitalize %>:</th>
+	<th class="money"><%= User.human_attribute_name('debt').capitalize %>:</th>
   </tr>
 <% for user in @users %>
   <tr>
     <td><%= link_to user.login, user %></td>
-    <td><%= user.purchases.length %> <%= Purchase.human_name %></td>
-    <td><%= number_to_currency user.sold_for %></td>
-    <td><%= ProductType.human_name :count => user.delivered_total_quantity %></td>
-	<td><%= number_to_currency user.sum_in_unpaid_credits %></td>
+    <td class="quantity"><%= user.purchases.length %> <%= Purchase.human_name %></td>
+    <td class="money"><%= number_to_currency user.sold_for %></td>
+    <td class="quantity"><%= ProductType.human_name :count => user.delivered_total_quantity %></td>
+	<td class="money"><%= number_to_currency user.sum_in_unpaid_credits %></td>
   </tr>
 <% end %>
 </table>
