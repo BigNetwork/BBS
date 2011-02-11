@@ -87,7 +87,7 @@ class User < ActiveRecord::Base
     #u && u.authenticated?(password) ? u : nil
     require 'net/http' 
     site = "www.wintergate.se"
-    url = "/index.php?controller=api&action=checkUser&userName=#{login}&userPassword=#{password}"
+    url = "/index.php?event=WG11&controller=api&action=checkUser&userName=#{login}&userPassword=#{password}"
     connection = Net::HTTP.new(site)
     response = "" 
     connection.start do |http| 
