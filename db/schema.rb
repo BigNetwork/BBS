@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100221003058) do
+ActiveRecord::Schema.define(:version => 20110213123919) do
 
   create_table "cart_rows", :force => true do |t|
     t.integer  "cart_id"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20100221003058) do
     t.integer  "product_type_id"
     t.integer  "quantity"
     t.integer  "user_id"
+    t.integer  "products_count",  :default => 0
   end
 
   create_table "product_type_relations", :force => true do |t|
@@ -57,6 +58,9 @@ ActiveRecord::Schema.define(:version => 20100221003058) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal  "purchase_price"
+    t.integer  "products_count",   :default => 0
+    t.integer  "cart_rows_count",  :default => 0
+    t.integer  "deliveries_count", :default => 0
   end
 
   create_table "products", :force => true do |t|
@@ -76,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20100221003058) do
     t.integer  "cart_id"
     t.string   "price_name"
     t.integer  "user_id"
+    t.integer  "products_count", :default => 0
   end
 
   create_table "users", :force => true do |t|
@@ -89,6 +94,10 @@ ActiveRecord::Schema.define(:version => 20100221003058) do
     t.string   "remember_token",            :limit => 40
     t.datetime "remember_token_expires_at"
     t.integer  "bls_id"
+    t.integer  "deliveries_count",                         :default => 0
+    t.integer  "purchases_count",                          :default => 0
+    t.integer  "carts_count",                              :default => 0
+    t.integer  "credits_count",                            :default => 0
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

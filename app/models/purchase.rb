@@ -2,10 +2,9 @@ class Purchase < ActiveRecord::Base
   has_many :products
   has_one :credit
   belongs_to :cart
-  belongs_to :user
+  belongs_to :user, :counter_cache => true
   
   def sum
-    # TODO: Check for crew or standard price!
     theSum = 0.0
     
     for product in products

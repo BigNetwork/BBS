@@ -19,7 +19,7 @@
   <% @purchases.each do |purchase| %>
     <tr class="<%= cycle :odd, :even %>">
       <td><%= link_to "#{Purchase.human_name.capitalize} #{purchase.id}", purchase %></td>
-      <td class="quantity"><%= purchase.products.length %></td>
+      <td class="quantity"><%= purchase.products.size %></td>
       <td class="money"><%= number_to_currency purchase.sum %></td>
       <td class="date"><%= l purchase.created_at, :format => :short %></td>
   <!--    <td><%= link_to "#{t('cart')} #{purchase.cart.id}", purchase.cart %></td>-->

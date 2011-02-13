@@ -8,6 +8,7 @@ class ProductType < ActiveRecord::Base
 
   has_many :products
   has_many :cart_rows
+  has_many :deliveries
   
   default_scope :order => 'name'
   
@@ -54,7 +55,7 @@ class ProductType < ActiveRecord::Base
       end
       return lowest
     else
-      products.length
+      products.size
     end
   end
   
@@ -87,15 +88,15 @@ class ProductType < ActiveRecord::Base
       end
       return lowest
     else
-      not_sold_products.length
+      not_sold_products.size
     end
   end
   
   def quantity_sold
     if is_combo?
-      sold_products.length
+      sold_products.size
     else
-      sold_products.length
+      sold_products.size
     end
   end
   

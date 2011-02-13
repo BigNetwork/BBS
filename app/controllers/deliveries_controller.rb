@@ -50,7 +50,7 @@ class DeliveriesController < ApplicationController
 
     respond_to do |format|
       if @delivery.save
-        flash[:notice] = 'Delivery was successfully created.'
+        flash[:notice] = #'Delivery was successfully created.'
         
         # Create the delivered products:
         for i in 1..(@delivery.quantity)

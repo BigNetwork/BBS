@@ -12,14 +12,15 @@
 
 		<%= render :partial => 'authed_table', :locals => { :product_types => @product_types} %>
 		
-		<br />
-
-		<%= link_to t('.new_product_type'), new_product_type_path %>
-		
 	<% else %>
 
 		<%= render :partial => 'non_authed_table', :locals => { :product_types => @product_types} %>
 		
 	<% end %>
 
+<% end %>
+
+<% if logged_in? %>
+	<br />
+	<%= link_to t('.new_product_type'), new_product_type_path %>
 <% end %>

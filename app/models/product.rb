@@ -1,8 +1,8 @@
 class Product < ActiveRecord::Base
 
-  belongs_to :product_type
-  belongs_to :delivery
-  belongs_to :purchase
+  belongs_to :product_type#, :counter_cache => true
+  belongs_to :delivery, :counter_cache => true
+  belongs_to :purchase, :counter_cache => true
   
   validates_presence_of :product_type_id
   

@@ -48,7 +48,7 @@
 <h3><%= t('.other_subtitle') %>:</h3>
 
 <% unless @user.bls_id.nil? %>
-  <%= link_to "#{@user.login} på WinterGate", "http://www.wintergate.se/index.php?controller=user&action=show&id=#{@user.bls_id}" %>
+  <%= link_to "#{@user.login} på WinterGate", "http://www.wintergate.se/index.php?event=WG11&controller=user&action=show&id=#{@user.bls_id}" %>
 <% end %>
 
 <p>

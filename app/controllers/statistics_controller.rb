@@ -30,8 +30,8 @@ class StatisticsController < ApplicationController
     @all_sold_percent = @sum_of_all_sold.to_f / (@sum_of_all_sold.to_f + @sum_of_non_sold.to_f) * 100
     @non_sold_percent = @sum_of_non_sold.to_f / (@sum_of_all_sold.to_f + @sum_of_non_sold.to_f) * 100
     
-    @quantity_of_non_sold_products = non_sold_products.length.to_i
-    @quantity_of_sold_products = sold_products.length.to_i
+    @quantity_of_non_sold_products = non_sold_products.size.to_i
+    @quantity_of_sold_products = sold_products.size.to_i
     
     @quantity_all_sold_percent = @quantity_of_sold_products.to_f     / (@quantity_of_sold_products.to_f + @quantity_of_non_sold_products.to_f) * 100
     @quantity_non_sold_percent = @quantity_of_non_sold_products.to_f / (@quantity_of_sold_products.to_f + @quantity_of_non_sold_products.to_f) * 100

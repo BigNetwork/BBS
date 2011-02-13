@@ -13,15 +13,15 @@
 
 <table>
   <tr>
-    <th>Purchased:</th>
-    <td class="quantity"><%= @product_type.products.length %></td>
+    <th><%= t('.purchased') %>:</th>
+    <td class="quantity"><%= @product_type.products.size %></td>
   </tr>
   <tr>
-    <th>In stock:</th>
+    <th><%= t('.in_stock') %>:</th>
     <td class="quantity"><%= @product_type.quantity_in_stock %></td>
   </tr>
   <tr>
-    <th>Sold:</th>
+    <th><%= t('.sold') %>:</th>
     <td class="quantity"><%= @product_type.quantity_sold %></td>
   </tr>
 </table>
@@ -47,10 +47,10 @@
   </tr>
 </table>
 
-<% unless @product_type.children.length > 0 || @product_type.parents.uniq.length > 0 %>
+<% unless @product_type.children.size > 0 || @product_type.parents.uniq.size > 0 %>
 
 <p>
-  <%= t('.buy_cost_text', :money => number_to_currency(@product_type.products.length * @product_type.purchase_price), :count => @product_type.products.length, :type => @product_type.name ) %>
+  <%= t('.buy_cost_text', :money => number_to_currency(@product_type.products.size * @product_type.purchase_price), :count => @product_type.products.size, :type => @product_type.name ) %>
 </p>
 
 <!--
@@ -61,22 +61,24 @@
 </p>
 
 <p>
-  We need to sell for at least <%= number_to_currency((@product_type.products.length * @product_type.purchase_price) - (@product_type.quantity_sold * @product_type.profit)) %> to reach break-even for the <%=h @product_type.name %>s.
+  We need to sell for at least <%= number_to_currency((@product_type.products.size * @product_type.purchase_price) - (@product_type.quantity_sold * @product_type.profit)) %> to reach break-even for the <%=h @product_type.name %>s.
 </p>
 
 <p>
-  If we sell all remaining <%= @product_type.quantity_in_stock %> <%=h @product_type.name %>s we can get a total of <%= number_to_currency(@product_type.products.length * @product_type.standard_price) %>, which makes a total profit of <%= number_to_currency(@product_type.products.length * @product_type.profit) %>
+  If we sell all remaining <%= @product_type.quantity_in_stock %> <%=h @product_type.name %>s we can get a total of <%= number_to_currency(@product_type.products.size * @product_type.standard_price) %>, which makes a total profit of <%= number_to_currency(@product_type.products.size * @product_type.profit) %>
 </p>
 -->
 
 <%- end -%>
 
+<!--
+
 <h2><%= t('.special_offers') %>:</h2>
 
-<% if @product_type.children.length > 0 %>
+<% if @product_type.children.size > 0 %>
   <p>Detta specialerbjudande består av följande 
-  <% if @product_type.children.length > 1 %>
-    <%#= @product_type.children.length %> produkter:
+  <% if @product_type.children.size > 1 %>
+    <%#= @product_type.children.size %> produkter:
   <% else %>
     produkt:
   <% end %>
@@ -88,10 +90,10 @@
 	<% end %>
   
 <% end %>
-<% if @product_type.parents.uniq.length > 0 %>
+<% if @product_type.parents.uniq.size > 0 %>
   Denna produkt är en del i följande 
-  <% if @product_type.parents.uniq.length > 1 %>
-    <%= @product_type.parents.uniq.length %> specialerbjudanden:
+  <% if @product_type.parents.uniq.size > 1 %>
+    <%= @product_type.parents.uniq.size %> specialerbjudanden:
   <% else %>
     specialerbjudande:
   <% end %>
@@ -101,7 +103,7 @@
   <% end %>
   </ul>
 <% end %>
-<% unless @product_type.children.length > 0 || @product_type.parents.uniq.length > 0 %>
+<% unless @product_type.children.size > 0 || @product_type.parents.uniq.size > 0 %>
   <p>Inga specialerbjudanden relaterade till denna varutyp.</p>
 <% end %>
 
@@ -110,6 +112,8 @@
 </p>
 
 <hr style="border: 1px"/>
+
+-->
 
 <p>
   &larr;

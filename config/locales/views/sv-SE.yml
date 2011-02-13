@@ -21,6 +21,7 @@
     edit:
     new:
     show:
+      new_delivery: "Ny leverans"
   flash:
     created: "{{item}} skapades."
     updated: "{{item}} ändrades."
@@ -49,6 +50,9 @@
       title: ""
       no_description: ""
       in_stock_subtitle: "I lager"
+      purchased: "Inköpt"
+      in_stock: "I lager nu"
+      sold: "Sålda"
       prices_and_profit_subtitle: "Priser och förtjänst"
       buy_cost_text: "Det kostade {{money}} att köpa de {{count}}st {{type}}."
       special_offers: "Specialerbjudanden"
@@ -100,11 +104,11 @@
       sales_subtitle: "Försäljning"
       bought_for: "Hur mycket har vi köpt in för?"
       sold_for: "Hur mycket har vi sålt för?"
-      result: "Resultat"
+      result: "Resultat just nu"
       to_break_even: "Hur mycket mer måste vi sälja för att nå break-even (plus minus noll)?"
       profit_subtitle: "Förtjänst"
       so_far: "Hittills?"
-      if_we_sell_all: "Om vi säljer allt inlagt (till bästa pris)?"
+      if_we_sell_all: "Om vi säljer allt inlagt (till deltagarpris)?"
       chart_pie_money: "Försäljning (inkomst i SEK)"
       chart_pie_quantity: "Försäljning (antal varor)"
       chart_sold_for: "Sålt för"
@@ -127,7 +131,7 @@
   menu:
     sales: "Försäljning"
     warehouse: "Lager"
-    history: "Historik"
+    history: "Försäljningshistorik"
     statistics: "Statistik"
     # And the submenus (another exception to the rule):
     product_types: "Varutyper"
