@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   private
   
     def set_user_language
-      I18n.locale = 'sv-SE'
+      I18n.locale = 'sv-SE' || I18n.default_locale
     end
     
     def check_for_sorting
