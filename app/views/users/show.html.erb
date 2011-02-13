@@ -19,7 +19,7 @@
   </h3>
   <ul>
     <% for delivery in @user.deliveries %>
-      <li><%= link_to "#{t('delivery')} #{delivery.id}", delivery %></li>
+      <li><%= link_to "#{t('delivery')} #{delivery.id}", delivery %>, <%= delivery.quantity %> x <%= delivery.product_type.name if delivery.product_type %></li>
     <% end %>
   </ul>
 <% end %>

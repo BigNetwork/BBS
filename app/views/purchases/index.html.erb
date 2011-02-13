@@ -21,7 +21,7 @@
       <td><%= link_to "#{Purchase.human_name.capitalize} #{purchase.id}", purchase %></td>
       <td class="quantity"><%= purchase.products.size %></td>
       <td class="money"><%= number_to_currency purchase.sum %></td>
-      <td class="date"><%= l purchase.created_at, :format => :short %></td>
+      <td class="date"><%= l purchase.created_at, :format => :short %>, <%= time_ago_in_words purchase.created_at %> sedan</td>
   <!--    <td><%= link_to "#{t('cart')} #{purchase.cart.id}", purchase.cart %></td>-->
       <td><%= link_to purchase.user.login, purchase.user unless purchase.user.nil? %></td>
       <td class="destroy"><%= link_to t('Undo'), purchase, :confirm => t('Are you sure?'), :method => :delete %></td>

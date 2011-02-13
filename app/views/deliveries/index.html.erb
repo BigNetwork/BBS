@@ -23,7 +23,7 @@
           <%= delivery.quantity %> x <%= link_to delivery.product_type.name, delivery.product_type %>
         <%- end -%>
       </td>
-      <td><%= l delivery.created_at, :format => :short %></td>
+      <td><%= l delivery.created_at, :format => :short %>, <%= time_ago_in_words delivery.created_at %> sedan</td>
       <td>
         <%= link_to delivery.user.login, delivery.user unless delivery.user.nil? %>
       </td>

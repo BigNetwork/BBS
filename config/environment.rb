@@ -40,5 +40,5 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   config.i18n.load_path += Dir[File.join(RAILS_ROOT, 'config', 'locales', '**', '*.{rb,yml}')]
   
-  #config.i18n.default_locale = :de
+  config.i18n.default_locale = 'sv-SE'
 end
