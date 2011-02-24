@@ -1,0 +1,56 @@
+<div id="sales_products" style="width: 100%; border: none;">
+	<ul id="product_types">
+<% @product_types.each do |product_type| %>
+	<li class="<%= "not_in_stock"  unless product_type.in_stock? %>">
+	    <% if product_type.in_stock? %>
+	      
+				<a>
+	        <div class="product_type_button" id="product_type_button_<%= product_type.id %>" style="height: auto; min-height: 7em; padding: 0em; padding-bottom: 0.5em">
+		        <span class="name" style="font-size: 200%; margin-top: 0;"><%= product_type.name %></span>
+
+						<span class="standard_price"><%- 
+						  if session[:price_name] == 'standard' 
+						    -%><%= number_to_currency product_type.standard_price %><%- 
+						  elsif session[:price_name] == 'crew' 
+						    -%><%= number_to_currency product_type.crew_price %><%- 
+						  end 
+						    -%></span>
+
+						<span class="quantity_in_stock"><%-
+						  if product_type.in_stock? 
+						    -%><%= product_type.quantity_in_stock %> i lager<%- 
+						  elsif product_type.quantity_in_stock == 0 
+						    -%>Slut<%-
+						  else
+						    -%><%= product_type.quantity_in_stock %><%- 
+						  end
+						    -%></span>
+		      </div>
+	      </a>
+	    <% else %>
+	      <div class="product_type_button" id="product_type_button_<%= product_type.id %>" style="height: auto; min-height: 7em; padding: 0em; padding-bottom: 0.5em">
+	        <span class="name" style="font-size: 200%; margin-top: 0;"><%= product_type.name %></span>
+
+					<span class="standard_price"><%- 
+					  if session[:price_name] == 'standard' 
+					    -%><%= number_to_currency product_type.standard_price %><%- 
+					  elsif session[:price_name] == 'crew' 
+					    -%><%= number_to_currency product_type.crew_price %><%- 
+					  end 
+					    -%></span>
+
+					<span class="quantity_in_stock"><%-
+					  if product_type.in_stock? 
+					    -%><%= product_type.quantity_in_stock %> i lager<%- 
+					  elsif product_type.quantity_in_stock == 0 
+					    -%>Slut<%-
+					  else
+					    -%><%= product_type.quantity_in_stock %><%- 
+					  end
+					    -%></span>
+	      </div>
+	    <% end %>
+	</li>
+<% end %>
+</ul>
+</div>

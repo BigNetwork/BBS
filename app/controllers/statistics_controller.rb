@@ -100,5 +100,9 @@ class StatisticsController < ApplicationController
     end
     
   end
+  
+  def bigscreen
+    @product_types = ProductType.all
+  end
 
 end
