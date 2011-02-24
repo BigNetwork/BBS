@@ -7,6 +7,9 @@
   <title><%= t('.title') %></title>
   <%= stylesheet_link_tag 'master' %>
   <%#= stylesheet_link_tag 'prototip', :cache => true %>
+  <% if controller.controller_name == 'statistics' && controller.action_name == 'bigscreen' %>
+ 	<meta http-equiv="refresh" content="60" />
+  <% end %>
 </head>
 <body class="<%= "#{controller.controller_name} #{controller.action_name}" %>">
 
