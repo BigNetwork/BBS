@@ -1,11 +1,31 @@
+<!--
 <div id="sales_products" style="width: 100%; border: none;">
-	<ul id="product_types">
+	<ul id="product_types">-->
+<table class="index_table bigscreen">
+	<thead></thead>
+	<tbody>
 <% @product_types.each do |product_type| %>
+	<tr class="<%= cycle 'odd', 'even' %>">
+		<td class="name"><%= product_type.name %></td>
+		<td class="standard_price"><%= number_to_currency product_type.standard_price %></td>
+		<td>
+			<%-
+		  if product_type.in_stock? 
+		    -%><%= product_type.quantity_in_stock %> i lager<%- 
+		  elsif product_type.quantity_in_stock == 0 
+		    -%>Slut<%-
+		  else
+		    -%><%= product_type.quantity_in_stock %><%- 
+		  end
+		    -%>
+		</td>
+	</tr>
+<!--
 	<li class="<%= "not_in_stock"  unless product_type.in_stock? %>">
 	    <% if product_type.in_stock? %>
 	      
 				<a>
-	        <div class="product_type_button" id="product_type_button_<%= product_type.id %>" style="height: auto; min-height: 7em; padding: 0em; padding-bottom: 0.5em">
+	        <div class="product_type_button" id="product_type_button_<%= product_type.id %>" style="height: auto; min-height: 7em; padding: 0em 0.5em; padding-bottom: 0.5em; width: auto; min-width: 8em;">
 		        <span class="name" style="font-size: 200%; margin-top: 0;"><%= product_type.name %></span>
 
 						<span class="standard_price"><%- 
@@ -51,6 +71,11 @@
 	      </div>
 	    <% end %>
 	</li>
+	-->
 <% end %>
+	</tbody>
+</table>
+<!--
 </ul>
 </div>
+-->

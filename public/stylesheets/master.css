@@ -539,6 +539,38 @@ table.statistics_table tr.sum th, table.statistics_table tr.sum td{
     padding-left: 20px;
 }
 
+body.statistics.bigscreen #logo{
+	display: none;
+}
+
+body.statistics.bigscreen #menu{
+	display: none;
+}
+
+body.statistics.bigscreen #container{
+	width: 98%;
+}
+
+body.statistics.bigscreen #footer{
+	display: none;
+}
+
+table.bigscreen{
+	
+}
+
+table.bigscreen td{
+	padding: 0;
+}
+
+table.bigscreen .name{
+	font-size: 200%;
+}
+
+table.bigscreen .standard_price{
+	font-size: 200%;
+}
+
 #footer{
     color: #999;
     font-size: 80%;
