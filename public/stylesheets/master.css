@@ -354,6 +354,9 @@ table.index_table td{
 table.index_table th a.sorting{
     white-space: nowrap;
 }
+table.index_table .crew_price{
+	display: none;
+}
 table#cart_table{
     border-spacing: 0;
     width: 100%;
@@ -464,6 +467,7 @@ ol#welcome_list li{
 }
 
 #price_selector{
+	display: none;
     float: right;
     margin: 2em 2em 0 0;
 }

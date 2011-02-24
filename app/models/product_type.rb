@@ -12,7 +12,7 @@ class ProductType < ActiveRecord::Base
   
   default_scope :order => 'name'
   
-  validates_presence_of :name, :purchase_price, :standard_price, :crew_price
+  validates_presence_of :name, :purchase_price, :standard_price#, :crew_price
   
   def self.all_non_special_offers
     ProductType.all(:conditions => "product_types.id NOT IN (SELECT product_type_relations.parent_id AS id FROM product_type_relations)", :order => :name)
