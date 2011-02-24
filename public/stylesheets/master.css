@@ -566,24 +566,24 @@ table.bigscreen{
 }
 
 table.bigscreen td{
+	font-size: 200%;
 	padding: 0.2em;
 }
 
 table.bigscreen .name{
-	font-size: 200%;
 }
 
 table.bigscreen .standard_price{
-	font-size: 200%;
 	text-align: right;
 }
 
 table.bigscreen .quantity_in_stock{
+	color: #555;
 	text-align: right;
 }
 
 table.bigscreen .quantity_in_stock span{
-	color: #555;
+	
 }
 
 #footer{
