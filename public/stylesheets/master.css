@@ -555,12 +555,18 @@ body.statistics.bigscreen #footer{
 	display: none;
 }
 
+body.statistics.bigscreen h1{
+	color: lightgreen;
+	font-size: 250%;
+	letter-spacing: 0px;
+}
+
 table.bigscreen{
 	
 }
 
 table.bigscreen td{
-	padding: 0;
+	padding: 0.2em;
 }
 
 table.bigscreen .name{
@@ -569,6 +575,15 @@ table.bigscreen .name{
 
 table.bigscreen .standard_price{
 	font-size: 200%;
+	text-align: right;
+}
+
+table.bigscreen .quantity_in_stock{
+	text-align: right;
+}
+
+table.bigscreen .quantity_in_stock span{
+	color: #555;
 }
 
 #footer{

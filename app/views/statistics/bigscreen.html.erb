@@ -1,17 +1,18 @@
 <!--
 <div id="sales_products" style="width: 100%; border: none;">
 	<ul id="product_types">-->
+<h1>Kioskens prislista:</h1>
 <table class="index_table bigscreen">
 	<thead></thead>
 	<tbody>
 <% @product_types.each do |product_type| %>
 	<tr class="<%= cycle 'odd', 'even' %>">
 		<td class="name"><%= product_type.name %></td>
-		<td class="standard_price"><%= number_to_currency product_type.standard_price %></td>
-		<td>
+		<td class="standard_price"><%= number_to_currency product_type.standard_price, :precision => 0 %></td>
+		<td class="quantity_in_stock">
 			<%-
 		  if product_type.in_stock? 
-		    -%><%= product_type.quantity_in_stock %> i lager<%- 
+		    -%><%= product_type.quantity_in_stock %> <span>i lager</span><%- 
 		  elsif product_type.quantity_in_stock == 0 
 		    -%>Slut<%-
 		  else
