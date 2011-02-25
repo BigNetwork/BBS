@@ -13,7 +13,11 @@
         other: "{{count}} varor"
       purchase: "köp"
       user: "användare"
+      product_category: "varukategori"
     attributes:
+      product_category:
+        name: "namn"
+        color: "färg"
       cart_row:
         price_each: "styckpris"
         sum: "delsumma"

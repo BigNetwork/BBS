@@ -5,7 +5,13 @@
 <table class="index_table bigscreen">
 	<thead></thead>
 	<tbody>
-<% @product_types.each do |product_type| %>
+		<% @product_categories.each do |product_category| %>
+			<tr class="product_category" style="color: <%= h product_category.color %>">
+				<td>
+					<%= product_category.name %>
+				</td>
+			</tr>
+<% product_category.product_types.each do |product_type| %>
 	<tr class="<%= cycle 'odd', 'even' %>">
 		<td class="name"><%= product_type.name %></td>
 		<td class="standard_price"><%= number_to_currency product_type.standard_price, :precision => 0 %></td>
@@ -73,6 +79,7 @@
 	    <% end %>
 	</li>
 	-->
+<% end %>
 <% end %>
 	</tbody>
 </table>

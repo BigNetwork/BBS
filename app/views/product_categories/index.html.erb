@@ -1,0 +1,20 @@
+<h1>Varukategorier:</h1>
+
+<table>
+  <tr>
+    <th>Namn</th>
+  </tr>
+
+<% @product_categories.each do |product_category| %>
+  <tr>
+    <td style="background-color: <%=h product_category.color %>;"><%=h product_category.name %></td>
+    <td><%= link_to 'Visa', product_category %></td>
+    <td><%= link_to 'Ändra', edit_product_category_path(product_category) %></td>
+    <td><%= link_to 'Ta bort', product_category, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Ny varukategori', new_product_category_path %>

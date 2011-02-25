@@ -556,7 +556,7 @@ body.statistics.bigscreen #footer{
 }
 
 body.statistics.bigscreen h1{
-	color: lightgreen;
+	color: #666;
 	font-size: 250%;
 	letter-spacing: 0px;
 }
@@ -566,8 +566,13 @@ table.bigscreen{
 }
 
 table.bigscreen td{
-	font-size: 200%;
+	font-size: 180%;
 	padding: 0.2em;
+}
+
+table.bigscreen .product_category{
+	color: #444;
+	font-weight: bold;
 }
 
 table.bigscreen .name{

@@ -10,6 +10,8 @@ class ProductType < ActiveRecord::Base
   has_many :cart_rows
   has_many :deliveries
   
+  belongs_to :product_category
+  
   default_scope :order => 'name'
   
   validates_presence_of :name, :purchase_price, :standard_price#, :crew_price
@@ -20,6 +22,18 @@ class ProductType < ActiveRecord::Base
   
   def not_sold_products
     Product.find(:all, :conditions => { :product_type_id => id, :purchase_id => nil} )
+  end
+  
+  def color
+    if product_category
+      if product_category.color
+        product_category.color
+      else
+        'darkblue'
+      end
+    else
+      'black'
+    end
   end
   
   def sold_products

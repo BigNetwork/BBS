@@ -1,0 +1,20 @@
+<h1>Ny varukategori</h1>
+
+<% form_for(@product_category) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name, 'Namn' %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :color, 'Färg' %><br />
+    <%= f.text_field :color %>
+  </p>
+  <p>
+    <%= f.submit 'Spara' %>
+  </p>
+<% end %>
+
+&larr; 
+<%= link_to 'Tillbaka', product_categories_path %>

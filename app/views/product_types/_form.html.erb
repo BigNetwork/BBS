@@ -20,6 +20,10 @@
   <%= f.text_field :crew_price %> kr
 </li>
 -->
+<li>
+  <%= f.label :product_category_id, t('product_type.product_category_id') %>
+  <%= f.collection_select :product_category_id, ProductCategory.all, :id, :name %>
+</li>
 <li class="explanation">
   <%= t('product_type.decimalinfo') %>
 </li>
