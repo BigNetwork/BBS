@@ -570,6 +570,15 @@ table.bigscreen td{
 	padding: 0.2em;
 }
 
+table.bigscreen tr.odd{
+	background: #333;
+}
+
+table.bigscreen .out_of_stock{
+	color: #999;
+	text-decoration: line-through;
+}
+
 table.bigscreen .product_category{
 	color: #444;
 	font-weight: bold;
@@ -583,8 +592,9 @@ table.bigscreen .standard_price{
 }
 
 table.bigscreen .quantity_in_stock{
-	color: #555;
+	color: #999;
 	text-align: right;
+	padding-right: 5em;
 }
 
 table.bigscreen .quantity_in_stock span{

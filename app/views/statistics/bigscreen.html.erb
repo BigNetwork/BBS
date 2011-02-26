@@ -12,7 +12,7 @@
 				</td>
 			</tr>
 <% product_category.product_types.each do |product_type| %>
-	<tr class="<%= cycle 'odd', 'even' %>">
+	<tr class="<%= cycle 'odd', 'even' %> <%= 'out_of_stock' unless product_type.in_stock? %>">
 		<td class="name"><%= product_type.name %></td>
 		<td class="standard_price"><%= number_to_currency product_type.standard_price, :precision => 0 %></td>
 		<td class="quantity_in_stock">
