@@ -1,89 +1,41 @@
-<!--
-<div id="sales_products" style="width: 100%; border: none;">
-	<ul id="product_types">-->
+<marquee behavior="scroll" scrollamount="5" class="special_product">
+KÖP NU! &nbsp; &nbsp;
+<%= @special_product.name %>
+&nbsp; &nbsp;
+<%= number_to_currency @special_product.standard_price %>
+</marquee>
 <h1>Kioskens prislista:</h1>
 <table class="index_table bigscreen">
 	<thead></thead>
 	<tbody>
 		<% @product_categories.each do |product_category| %>
-			<tr class="product_category" style="color: <%= h product_category.color %>">
-				<td>
+			<tr class="product_category" style="/*color: <%= h product_category.color %>*/">
+				<td colspan="3">
 					<%= product_category.name %>
 				</td>
 			</tr>
 <% product_category.product_types.each do |product_type| %>
-	<tr class="<%= cycle 'odd', 'even' %> <%= 'out_of_stock' unless product_type.in_stock? %>">
+	<tr class="<%= cycle 'odd', 'even' %> <%= 'out_of_stock' unless product_type.in_stock? %> <%= 'special_product' if product_type.id == @special_product.id %>">
 		<td class="name"><%= product_type.name %></td>
 		<td class="standard_price"><%= number_to_currency product_type.standard_price, :precision => 0 %></td>
-		<td class="quantity_in_stock">
-			<%-
-		  if product_type.in_stock? 
-		    -%><%= product_type.quantity_in_stock %> <span>i lager</span><%- 
-		  elsif product_type.quantity_in_stock == 0 
-		    -%>Slut<%-
-		  else
-		    -%><%= product_type.quantity_in_stock %><%- 
-		  end
-		    -%>
+		<%-
+			percent_left = (product_type.quantity_in_stock.to_f / product_type.quantity_delivered.to_f).to_f
+			quantity_color = 'rgba('
+			quantity_color += (255 - (255 * percent_left)).to_i.to_s + ', '
+			quantity_color += (255 * percent_left).to_i.to_s + ', '
+			quantity_color += '75, 1)'
+		-%>
+		<td class="quantity_in_stock" style="color: <%= quantity_color %>;">
+			<%- if product_type.in_stock? -%>
+					<%= product_type.quantity_in_stock %> <span>i lager</span>
+			<%- elsif product_type.quantity_in_stock == 0 -%>
+				Slut
+			<%- else -%>
+				<%= product_type.quantity_in_stock %>
+			<%- end -%>
 		</td>
 	</tr>
-<!--
-	<li class="<%= "not_in_stock"  unless product_type.in_stock? %>">
-	    <% if product_type.in_stock? %>
-	      
-				<a>
-	        <div class="product_type_button" id="product_type_button_<%= product_type.id %>" style="height: auto; min-height: 7em; padding: 0em 0.5em; padding-bottom: 0.5em; width: auto; min-width: 8em;">
-		        <span class="name" style="font-size: 200%; margin-top: 0;"><%= product_type.name %></span>
-
-						<span class="standard_price"><%- 
-						  if session[:price_name] == 'standard' 
-						    -%><%= number_to_currency product_type.standard_price %><%- 
-						  elsif session[:price_name] == 'crew' 
-						    -%><%= number_to_currency product_type.crew_price %><%- 
-						  end 
-						    -%></span>
-
-						<span class="quantity_in_stock"><%-
-						  if product_type.in_stock? 
-						    -%><%= product_type.quantity_in_stock %> i lager<%- 
-						  elsif product_type.quantity_in_stock == 0 
-						    -%>Slut<%-
-						  else
-						    -%><%= product_type.quantity_in_stock %><%- 
-						  end
-						    -%></span>
-		      </div>
-	      </a>
-	    <% else %>
-	      <div class="product_type_button" id="product_type_button_<%= product_type.id %>" style="height: auto; min-height: 7em; padding: 0em; padding-bottom: 0.5em">
-	        <span class="name" style="font-size: 200%; margin-top: 0;"><%= product_type.name %></span>
-
-					<span class="standard_price"><%- 
-					  if session[:price_name] == 'standard' 
-					    -%><%= number_to_currency product_type.standard_price %><%- 
-					  elsif session[:price_name] == 'crew' 
-					    -%><%= number_to_currency product_type.crew_price %><%- 
-					  end 
-					    -%></span>
-
-					<span class="quantity_in_stock"><%-
-					  if product_type.in_stock? 
-					    -%><%= product_type.quantity_in_stock %> i lager<%- 
-					  elsif product_type.quantity_in_stock == 0 
-					    -%>Slut<%-
-					  else
-					    -%><%= product_type.quantity_in_stock %><%- 
-					  end
-					    -%></span>
-	      </div>
-	    <% end %>
-	</li>
-	-->
 <% end %>
 <% end %>
 	</tbody>
 </table>
-<!--
-</ul>
-</div>
--->

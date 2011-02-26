@@ -561,12 +561,25 @@ body.statistics.bigscreen h1{
 	letter-spacing: 0px;
 }
 
+body.statistics.bigscreen marquee{
+	font-size: 200%;
+	font-style: italic;
+	float: right;
+	padding-top: 1em;
+	width: 70%;
+}
+
+body.statistics.bigscreen .special_product{
+	color: fuchsia;
+}
+
 table.bigscreen{
 	
 }
 
 table.bigscreen td{
 	font-size: 180%;
+	font-weight: bold;
 	padding: 0.2em;
 }
 
@@ -574,14 +587,24 @@ table.bigscreen tr.odd{
 	background: #333;
 }
 
-table.bigscreen .out_of_stock{
+table.bigscreen .out_of_stock td{
 	color: #999;
+	font-weight: normal;
 	text-decoration: line-through;
 }
 
-table.bigscreen .product_category{
-	color: #444;
-	font-weight: bold;
+table.bigscreen .out_of_stock td.quantity_in_stock{
+	text-decoration: none;
+}
+
+table.bigscreen tr.product_category{
+}
+
+table.bigscreen tr.product_category td{
+	background: #000;
+	color: #ccc;
+	font-style: italic;
+	font-weight: normal;
 }
 
 table.bigscreen .name{
@@ -595,6 +618,10 @@ table.bigscreen .quantity_in_stock{
 	color: #999;
 	text-align: right;
 	padding-right: 5em;
+}
+
+table.bigscreen .quantity_in_stock.low{
+	color: red;
 }
 
 table.bigscreen .quantity_in_stock span{
