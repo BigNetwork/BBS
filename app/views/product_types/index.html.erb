@@ -22,5 +22,7 @@
 
 <% if logged_in? %>
 	<br />
-	<%= link_to t('.new_product_type'), new_product_type_path %>
+	<%= link_to t('.new_product_type'), new_product_type_path, {:class => :button} %>
+	<%= t('or') %>
+	<%= link_to t('New') + " " + ProductCategory.human_name, new_product_category_path, {:class => :button} %>
 <% end %>

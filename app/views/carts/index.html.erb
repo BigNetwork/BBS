@@ -12,7 +12,7 @@
   <tr class="<%= cycle :odd, :even %>">
     <td><%= link_to "#{t('cart')} #{cart.id}", cart %></td>
     <td><%= cart.cart_rows.size unless cart.cart_rows.nil? %></td>
-    <td><% if cart.purchase.nil? %><%= t('No') %><% else %><%= t('Yes') %>, <%= link_to "#{t('purchase')} #{cart.purchase.id}", cart.purchase %><% end %></td>
+    <td><% if cart.purchase.nil? %><%= t('No') %><% else %><%= t('Yes') %>, <%= link_to "#{cart.purchase.name}", cart.purchase %><% end %></td>
     <td><%= link_to cart.user.login, cart.user unless cart.user.nil? %></td>
     <td class="edit"><%= link_to t('Edit'), edit_cart_path(cart) %></td>
     <td class="destroy"><%= link_to t('Destroy'), cart, :confirm => t('Are you sure?'), :method => :delete %></td>

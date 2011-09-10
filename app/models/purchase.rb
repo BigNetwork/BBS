@@ -24,4 +24,8 @@ class Purchase < ActiveRecord::Base
     !credit.nil?
   end
   
+  def name
+    Purchase.human_name + " " + id.to_s
+  end
+  
 end

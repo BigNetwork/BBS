@@ -5,6 +5,10 @@ class Product < ActiveRecord::Base
   belongs_to :purchase, :counter_cache => true
   
   validates_presence_of :product_type_id
+
+  def self.total_value
+    Product.all(:include => :product_type).sum{ |p| p.product_type.purchase_price }
+  end
   
   def sold?
     if purchase.nil?

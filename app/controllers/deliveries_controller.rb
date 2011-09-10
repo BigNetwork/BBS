@@ -5,7 +5,7 @@ class DeliveriesController < ApplicationController
   # GET /deliveries
   # GET /deliveries.xml
   def index
-    @deliveries = Delivery.all
+    @deliveries = Delivery.all :order => "created_at DESC"
 
     respond_to do |format|
       format.html # index.html.erb

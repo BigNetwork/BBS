@@ -4,7 +4,7 @@ class StatisticsController < ApplicationController
 
   def index
     
-    all_products = Product.all(:include => :product_type)
+    all_products = Product.all(:include => [:product_type, :purchase])
     sold_products = Product.all(:include => [:product_type, :purchase], :conditions => "purchase_id IS NOT NULL")
     non_sold_products = all_products - sold_products
     #all_product_types_in_reverse = ProductType.all(:order => "name DESC")
@@ -12,7 +12,7 @@ class StatisticsController < ApplicationController
     #all_product_types = ProductType.all(:order => :name)
     non_special_offer_product_types = ProductType.all_non_special_offers
     
-    @sum_of_all_in_registered = all_products.sum{ |p| p.product_type.purchase_price }
+    @sum_of_all_in_registered = Product.total_value
     
     @sum_of_sold_profits = 0.0
     for product in sold_products

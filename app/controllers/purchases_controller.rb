@@ -5,7 +5,7 @@ class PurchasesController < ApplicationController
   # GET /purchases
   # GET /purchases.xml
   def index
-    @purchases = Purchase.all(:order => "id DESC")
+    @purchases = Purchase.all(:order => "id DESC", :include => :cart)
 
     respond_to do |format|
       format.html # index.html.erb

@@ -5,7 +5,7 @@ class CartsController < ApplicationController
   # GET /carts
   # GET /carts.xml
   def index
-    @carts = Cart.all(:include => :cart_rows)
+    @carts = Cart.all(:include => [:cart_rows, :purchase, :user], :order => 'created_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb

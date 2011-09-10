@@ -68,6 +68,15 @@ input[type=submit]:hover{
     border-color: #fff;
 }
 
+.button{
+	-webkit-border-radius: 0.7em;
+    -moz-border-radius: 0.7em;
+    background: #009;
+    border-color: #00f;
+    padding: 0.5em 1em;
+    text-shadow: 0.1em 0.1em 0px #003;
+}
+
 input:-webkit-autofill{
     color: #000;
 }

@@ -1,6 +1,6 @@
 <h1><%= t('cart') %> <%= h @cart.id %></h1>
 
-<h3>Products in cart:</h3>
+<h3><%= Product.human_name %> <%= t('in') %> <%= Cart.human_name %>:</h3>
 <% if @cart.cart_rows.empty? %>
   <p>None.</p>
 <% else %>
@@ -8,12 +8,12 @@
 
 <% end %>
 
-<h3>Purchase:</h3>
+<h3><%= Purchase.human_name.capitalize %>:</h3>
 <% if @cart.purchase.nil? %>
   <p>Cart has not been purchased yet.</p>
 <% else %>
   <p>
-    Cart was purchased with <%= link_to "#{t('purchase')} #{@cart.purchase.id}", @cart.purchase %>.
+    Cart was purchased with <%= link_to "#{Purchase.human_name} #{@cart.purchase.id}", @cart.purchase %>.
   </p>
 <% end %>
 
