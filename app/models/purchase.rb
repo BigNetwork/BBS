@@ -1,6 +1,8 @@
 class Purchase < ActiveRecord::Base
   has_many :products
   has_one :credit
+  has_many :cart_rows, :through => :cart
+  has_many :product_types, :through => :cart, :source => :cart_rows
   belongs_to :cart
   belongs_to :user, :counter_cache => true
   

@@ -40,6 +40,18 @@ class ProductType < ActiveRecord::Base
     Product.find(:all, :include => :product_type, :conditions => ["product_type_id = ? AND purchase_id IS NOT NULL", id])
   end
   
+  def sold_sum
+    ProductType.sum(:sold_for_price, :include => :products, :conditions => ["product_type_id = ? AND purchase_id IS NOT NULL", id])
+  end
+  
+  def profit_sum
+    ProductType.sum('sold_for_price - products.purchase_price', :include => :products, :conditions => ["product_type_id = ? AND purchase_id IS NOT NULL", id])
+  end
+  
+  def purchase_sum
+    ProductType.sum('products.purchase_price', :include => :products, :conditions => ["product_type_id = ? AND purchase_id IS NOT NULL", id])
+  end
+  
   def quantity_delivered
     if is_combo? 
       child_instances = Array.new

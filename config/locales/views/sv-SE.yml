@@ -116,9 +116,11 @@
       chart_times_header: "När på dygnet säljs våra produkter?"
       chart_image_header: " "
       chart_sold_products: "Sålda produkter"
-      chart_products_title: "Vilka produkter säljer bäst?"
+      chart_products_title: "Vilka produkter säljer vi flest av?"
       chart_products_image_title: " "
-      sold_items: "Sålda varor"
+      sold_items: "Inkomst"
+      profit_on_items: "Förtjänst per produkt"
+      cost_for_items: "Kostnad per produkt"
   users:    
     index:
       title: "Alla användare"

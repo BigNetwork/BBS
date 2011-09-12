@@ -99,6 +99,22 @@ class StatisticsController < ApplicationController
       @products_sold_chart_img_url = bc.to_url(:chf => "bg,s,1b1b1b", :chbh => "r,4,8")
     end
     
+    bc_products_sums = non_special_offer_product_types.map { |pt| "#{pt.sold_sum}".to_i }
+    bc_products_purchased_for = non_special_offer_product_types.map { |pt| "#{pt.purchase_sum}".to_i }
+    bc_products_profits = non_special_offer_product_types.map { |pt| "#{pt.profit_sum}".to_i }
+    
+    GoogleChart::BarChart.new("850x350", t('statistics.index.chart_products_image_title'), :vertical, true) do |bc|
+      #bc.data t("statistics.index.sold_items"), bc_products_sums, "6666cc"
+      bc.data t("statistics.index.cost_for_items"), bc_products_purchased_for, "cc6666"
+      bc.data t("statistics.index.profit_on_items"), bc_products_profits, "66cc66"
+      bc.axis :x, :labels => bc_products_labels
+      bc.axis :y, :range => [0,bc_products_sums.max]
+      bc.axis :y, :labels => ['kr'], :positions => [100]
+      bc.show_legend = true
+      bc.data_encoding = :extended
+      @products_sold_sums_chart_img_url = bc.to_url(:chf => "bg,s,1b1b1b", :chbh => "r,4,8", :chdlp => "b")
+    end
+    
   end
   
   def bigscreen
