@@ -62,7 +62,7 @@
 	<img src="<%= @products_hours_chart_img_url %>" id="statistics_chart_2" class="statistics_chart" />
 </div>
 
-<h2>Vilka produkter drar in mest pengar?</h2>
+<h2><%= t('.chart_products_amount_title') %></h2>
 
 <p>
 	Stapelns HELA höjd är: hur mycket pengar vi fått in på att sälja varan.<br/>
@@ -74,8 +74,14 @@
 	<img src="<%= @products_sold_sums_chart_img_url %>" id="statistics_chart_2" class="statistics_chart" />
 </div>
 
-<h2><%= t('.chart_products_title') %></h2>
+<h2><%= t('.chart_products_quantity_title') %></h2>
 
 <div class="statistics_chart">
 	<img src="<%= @products_sold_chart_img_url %>" id="statistics_chart_2" class="statistics_chart" />
+</div>
+
+<h2><%= t('.chart_products_percent_title') %></h2>
+
+<div class="statistics_chart">
+  <img src="<%= @products_sold_percent_chart_img_url %>" id="statistics_chart_2" class="statistics_chart" />
 </div>

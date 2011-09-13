@@ -116,11 +116,15 @@
       chart_times_header: "När på dygnet säljs våra produkter?"
       chart_image_header: " "
       chart_sold_products: "Sålda produkter"
-      chart_products_title: "Vilka produkter säljer vi flest av?"
+      chart_products_amount_title: "Vilka produkter har dragit in mest pengar?"
+      chart_products_quantity_title: "Vilka produkter har vi sålt flest av?"
+      chart_products_percent_title: "Vilka produkter har vi sålt mest (i procent) av?"
       chart_products_image_title: " "
       sold_items: "Inkomst"
-      profit_on_items: "Förtjänst per produkt"
-      cost_for_items: "Kostnad per produkt"
+      profit_on_items: "Procent förtjänst"
+      cost_for_items: "Procent inköpspris"
+      percent_sold: "Procent sålt"
+      percent_not_sold: "Procent ej sålt"
   users:    
     index:
       title: "Alla användare"

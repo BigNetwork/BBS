@@ -114,6 +114,21 @@ class StatisticsController < ApplicationController
       bc.data_encoding = :extended
       @products_sold_sums_chart_img_url = bc.to_url(:chf => "bg,s,1b1b1b", :chbh => "r,4,8", :chdlp => "b")
     end
+
+    bc_products_percent_sold      = non_special_offer_product_types.map { |pt| "#{pt.quantity_sold.to_f / pt.quantity_delivered.to_f * 100}".to_i }
+    bc_products_percent_not_sold  = non_special_offer_product_types.map { |pt| "#{pt.not_sold_products.size.to_f / pt.quantity_delivered.to_f * 100}".to_i }
+
+    GoogleChart::BarChart.new("850x350", t('statistics.index.chart_products_image_title'), :vertical, true) do |bc|
+      #bc.data t("statistics.index.sold_items"), bc_products_sums, "6666cc"
+      bc.data t("statistics.index.percent_sold"), bc_products_percent_sold, "003300"
+      bc.data t("statistics.index.percent_not_sold"), bc_products_percent_not_sold, "cc6666"
+      bc.axis :x, :labels => bc_products_labels
+      bc.axis :y, :range => [0,100]
+      bc.axis :y, :labels => ['Procent'], :positions => [100]
+      bc.show_legend = true
+      bc.data_encoding = :extended
+      @products_sold_percent_chart_img_url = bc.to_url(:chf => "bg,s,1b1b1b", :chbh => "r,4,8", :chdlp => "b")
+    end
     
   end
   
