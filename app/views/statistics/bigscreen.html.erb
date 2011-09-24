@@ -29,6 +29,8 @@ KÖP NU! &nbsp; &nbsp;
 		<td class="quantity_in_stock" style="color: <%= quantity_color %>;">
 			<%- if product_type.in_stock? -%>
 					<%= product_type.quantity_in_stock %> <span>i lager</span>
+			<%- elsif product_type.quantity_delivered == 0 -%>
+				
 			<%- elsif product_type.quantity_in_stock == 0 -%>
 				Slut
 			<%- else -%>
