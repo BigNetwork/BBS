@@ -7,7 +7,23 @@ class Product < ActiveRecord::Base
   validates_presence_of :product_type_id
 
   def self.total_value
-    Product.all(:include => :product_type).sum{ |p| p.product_type.purchase_price }
+    Product.all.sum do |p|
+      if p.purchase_price == nil
+        p.product_type.purchase_price
+      else
+        p.purchase_price
+      end
+    end
+  end
+  
+  def profit
+    if sold_for_price
+      sold_for_price - purchase_price
+    elsif purchase_price
+      product_type.standard_price - purchase_price
+    else
+      product_type.standard_price - product_type.purchase_price
+    end
   end
   
   def sold?

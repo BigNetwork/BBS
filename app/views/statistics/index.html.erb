@@ -19,7 +19,7 @@
   <tr class="odd sum">
     <td><%= t('.result') %>:</td>
     <td class="money <%= "negative" if @result < 0 %><%= "positive" if @result >= 0 %>">
-      <%= "+" if @sum_of_total_profits > 0 %><%= number_to_currency @result %>
+      <%= "+" if @result > 0 %><%= number_to_currency @result %>
     </td>
   </tr>
   <tr class="even">

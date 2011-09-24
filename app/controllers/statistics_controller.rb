@@ -4,6 +4,9 @@ class StatisticsController < ApplicationController
 
   def index
     
+    
+    ### Fetching models:
+    
     all_products = Product.all(:include => [:product_type, :purchase])
     sold_products = Product.all(:include => [:product_type, :purchase], :conditions => "purchase_id IS NOT NULL")
     non_sold_products = all_products - sold_products
@@ -12,16 +15,20 @@ class StatisticsController < ApplicationController
     #all_product_types = ProductType.all(:order => :name)
     non_special_offer_product_types = ProductType.all_non_special_offers
     
+    
+    
+    ### Calculating values:
+    
     @sum_of_all_in_registered = Product.total_value
     
     @sum_of_sold_profits = 0.0
     for product in sold_products
-      @sum_of_sold_profits += product.product_type.profit
+      @sum_of_sold_profits += product.profit
     end
     
     @sum_of_total_profits = 0.0
     for product in all_products
-      @sum_of_total_profits += product.product_type.profit
+      @sum_of_total_profits += product.profit
     end
     
     @sum_of_all_sold = sold_products.sum{ |p| p.sold_for_price }
@@ -38,6 +45,10 @@ class StatisticsController < ApplicationController
     
     @money_to_break_even = @sum_of_all_in_registered - @sum_of_all_sold
     @result = @sum_of_all_sold - @sum_of_all_in_registered
+    
+    
+    
+    ### Preparing images:
     
     GoogleChart::PieChart.new("370x150", t('statistics.index.chart_pie_money'), false) do |pc|
       pc.data "Sålt (#{sprintf("%2.f", @all_sold_percent)}%)", @sum_of_all_sold
