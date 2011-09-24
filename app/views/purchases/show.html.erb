@@ -16,8 +16,8 @@
   <%= Purchase.human_attribute_name('user_id') %>: <%= link_to @purchase.user.login, @purchase.user %>
 </p>
 
-<% if @purchase.products.empty? %>
-  
+<% if @purchase.products.blank? %>
+
 <% else %>
   
   <h3><%= t('Products sold in this purchase') %>:</h3>

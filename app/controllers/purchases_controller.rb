@@ -5,7 +5,7 @@ class PurchasesController < ApplicationController
   # GET /purchases
   # GET /purchases.xml
   def index
-    @purchases = Purchase.all(:order => "id DESC", :include => [:cart, :user, :cart_rows, :product_types])
+    @purchases = Purchase.all(:order => "id DESC", :include => [:cart, :user, :cart_rows, :product_types, :products])
 
     respond_to do |format|
       format.html # index.html.erb

@@ -19,7 +19,8 @@ KÖP NU! &nbsp; &nbsp;
 		<td class="name"><%= product_type.name %></td>
 		<td class="standard_price"><%= number_to_currency product_type.standard_price, :precision => 0 %></td>
 		<%-
-			percent_left = (product_type.quantity_in_stock.to_f / product_type.quantity_delivered.to_f).to_f
+			percent_left = product_type.percent_left
+			logger.info "procent = #{percent_left}"
 			quantity_color = 'rgba('
 			quantity_color += (255 - (255 * percent_left)).to_i.to_s + ', '
 			quantity_color += (255 * percent_left).to_i.to_s + ', '

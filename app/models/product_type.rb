@@ -204,5 +204,13 @@ class ProductType < ActiveRecord::Base
     end
     times
   end
+  
+  def percent_left
+    if quantity_delivered > 0
+      (quantity_in_stock.to_f / quantity_delivered.to_f).to_f
+    else # To avoid division by zero (if quantity delivered was 0) 
+      0
+    end
+  end
 
 end
