@@ -22,11 +22,13 @@ class SalesController < ApplicationController
         @cart.user_id = current_user.id
       end
     end
-    @cart.price_name = session[:price_name]
-    @cart.save(false) # Save the cart so we can get an ID for it (so we can bind CartRows to it later)
+    if @cart.price_name != session[:price_name]
+      @cart.price_name = session[:price_name]
+      @cart.save(false) # Save the cart so we can get an ID for it (so we can bind CartRows to it later)
+    end
     
     # Get us some products:
-    @product_types = ProductType.all(:order => :name)
+    @product_types = ProductType.all(:order => :name, :include => [:product_category, :products])
     @purchase = Purchase.new
   end
 end
