@@ -86,17 +86,18 @@ class User < ActiveRecord::Base
     #u = find_by_login(login.downcase) # need to get the salt
     #u && u.authenticated?(password) ? u : nil
     require 'net/http' 
-    site = "lan.bignetwork.se"
+    site = "cloud.bignetwork.se"
     url = "/index.php?event=WG11&controller=api&action=checkUser&userName=#{login}&userPassword=#{password}"
     connection = Net::HTTP.new(site)
     response = "" 
     connection.start do |http| 
-      req = 
-    Net::HTTP::Get.new(url) 
+      logger.info "Connecting to BLS... Trying to log in user #{login}"
+      req = Net::HTTP::Get.new(url) 
       response = http.request(req) 
     end
     
     if response.body == "privileged_user"
+      logger.info "Inloggningen lyckades!"
       u = find_by_login(login)
       if u.nil?
         u = User.create
@@ -105,6 +106,7 @@ class User < ActiveRecord::Base
       end
       return u
     else
+      logger.info "Inloggningen misslyckades. HTTP #{response.code}. BLS-felmeddeladet var: '#{response.body}'."
       return false
     end
   end
