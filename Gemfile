@@ -5,4 +5,5 @@ gem 'i18n', '0.4.2'
 
 group :development do
   gem 'sqlite3'
+  gem 'heroku'
 end
