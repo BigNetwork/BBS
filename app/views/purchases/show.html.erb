@@ -1,11 +1,11 @@
 <h1><%= t("Purchase") %> <%= @purchase.id %></h1>
 
 <p>
-  <%= t('Purchased at') %>: <%= l @purchase.created_at, :format => :long %>
+	<%= number_to_currency @purchase.sum %>
 </p>
 
 <p>
-  <%= t('Came from Cart') %> <%= link_to "#{t('cart')} #{@purchase.cart.id}", @purchase.cart %>.
+  <%= t('Purchased at') %>: <%= l @purchase.created_at, :format => :short %>, <%= time_ago_in_words @purchase.created_at %> sedan
 </p>
 
 <p>
@@ -43,6 +43,12 @@
 	<% else %>
 		<%= link_to t('.add_credit'), { :controller => :credits, :action => :new, :purchase_id => @purchase.id } %>
 	<% end %>
+</p>
+
+---
+
+<p>
+  (<%= t('Came from Cart') %> <%= link_to "#{t('cart')} #{@purchase.cart.id}", @purchase.cart %>)
 </p>
 
 <p>
