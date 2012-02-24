@@ -1,5 +1,10 @@
 <h1><%= @user.login %></h1>
 
+<p>
+	<%= User.human_attribute_name('coins').capitalize %>: 
+	<%= @user.coins %>
+</p>
+
 <% unless @user.purchases.nil? %>
   <h3>
     <%= User.human_attribute_name('sold_for').capitalize %>
