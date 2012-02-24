@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:create, :update]
 
   def index
-    @users = User.all(:order => :login)
+    @users = User.all(:order => "lower(login)", :include => [:deliveries])
   end
   
   def show

@@ -98,7 +98,7 @@ class User < ActiveRecord::Base
     
     if response.body == "privileged_user"
       logger.info "Inloggningen lyckades!"
-      u = find_by_login(login)
+      u = find(:first, :conditions => ['lower(login) = ?', login.downcase])
       if u.nil?
         u = User.create
         u.login = login
