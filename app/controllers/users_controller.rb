@@ -42,12 +42,13 @@ class UsersController < ApplicationController
   end
   
   def update
-    logger.info "VI kommer hit i alla fall."
+    logger.info params[:user]
     @user = User.find(params[:id])
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
         flash[:notice] = 'User was successfully updated.'
+        logger.info @user
         format.html { redirect_to(@user) }
         format.xml  { head :ok }
       else
