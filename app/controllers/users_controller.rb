@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   end
  
   def create
+    logger.info "Here is the remote-parameter: #{params[:remote]}"
     logout_keeping_session!
     @user = User.new(params[:user])
     success = @user && @user.save
@@ -27,7 +28,7 @@ class UsersController < ApplicationController
         flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
       end
     else
-      if params[:remote] == "true"  
+      if params[:remote] == "true"
         render :text => "False"
       else
         flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
