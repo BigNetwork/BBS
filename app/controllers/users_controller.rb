@@ -42,6 +42,7 @@ class UsersController < ApplicationController
   end
   
   def update
+    logger.info "VI kommer hit i alla fall."
     @user = User.find(params[:id])
 
     respond_to do |format|
