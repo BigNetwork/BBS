@@ -8,7 +8,11 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find_by_id(params[:id])
+    @user = User.find_by_login(params[:id])
+
+    unless @user
+      @user = User.find_by_id(params[:id])
+    end
   end
  
   def create
@@ -38,11 +42,19 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find_by_id(params[:id])
+    @user = User.find_by_login(params[:id])
+
+    unless @user
+      @user = User.find_by_id(params[:id])
+    end
   end
   
   def update
-    @user = User.find(params[:id])
+    @user = User.find_by_login(params[:id])
+
+    unless @user
+      @user = User.find_by_id(params[:id])
+    end
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -57,7 +69,12 @@ class UsersController < ApplicationController
   end
   
   def destroy
-    @user = User.find_by_id(params[:id])
+    @user = User.find_by_login(params[:id])
+
+    unless @user
+      @user = User.find_by_id(params[:id])
+    end
+    
     @user.destroy
     redirect_to(:back)
   end
