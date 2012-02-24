@@ -139,6 +139,7 @@
     warehouse: "Lager"
     history: "Försäljningshistorik"
     statistics: "Statistik"
+    users: "U"
     # And the submenus (another exception to the rule):
     product_types: "Varutyper"
     new_product_type: "Ny varutyp"
