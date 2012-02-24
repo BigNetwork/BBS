@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
  
   def create
-    logger.info "Here is the remote-parameter: #{params[:remote]}"
+    logger.info "Here is the remote-parameter: " + params[:remote]
     logout_keeping_session!
     @user = User.new(params[:user])
     success = @user && @user.save
