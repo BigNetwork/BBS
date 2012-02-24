@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
   before_filter :login_required, :only => ['index', 'show', 'destroy']
-  skip_before_filter :verify_authenticity_token, :only => [:create]
+  skip_before_filter :verify_authenticity_token, :only => [:create, :update]
 
   def index
     @users = User.all(:order => :login)
