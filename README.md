@@ -5,7 +5,7 @@ Vårt webbsystem för att hantera försäljning i kiosken under våra evenemang.
 
 ## Installation
 
-1. Installera dependencies (se requirements)
+1. Installera dependencies (se requirements nedan)
 2. Checka ut koden
 3. Prova att starta rails webbserver: ruby script/server
 4. Prova att öppna sidan i en webbläsare: http://localhost:3000
