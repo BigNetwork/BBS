@@ -86,7 +86,7 @@ class User < ActiveRecord::Base
     #u = find_by_login(login.downcase) # need to get the salt
     #u && u.authenticated?(password) ? u : nil
     require 'net/http' 
-    site = "cloud.bignetwork.se"
+    site = "www.bignetwork.se"
     url = "/index.php?event=WG11&controller=api&action=checkUser&userName=#{login}&userPassword=#{password}"
     connection = Net::HTTP.new(site)
     response = "" 
