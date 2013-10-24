@@ -21,6 +21,7 @@ GEM
     launchy (2.0.5)
       addressable (~> 2.2.6)
     mime-types (1.17.2)
+    postgres-pr (0.6.3)
     rack (1.0.1)
     railroady (1.0.7)
     rails (2.3.4)
@@ -54,6 +55,7 @@ PLATFORMS
 DEPENDENCIES
   heroku
   i18n (= 0.4.2)
+  postgres-pr
   railroady
   rails (= 2.3.4)
   sqlite3
