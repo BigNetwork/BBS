@@ -1,6 +1,6 @@
 class ProductTypesController < ApplicationController
 
-  before_filter :login_required, :except => :index
+  #before_filter :login_required, :except => :index
 
   # GET /product_types
   # GET /product_types.xml

@@ -1,6 +1,6 @@
 class ProductTypeRelationsController < ApplicationController
 
-  before_filter :login_required
+  #before_filter :login_required
 
   # GET /product_type_relations
   # GET /product_type_relations.xml

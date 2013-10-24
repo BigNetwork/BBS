@@ -1,6 +1,6 @@
 class CartRowsController < ApplicationController
 
-  before_filter :login_required
+  #before_filter :login_required
 
   # GET /cart_rows
   # GET /cart_rows.xml
