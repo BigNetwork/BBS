@@ -53,5 +53,33 @@
     </p>
   <% end %>
 
+  <div id="change">
+    <table class="index_table">
+      <thead>
+        <tr>
+          <th>Växel på:</th>
+          <th class="money">Tillbaka:</th>
+        </tr>
+      </thead>
+    <%
+    money_sizes = [500,100,50,20,10,5,1]
+
+    for money_size in money_sizes
+      if @cart.sum < money_size
+    %>
+    <tr>
+      <td>
+        <%= money_size -%><% if money_size < 20 %>-krona<% else %>-lapp<%end%>:
+      </td>
+      <td class="money">
+        <%= number_to_currency (money_size - @cart.sum, :precision => 0) %>
+      </td>
+    </tr>
+    <%
+    end end
+    %>
+    </table>
+  </div>
+
   </div>
 <% end %>
