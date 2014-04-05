@@ -2,9 +2,9 @@
 
 <span class="standard_price"><%- 
   if session[:price_name] == 'standard' 
-    -%><%= number_to_currency product_type.standard_price %><%- 
+    -%><%= number_to_currency product_type.standard_price, :precision => 0 %><%- 
   elsif session[:price_name] == 'crew' 
-    -%><%= number_to_currency product_type.crew_price %><%- 
+    -%><%= number_to_currency product_type.crew_price, :precision => 0 %><%- 
   end 
     -%></span>
 
