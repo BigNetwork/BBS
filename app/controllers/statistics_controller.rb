@@ -169,7 +169,7 @@ class StatisticsController < ApplicationController
   def bigscreen
     #@product_types = ProductType.all
     @product_categories = ProductCategory.all
-    @special_product = ProductType.first
+    @special_product = ProductType.all.choice
   end
 
 end
