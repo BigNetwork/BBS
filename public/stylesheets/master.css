@@ -507,6 +507,11 @@ ol#welcome_list li{
     float: right;
 }
 
+#change{
+    clear: both;
+    padding-top: 50px;
+}
+
 #product_type_price_table th{
     text-align: left;
 }
