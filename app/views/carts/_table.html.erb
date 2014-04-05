@@ -1,6 +1,6 @@
 <table id="cart_table">
   <tr class="headers">
-    <th><%= ProductType.human_name.capitalize %>:</th>
+    <th><%= t 'product' %>:</th>
 <!--    <th class="quantity"><%= t('Quantity') %>:</th>-->
     <th class="money"><%= CartRow.human_attribute_name('price_each').capitalize %>:</th>
     <th class="money"><%= CartRow.human_attribute_name('sum').capitalize %>:</th>
@@ -21,9 +21,9 @@
         Error
       <%- else -%>
         <% if @cart.price_name == 'standard' %>
-          <%= number_to_currency cart_row.product_type.standard_price %>
+          <%= number_to_currency cart_row.product_type.standard_price, :precision => 0 %>
         <% elsif @cart.price_name == 'crew' %>
-          <%= number_to_currency cart_row.product_type.crew_price %>
+          <%= number_to_currency cart_row.product_type.crew_price, :precision => 0 %>
         <% end %>
       <%- end -%>
     </td>
@@ -31,7 +31,7 @@
       <%- if cart_row.product_type.nil? -%>
         Error
       <%- else -%>
-        <%= number_to_currency cart_row.sum %>
+        <%= number_to_currency cart_row.sum, :precision => 0 %>
       <%- end -%>
     </td>
     <td class="destroy">
@@ -43,7 +43,7 @@
     <td><%= ProductType.human_name(:count => @cart.total_quantity) %></td>
     <th></th>
     <td class="money">
-      <%= number_to_currency @cart.sum %>
+      <%= number_to_currency @cart.sum, :precision => 0 %>
     </td>
     <td></td>
   </tr>
