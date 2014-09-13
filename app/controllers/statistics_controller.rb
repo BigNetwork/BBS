@@ -53,7 +53,13 @@ class StatisticsController < ApplicationController
     GoogleChart::PieChart.new("370x150", t('statistics.index.chart_pie_money'), false) do |pc|
       pc.data "Sålt (#{sprintf("%2.f", @all_sold_percent)}%)", @sum_of_all_sold
       pc.data "Ej sålt (#{sprintf("%2.f", @non_sold_percent)}%)", @sum_of_non_sold
-      @sold_for_chart_url = pc.to_url(:chf => "bg,s,222222", :chco => "009900,663333", :cht => "p3")
+      @sold_for_chart_url = pc.to_url(
+        :chf => "bg,s,222222", 
+        :chco => "009900,663333", 
+        :cht => "p3"
+        #, :chxs => '3,ffffff,14'
+        
+      )
     end
     
     GoogleChart::PieChart.new("370x150", t('statistics.index.chart_pie_quantity'), false) do |pc|
@@ -100,45 +106,62 @@ class StatisticsController < ApplicationController
     bc_products_labels = non_special_offer_product_types.map { |pt| "#{pt.name}" }
     bc_products_values = non_special_offer_product_types.map { |pt| "#{pt.quantity_sold}".to_i }
     
-    GoogleChart::BarChart.new("850x350", t('statistics.index.chart_products_image_title'), :vertical, false) do |bc|
+    GoogleChart::BarChart.new("450x500", t('statistics.index.chart_products_image_title'), :horizontal, false) do |bc|
       bc.data t("statistics.index.sold_items"), bc_products_values, "66cc66"
-      bc.axis :x, :labels => bc_products_labels
-      bc.axis :y, :range => [0,bc_products_values.max]
-      bc.axis :y, :labels => ['Inga', 'Många'], :positions => [0,100]
+      bc.axis :y, :labels => bc_products_labels.reverse
+      bc.axis :x, :range => [0,bc_products_values.max]
+      bc.axis :x, :labels => ['Inga', 'Många'], :positions => [0,100]
       bc.show_legend = false
       bc.data_encoding = :extended
-      @products_sold_chart_img_url = bc.to_url(:chf => "bg,s,1b1b1b", :chbh => "r,4,8")
+      @products_sold_chart_img_url = bc.to_url(
+        :chf => "bg,s,1b1b1b", 
+        :chbh => "r,1",
+        :chdls => 'ffffff,20',
+        :chxs => '0,ffffff,16'
+      )
     end
     
     bc_products_sums = non_special_offer_product_types.map { |pt| "#{pt.sold_sum}".to_i }
     bc_products_purchased_for = non_special_offer_product_types.map { |pt| "#{pt.purchase_sum}".to_i }
     bc_products_profits = non_special_offer_product_types.map { |pt| "#{pt.profit_sum}".to_i }
     
-    GoogleChart::BarChart.new("850x350", t('statistics.index.chart_products_image_title'), :vertical, true) do |bc|
+    GoogleChart::BarChart.new("550x500", t('statistics.index.chart_products_image_title'), :horizontal, true) do |bc|
       #bc.data t("statistics.index.sold_items"), bc_products_sums, "6666cc"
       bc.data t("statistics.index.cost_for_items"), bc_products_purchased_for, "cc6666"
       bc.data t("statistics.index.profit_on_items"), bc_products_profits, "66cc66"
-      bc.axis :x, :labels => bc_products_labels
-      bc.axis :y, :range => [0,bc_products_sums.max]
-      bc.axis :y, :labels => ['kr'], :positions => [100]
+      bc.axis :y, :labels => bc_products_labels.reverse
+      bc.axis :x, :range => [0,bc_products_sums.max]
+      bc.axis :x, :labels => ['kr'], :positions => [100]
       bc.show_legend = true
       bc.data_encoding = :extended
-      @products_sold_sums_chart_img_url = bc.to_url(:chf => "bg,s,1b1b1b", :chbh => "r,4,8", :chdlp => "b")
+      @products_sold_sums_chart_img_url = bc.to_url(
+        :chf => "bg,s,1b1b1b", 
+        :chbh => "r,1", 
+        :chdlp => "b",
+        :chdls => 'ffffff,20',
+        :chxs => '0,ffffff,16'
+      )
     end
 
     bc_products_percent_sold      = non_special_offer_product_types.map { |pt| "#{pt.quantity_sold.to_f / pt.quantity_delivered.to_f * 100}".to_i }
     bc_products_percent_not_sold  = non_special_offer_product_types.map { |pt| "#{pt.not_sold_products.size.to_f / pt.quantity_delivered.to_f * 100}".to_i }
 
-    GoogleChart::BarChart.new("850x350", t('statistics.index.chart_products_image_title'), :vertical, true) do |bc|
+    GoogleChart::BarChart.new("450x500", t('statistics.index.chart_products_image_title'), :horizontal, true) do |bc|
       #bc.data t("statistics.index.sold_items"), bc_products_sums, "6666cc"
-      bc.data t("statistics.index.percent_sold"), bc_products_percent_sold, "003300"
+      bc.data t("statistics.index.percent_sold"), bc_products_percent_sold, "66cc66"
       bc.data t("statistics.index.percent_not_sold"), bc_products_percent_not_sold, "cc6666"
-      bc.axis :x, :labels => bc_products_labels
-      bc.axis :y, :range => [0,100]
-      bc.axis :y, :labels => ['Procent'], :positions => [100]
+      bc.axis :y, :labels => bc_products_labels.reverse
+      bc.axis :x, :range => [0,100]
+      bc.axis :x, :labels => ['Procent'], :positions => [100]
       bc.show_legend = true
       bc.data_encoding = :extended
-      @products_sold_percent_chart_img_url = bc.to_url(:chf => "bg,s,1b1b1b", :chbh => "r,4,8", :chdlp => "b")
+      @products_sold_percent_chart_img_url = bc.to_url(
+        :chf => "bg,s,1b1b1b", 
+        :chbh => "r,1,8", 
+        :chdlp => "b",
+        :chdls => 'ffffff,20',
+        :chxs => '0,ffffff,16'
+      )
     end
     
   end
@@ -146,7 +169,7 @@ class StatisticsController < ApplicationController
   def bigscreen
     #@product_types = ProductType.all
     @product_categories = ProductCategory.all
-    @special_product = ProductType.first
+    @special_product = ProductType.all.choice
   end
 
 end
