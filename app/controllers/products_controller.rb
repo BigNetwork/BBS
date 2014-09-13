@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 
-  #before_filter :login_required
+  before_filter :login_required
 
   # GET /products
   # GET /products.xml

@@ -1,6 +1,6 @@
 class SalesController < ApplicationController
   
-  #before_filter :login_required
+  before_filter :login_required
   
   def index
     # Get us a price type: 
